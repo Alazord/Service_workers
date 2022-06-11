@@ -4,21 +4,63 @@ import styles from '../styles/Home.module.css'
 import Navbar from './navBar'
 
 export default function Home() {
+// <<<<<<< Nikunj
+  const MyImage = (props) => {
+    return (
+      <Image
+        src="/images/rickMorty.jpeg"
+        alt="Picture of rick n morty"
+        width={50}
+        height={50}
+      />
+    )
+  }
+// =======
+  const optionList = ["Rick and Morty Wiki", "Explore", "Rick and Morty", "Episodes"]
 
+// >>>>>>> master
   return (
   <div>
     <Navbar/>
    <div className="all">
     <div className="home">Home</div>
     <div className="welcome">Welcome to Rick and Morty Wiki!</div>
-    <div className="carousal">Img to be shown</div>
+    <MyImage className="carousal" />
     <div className="decriptionBox">
       <div className="descriptionHead">Description</div>
       <div className="descriptionContent">abcd xyz</div>
     </div>
     <div className="mainCharactersBox">
       <div className="mainCharactersHead">Main Characters</div>
-      <div  className="mainCharactersContent">img list</div>
+      <MyImage  />
+      <MyImage  />
+      <MyImage  />
+      <MyImage  />
+      <MyImage  />
+    </div>
+    <div className="episodeBox">
+        <div> Previous Episode </div>
+        <div> Next Episode</div>
+        <MyImage  />
+      <MyImage  />
+      <div> Name of Episode </div>
+        <div> Name of Episode</div>
+        <div> Description</div>
+        <div> Description</div>
+   </div>
+    <div className="Latest"> Latest Comic</div>
+    <div> <MyImage  /> 
+    <div> Name of comic</div>
+    <div> Description</div> 
+    </div>
+    <div className="exploreBox">
+      <div>Explore and Discover</div>
+      <MyImage  />
+      <MyImage  />
+      <MyImage  />
+      <MyImage  />
+      <MyImage  />
+      <MyImage  />
     </div>
    </div>
 </div>
