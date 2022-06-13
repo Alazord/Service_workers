@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Poppins";
+  background-color: #eeecdf;
 }
 
 a {
@@ -13,4 +15,344 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.nav-container {
+  position: fixed;
+  width: 100%;
+  height: 48px;
+  background-color: #ff01c1;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nav-element {
+  display: flex;
+  height: 24px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* background-color: aqua; */
+  /* identical to box height */
+  color: #000000;
+  margin-right: 28px;
+  align-items: center;
+}
+.nav-container :first-child {
+  margin-left: 206px;
+}
+.all {
+  width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+}
+.home {
+  width: 800px;
+  height: 54px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 54px;
+  /* identical to box height */
+  color: #000000;
+}
+.welcomeBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  height: 417px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: yellow; */
+}
+.welcome {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 36px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 42px;
+  /* identical to box height */
+  background-color: #000000;
+  color: #ffffff;
+}
+.carousal {
+  /* background-color: green; */
+  flex-grow: 1;
+}
+.carousal img {
+  width: 100%;
+  min-height: 100%;
+}
+
+.descriptionBox {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 290px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80px;
+  /* background-color: #808080; */
+}
+.descriptionHead {
+  height: 42px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 42px;
+  /* identical to box height */
+  /* background-color: orange; */
+  color: #000000;
+}
+.descriptionBox .Line {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.descriptionContent {
+  margin-top: 28px;
+  width: 100%;
+  flex-grow: 1;
+
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: justify;
+  /* background-color: beige; */
+  color: #000000;
+}
+
+.mainCharactersBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  width: 800px;
+  height: 244px;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: aqua; */
+}
+.mainCharactersHead {
+  height: 42px;
+  /* background-color: yellow; */
+  margin-bottom: 0px;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 42px;
+  /* identical to box height */
+  color: #000000;
+}
+.mainCharactersBox .Line {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.mainCharacterImages {
+  flex-grow: 1;
+}
+.mainCharacterImages {
+  margin-top: 28px;
+  justify-content: space-between;
+}
+.episodeBox {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 476px;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: bisque; */
+  margin-top: 80px;
+}
+.episodeHead {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 42px;
+  /* identical to box height */
+  /* background-color: pink; */
+  color: #000000;
+}
+.episodeBox .Line {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.episodeContent {
+  display: flex;
+  margin-top: 28px;
+  /* background-color: yellow; */
+  width: 100%;
+  flex-grow: 1;
+  gap: 28px;
+}
+.episodePrevious {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* background-color: green; */
+}
+.episodePrevious :first-child {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  /* background-color: white; */
+  /* identical to box height */
+  text-align: center;
+  margin-bottom: 12px;
+  color: #000000;
+}
+.episodeName {
+  margin-top: 24px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  /* background-color: white; */
+  color: #000000;
+}
+.episodeDescription {
+  flex-grow: 1;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: justify;
+  /* background-color: beige; */
+  color: #000000;
+}
+.episodeNext {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* background-color: green; */
+}
+.episodeNext :first-child {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  /* background-color: white; */
+  /* identical to box height */
+  text-align: center;
+  margin-bottom: 12px;
+  color: #000000;
+}
+.latestComicBox {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 314px;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: aquamarine; */
+}
+.latestComicHead {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 42px;
+  /* identical to box height */
+
+  color: #000000;
+}
+.latestComicBox .Line {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.latestComicContent {
+  display: flex;
+  margin-top: 28px;
+  /* background-color: yellow; */
+}
+.latestComicContent img {
+  margin-right: 24px;
+}
+.latestComicTitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
+}
+.latestComicDescription {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: justify;
+
+  color: #000000;
+}
+.latestComicDetails {
+  flex-grow: 1;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+}
+.exploreBox {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 596px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: aquamarine; */
+}
+.exploreHead {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 42px;
+  /* identical to box height */
+
+  color: #000000;
+}
+.exploreBox .Line {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.exploreContent {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* background-color: beige; */
+}
+.exploreTitle {
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  text-align: center;
+  background-color: black;
+  color: #ffffff;
+}
+.exploreDescription {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  background-color: black;
+  color: #ffffff;
 }
