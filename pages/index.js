@@ -323,12 +323,12 @@ export default function Home() {
         </div>
       </div>
     </div>
-// <<<<<<< Nikunj
-//    </div>
-// </div>
-//   )
-//   }
-// =======
+    // <<<<<<< Nikunj
+    //    </div>
+    // </div>
+    //   )
+    //   }
+    // =======
   );
 }
 // >>>>>>> master
