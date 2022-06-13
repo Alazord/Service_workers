@@ -6,7 +6,7 @@ export default function NavBar() {
     "EPISODES",
   ];
   return (
-    <div className="nav-container" style={{ display: "flex" }}>
+    <div className="nav-container">
       {optionList.map((item, index) => (
         <div className="nav-element" key={index}>
           {item}
