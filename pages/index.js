@@ -13,7 +13,6 @@ export default function Home() {
       />
     );
   };
-  // =======
   const optionList = [
     "Rick and Morty Wiki",
     "Explore",
@@ -21,7 +20,6 @@ export default function Home() {
     "Episodes",
   ];
 
-  // >>>>>>> master
   return (
     <div
       style={{
@@ -323,12 +321,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-    // <<<<<<< Nikunj
-    //    </div>
-    // </div>
-    //   )
-    //   }
-    // =======
   );
 }
-// >>>>>>> master
