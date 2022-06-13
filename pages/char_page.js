@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home2.module.css";
 import {
   Heading,
   Input,
@@ -24,7 +24,7 @@ export default function Home2(results) {
   return (
     <Flex direction="column" justify="center" align="center">
       <Head>
-        <title>NextJS Apollo Crash Course</title>
+        <title>Characters</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -32,6 +32,7 @@ export default function Home2(results) {
         <Heading as="h1" size="2xl" mb={8}>
           Rick and Morty{" "}
         </Heading>
+        
         <form
           onSubmit={async (event) => {
             event.preventDefault();
@@ -62,14 +63,14 @@ export default function Home2(results) {
               onChange={(e) => setSearch(e.target.value)}
             ></Input>
             <IconButton
-              colorScheme="blue"
+              color="blue"
               aria-label="Search database"
               icon={<SearchIcon />}
               disabled={search === ""}
               type="submit"
             />
             <IconButton
-              colorScheme="red"
+              color="red"
               aria-label="Reset "
               icon={<CloseIcon />}
               disabled={search === ""}
@@ -84,7 +85,7 @@ export default function Home2(results) {
       </Box>
 
       <footer className={styles.footer}>
-        Powered by Energy Drinks 🥫 and YouTube Subscribers.
+        &copy;
       </footer>
     </Flex>
   );
