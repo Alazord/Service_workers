@@ -12,6 +12,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 import Character from "../components/Character";
 
@@ -55,11 +56,11 @@ export default function Home2(results) {
             }
           }}
         >
-          <Stack maxWidth="350px" width="100%" isInline mb={8}>
+          <Stack maxWidth="235px" width="100%" isInline mb={8}>
             <Input
               placeholder="Search"
               value={search}
-              border="none"
+              // border="none"
               onChange={(e) => setSearch(e.target.value)}
             ></Input>
             <IconButton
@@ -69,16 +70,16 @@ export default function Home2(results) {
               disabled={search === ""}
               type="submit"
             />
-            <IconButton
-              color="red"
+            <Button
+              color="Green"
               aria-label="Reset "
-              icon={<CloseIcon />}
+              // icon={<CloseIcon />}
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");
                 setCharacters(intialState.characters);
               }}
-            />
+            >Reset</Button>
           </Stack>
         </form>
         <Character characters={characters} />
@@ -99,7 +100,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query {
-        characters(page: 1) {
+        characters(filter:{}) {
           info {
             count
             pages
