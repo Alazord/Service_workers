@@ -21,3 +21,10 @@ export default function Home3(results) {
       <h1>Detailed info of the character you clicked on will appear here.</h1>
   );
 }
+
+// import { useRouter } from 'next/router'
+// function mypage() {
+//  const router = useRouter()
+//  console.log("xyz");
+// }
+// export default mypage;
