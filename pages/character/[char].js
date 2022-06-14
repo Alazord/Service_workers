@@ -8,7 +8,7 @@ export default function characterDetails(){
     // const intialState = results;
     // const [characters, setCharacters] = useState(intialState.characters);
     // <Character characters={characters} />
-    const router=useRouter();
+    const router = useRouter();
     const id=router.query.id;
     // return <Character characters={characters} />;
     return <h1>Details about product {id}</h1>
