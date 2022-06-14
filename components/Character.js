@@ -10,13 +10,13 @@ const Character = ({ characters }) => {
         
       {characters.map((character) => {
         return (
-            <div key={character.id}><Link href={`/character?id=${character.id}`}><div>
+            <div key={character.id}><Link href="/char"><div>
             <Image alt="" src={character.image} width={300} height={300} />
             <Heading as="h4" align="center" size="md">
               {character.name}
             </Heading>
             <Text align="center">Origin: {character.origin.name}</Text>
-            <Text align="center">Location: {character.location.name}</Text>
+            {/* <Text align="center">Location: {character.location.name}</Text> */}
             </div></Link></div>
         );
       })}
