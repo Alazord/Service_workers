@@ -15,7 +15,7 @@ import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
 
 import Character from "../components/Character";
 
-export default function Home3(results) {
+export default function Home3() {
 
   return (
       <h1>Detailed info of the character you clicked on will appear here.ajsvgbkjdebc</h1>
