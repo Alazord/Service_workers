@@ -18,6 +18,6 @@ import Character from "../components/Character";
 export default function Home3(results) {
 
   return (
-      <h1>Detailed info of the character you clicked on will appear here.</h1>
+      <h1>Detailed info of the character you clicked on will appear here.ajsvgbkjdebc</h1>
   );
 }
