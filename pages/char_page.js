@@ -98,48 +98,32 @@ export async function getStaticProps() {
   });
   const { data } = await client.query({
     query: gql`
-    query {
-      characters(page: 1) {
-        info {
-          count
-          pages
-        }
-        results {
-          name
-          id
-          location {
-            name
+      query {
+        characters(page: 1) {
+          info {
+            count
+            pages
           }
-          image
+          results {
+            name
+            id
+            location {
+              name
+              id
+            }
+            image
+            origin {
+              name
+              id
+            }
+            episode {
+              id
+              episode
+              air_date
+            }
+          }
         }
       }
-    }
-      // query {
-      //   characters(page: 1) {
-      //     info {
-      //       count
-      //       pages
-      //     }
-      //     results {
-      //       name
-      //       id
-      //       location {
-      //         name
-      //         id
-      //       }
-      //       image
-      //       origin {
-      //         name
-      //         id
-      //       }
-      //       episode {
-      //         id
-      //         episode
-      //         air_date
-      //       }
-      //     }
-      //   }
-      // }
     `,
   });
 

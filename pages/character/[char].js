@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 
-export default function myChar(){
+function MyChar(){
     const router= useRouter();
-    const id=router.query.id;
-    return <h1> Deatils of character id: {id}</h1>
+    const charId =router.query.char;
+    return <h1>Deatils of character id: {charId} </h1>
 }
+
+export default MyChar
