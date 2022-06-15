@@ -55,7 +55,7 @@ export default function Home4(results) {
             }
           }}
         >
-          <Stack maxWidth="235px" width="100%" isInline mb={8}>
+          <Stack maxWidth="235px" width="50%" isInline mb={8}>
             <Input
               placeholder="Search"
               value={search}
