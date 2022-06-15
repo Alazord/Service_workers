@@ -10,9 +10,10 @@ import {
   Box,
   Flex,
   useToast,
+  Link,
 } from "@chakra-ui/react";
 import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 import Character from "../components/Character";
 
@@ -30,10 +31,10 @@ export default function Home2(results) {
       </Head>
 
       <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
-        <Heading as="h1" size="2xl" mb={8}>
-          Rick and Morty{" "}
+        <Heading as="h1">
+          <a href="/">Rick and Morty</a>
         </Heading>
-        
+
         <form
           onSubmit={async (event) => {
             event.preventDefault();
@@ -56,12 +57,21 @@ export default function Home2(results) {
             }
           }}
         >
-          <Stack maxWidth="235px" width="100%" isInline mb={8}>
+          <Stack
+            isInline
+            mb={8}
+            margin="0 auto"
+            justifyContent="center"
+            height="30px"
+            marginTop={20}
+          >
             <Input
               placeholder="Search"
               value={search}
               // border="none"
               onChange={(e) => setSearch(e.target.value)}
+              width="300px"
+              borderRadius={5}
             ></Input>
             <IconButton
               color="blue"
@@ -69,25 +79,32 @@ export default function Home2(results) {
               icon={<SearchIcon />}
               disabled={search === ""}
               type="submit"
+              width="30px"
+              height="30px"
+              borderRadius={5}
+              backgroundColor="white"
             />
             <Button
               color="Green"
               aria-label="Reset "
+              width="80px"
+              borderRadius={5}
+              backgroundColor="white"
               // icon={<CloseIcon />}
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");
                 setCharacters(intialState.characters);
               }}
-            >Reset</Button>
+            >
+              Reset
+            </Button>
           </Stack>
         </form>
         <Character characters={characters} />
       </Box>
 
-      <footer className={styles.footer}>
-        &copy;
-      </footer>
+      <footer className={styles.footer}>&copy;</footer>
     </Flex>
   );
 }
@@ -100,7 +117,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query {
-        characters(filter:{}) {
+        characters(filter: {}) {
           info {
             count
             pages
