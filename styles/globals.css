@@ -5,7 +5,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Poppins";
-  background-color: #eeecdf;
+  /* background-color: #eeecdf; */
+  background-image: url("../images/Background.png");
 }
 
 a {
@@ -16,6 +17,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
 .nav-container {
   position: fixed;
   display: flex;
@@ -81,6 +83,7 @@ a {
   font-weight: 400;
   font-size: 28px;
   line-height: 42px;
+  padding: 5px;
   /* identical to box height */
   background-color: #000000;
   color: #ffffff;
@@ -92,6 +95,7 @@ a {
 .carousal img {
   width: 100%;
   min-height: 100%;
+  border-radius: 5px;
 }
 
 .descriptionBox {

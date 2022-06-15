@@ -13,11 +13,13 @@ export default function Home() {
       />
     );
   };
-  const optionList = [
-    "Rick and Morty Wiki",
-    "Explore",
-    "Rick and Morty",
-    "Episodes",
+
+  const characterList = [
+    ["Beth Smith", "/images/bethSmith.png"],
+    ["Summer Smith", "/images/summerSmith.png"],
+    ["Rick Sanchez", "/images/rickSanchez.png"],
+    ["Morty Smith", "/images/mortySmith.png"],
+    ["Jerry Smith", "/images/jerrySmith.png"],
   ];
 
   return (
@@ -27,8 +29,8 @@ export default function Home() {
         flexDirection: "column",
       }}
     >
-      <Navbar />
-      <div className="all">
+      <Navbar id="homeNavbar" />
+      <div className="all" id="home">
         <div className="home">HOME</div>
         <div className="welcomeBox">
           <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
@@ -62,96 +64,26 @@ export default function Home() {
           <div className="mainCharactersHead">MAIN CHARACTERS</div>
           <div className="Line"></div>
           <div className="mainCharacterImages" style={{ display: "flex" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <img src="/images/rickMorty.jpeg" width="140px" height="140px" />
+            {characterList.map((item) => (
               <div
                 style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  width: "100%",
-                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
               >
-                Name
+                <img src={item[1]} width="140px" height="140px" />
+                <div
+                  style={{
+                    backgroundColor: "black",
+                    color: "white",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
+                  {item[0]}
+                </div>
               </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <img src="/images/rickMorty.jpeg" width="140px" height="140px" />
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  width: "100%",
-                  textAlign: "center",
-                }}
-              >
-                Name
-              </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <img src="/images/rickMorty.jpeg" width="140px" height="140px" />
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  width: "100%",
-                  textAlign: "center",
-                }}
-              >
-                Name
-              </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <img src="/images/rickMorty.jpeg" width="140px" height="140px" />
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  width: "100%",
-                  textAlign: "center",
-                }}
-              >
-                Name
-              </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <img src="/images/rickMorty.jpeg" width="140px" height="140px" />
-              <div
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  width: "100%",
-                  textAlign: "center",
-                }}
-              >
-                Name
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className="episodeBox">
@@ -194,7 +126,9 @@ export default function Home() {
           </div>
         </div>
         <div className="exploreBox">
-          <div className="exploreHead">EXPLORE AND DISCOVER</div>
+          <div className="exploreHead" id="explore">
+            EXPLORE AND DISCOVER
+          </div>
           <div className="Line"></div>
           <div className="exploreContent">
             <div
