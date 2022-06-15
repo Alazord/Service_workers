@@ -32,7 +32,7 @@ export default function Home2(results) {
 
       <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
         <Heading as="h1">
-          <a href="/">Rick and Morty</a>
+          <Link href="/">Rick and Morty</Link>
         </Heading>
 
         <form
