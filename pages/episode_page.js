@@ -14,18 +14,18 @@ import {
 import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
 import { Button, ButtonGroup } from '@chakra-ui/react'
 
-import Character from "../components/Character";
+import Episode from "../components/Episode";
 
-export default function Home2(results) {
+export default function Home4(results) {
   const intialState = results;
   const [search, setSearch] = useState("");
-  const [characters, setCharacters] = useState(intialState.characters);
+  const [episodes, setEpisodes] = useState(intialState.episodes);
   const toast = useToast();
 
   return (
     <Flex direction="column" justify="center" align="center">
       <Head>
-        <title>Characters</title>
+        <title>Episodes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -33,15 +33,14 @@ export default function Home2(results) {
         <Heading as="h1" size="2xl" mb={8}>
           Rick and Morty{" "}
         </Heading>
-        
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            const results = await fetch("/api/SearchCharacters", {
+            const results = await fetch("/api/SearchEpisodes", {
               method: "post",
               body: search,
             });
-            const { characters, error } = await results.json();
+            const { episodes, error } = await results.json();
             if (error) {
               toast({
                 position: "bottom",
@@ -52,7 +51,7 @@ export default function Home2(results) {
                 isClosable: true,
               });
             } else {
-              setCharacters(characters);
+              setEpisodes(episodes);
             }
           }}
         >
@@ -77,12 +76,12 @@ export default function Home2(results) {
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");
-                setCharacters(intialState.characters);
+                setEpisodes(intialState.episodes);
               }}
             >Reset</Button>
           </Stack>
         </form>
-        <Character characters={characters} />
+        <Episode episodes={episodes} />
       </Box>
 
       <footer className={styles.footer}>
@@ -99,38 +98,23 @@ export async function getStaticProps() {
   });
   const { data } = await client.query({
     query: gql`
-      query {
-        characters(filter:{}) {
-          info {
-            count
-            pages
-          }
-          results {
+    query {
+        episodes(filter:null){
+          results{
             name
             id
-            location {
-              name
-              id
-            }
-            image
-            origin {
-              name
-              id
-            }
-            episode {
-              id
-              episode
-              air_date
-            }
+            air_date
+            episode
+            created
           }
-        }
+        }     
       }
     `,
   });
 
   return {
     props: {
-      characters: data.characters.results,
+      episodes: data.episodes.results,
     },
   };
 }

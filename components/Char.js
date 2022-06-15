@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heading, Text, SimpleGrid } from "@chakra-ui/react";
 
-const Character = ({ characters }) => {
+const Character = ([ characters,id]) => {
   return (
       
     <SimpleGrid columns={[1, 2, 3,4]} spacing="40px">
