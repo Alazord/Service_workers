@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Body from "next/body";
 import Image from "next/image";
 import Navbar from "./navBar";
 
@@ -39,7 +38,7 @@ export default function Home() {
       <div className="all" id="home">
         <div className="home">HOME</div>
         <div className="welcomeBox">
-          <div className="welcome">WELCOME TO RICK AND MORTY!</div>
+          <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
           <div className="carousal">
             <Image alt="" src="/images/rickMorty.jpeg" width="500px" height="500px" />
           </div>
