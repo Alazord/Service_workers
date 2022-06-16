@@ -35,7 +35,7 @@ registerRoute(
 );
 registerRoute(
   /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
-  new CacheFirst({
+  new NetworkFirst({
     cacheName: 'google-fonts',
     plugins: [
       new ExpirationPlugin({
@@ -49,7 +49,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
-  new StaleWhileRevalidate({
+  new NetworkFirst({
     cacheName: 'static-font-assets',
     plugins: [
       new ExpirationPlugin({
@@ -64,7 +64,7 @@ registerRoute(
 // disable image cache, so we could observe the placeholder image when offline
 registerRoute(
   /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
-  new NetworkOnly({
+  new NetworkFirst({
     cacheName: 'static-image-assets',
     plugins: [
       new ExpirationPlugin({
@@ -78,7 +78,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:js)$/i,
-  new StaleWhileRevalidate({
+  new NetworkFirst({
     cacheName: 'static-js-assets',
     plugins: [
       new ExpirationPlugin({
@@ -92,7 +92,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:css|less)$/i,
-  new StaleWhileRevalidate({
+  new NetworkFirst({
     cacheName: 'static-style-assets',
     plugins: [
       new ExpirationPlugin({

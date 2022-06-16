@@ -6,7 +6,7 @@ body {
   margin: 0;
   font-family: "Poppins";
   /* background-color: #eeecdf; */
-  background-image: url("../images/Background.png");
+  background-image: url("/images/Background.png");
 }
 
 a {

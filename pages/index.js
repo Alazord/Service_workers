@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Body from "next/body";
 import Image from "next/image";
 import Navbar from "./navBar";
 
@@ -30,17 +31,17 @@ export default function Home() {
       }}
     >
       <Head>
-        <title>Rick and Morty</title>
-        <link rel="manifest" href="/manifest.json" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <title>Rick and Morty Wiki</title>
+        {/* <link rel="manifest" href="/manifest.json" /> */}
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar id="homeNavbar" />
       <div className="all" id="home">
         <div className="home">HOME</div>
         <div className="welcomeBox">
-          <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
+          <div className="welcome">WELCOME TO RICK AND MORTY!</div>
           <div className="carousal">
-            <Image alt="" src="/images/rickMorty.jpeg" width="50px" height="50px" />
+            <Image alt="" src="/images/rickMorty.jpeg" width="500px" height="500px" />
           </div>
         </div>
         <div className="descriptionBox">
@@ -69,14 +70,15 @@ export default function Home() {
           <div className="mainCharactersHead">MAIN CHARACTERS</div>
           <div className="Line"></div>
           <div className="mainCharacterImages" style={{ display: "flex" }}>
-            {characterList.map((item,key) => (
+            {characterList.map((item) => (
               <div key={1}
                 style={{
                   display: "flex",
                   flexDirection: "column",
                 }}
               >
-                <Image alt="" src={item[1]} width="140px" height="140px" />
+                {/* <Image alt="" src={item[1]} width="140px" height="140px" /> */}
+                MyImage (item[1])
                 <div
                   style={{
                     backgroundColor: "black",
