@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
 import Navbar from "/pages/navBar";
@@ -11,6 +11,7 @@ import {
   Box,
   Flex,
   useToast,
+  Link,
 } from "@chakra-ui/react";
 import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
 import { Button, ButtonGroup } from "@chakra-ui/react";
@@ -22,9 +23,22 @@ export default function Home4(results) {
   const [search, setSearch] = useState("");
   const [episodes, setEpisodes] = useState(intialState.episodes);
   const toast = useToast();
+  const optionList = [
+    ["RICK AND MORTY WIKI", "/"],
+    ["EXPLORE", "/#explore"],
+    ["EPISODES", "/episode_page"],
+    ["CHARACTERS", "/char_page"],
+  ];
+
   return (
     <div>
-      <Navbar />
+      <div className="nav-container">
+        {optionList.map(([item, URL], index) => (
+          <Link className="nav-element" key={index} href={URL}>
+            {item}
+          </Link>
+        ))}
+      </div>
       <Flex direction="column" justify="center" align="center">
         <Head>
           <title>Episodes</title>
@@ -36,7 +50,6 @@ export default function Home4(results) {
           align="center"
           justify="center"
           py={8}
-          bg="aqua"
         >
           <Heading fontSize="44px" size="2xl" mb={8} marginTop={60}>
             Rick and Morty{" "}

@@ -31,7 +31,7 @@ export default function Home2(results) {
       </Head>
 
       <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
-        <Heading as="h1">
+        <Heading as="h1" marginTop={60}>
           <a href="/">Rick and Morty</a>
         </Heading>
 

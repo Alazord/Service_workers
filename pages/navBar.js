@@ -9,8 +9,8 @@ export default function NavBar() {
   ];
   return (
     <div className="nav-container">
-      {optionList.map(([item, URL]) => (
-        <Link className="nav-element" key={item} id={item} href={URL}>
+      {optionList.map(([item, URL], index) => (
+        <Link className="nav-element" key={index} href={URL}>
           {item}
         </Link>
       ))}

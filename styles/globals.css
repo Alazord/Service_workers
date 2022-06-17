@@ -50,6 +50,7 @@ a {
   margin-right: auto;
   background-color: #ffffff;
 }
+
 .home {
   width: 800px;
   height: 54px;
@@ -361,4 +362,13 @@ a {
   text-align: center;
   background-color: black;
   color: #ffffff;
+}
+
+/* Character Page */
+.characterCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: auto;
 }

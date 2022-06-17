@@ -26,7 +26,19 @@ export default function MyChar(results) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
+      <Box
+        mb={4}
+        flexDirection="column"
+        align="center"
+        justify="center"
+        py={8}
+        backgroundColor="white"
+        marginTop={80}
+        height={350}
+        padding={10}
+        borderRadius={20}
+        opacity={0.9}
+      >
         <Heading as="h1" size="2xl" mb={8}>
           Details of the episode you clicked on:{" "}
         </Heading>
@@ -35,6 +47,9 @@ export default function MyChar(results) {
         <Text align="center">Name: {episode.name}</Text>
         <Text align="center">Created: {episode.created}</Text>
       </Box>
+      <button style={({ width: "100px" }, { fontSize: "24px" })}>
+        <a href="/episode_page">Return</a>
+      </button>
     </Flex>
   );
 }

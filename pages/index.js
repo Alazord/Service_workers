@@ -8,20 +8,19 @@ export default function Home() {
       <Image
         src={props.src}
         alt="Picture of rick n morty"
-        width="50px"
-        height="50px"
+        width="140px"
+        height="140px"
       />
     );
   };
 
   const characterList = [
-    ["Beth Smith", "/images/bethSmith.png"],
-    ["Summer Smith", "/images/summerSmith.png"],
-    ["Rick Sanchez", "/images/rickSanchez.png"],
-    ["Morty Smith", "/images/mortySmith.png"],
-    ["Jerry Smith", "/images/jerrySmith.png"],
+    ["Beth Smith", "/images/bethSmith.jpeg"],
+    ["Summer Smith", "/images/summerSmith.jpeg"],
+    ["Rick Sanchez", "/images/rickSanchez.jpg"],
+    ["Morty Smith", "/images/mortySmith.jpg"],
+    ["Jerry Smith", "/images/jerrySmith.jpg"],
   ];
-
   return (
     <div
       style={{
@@ -71,7 +70,8 @@ export default function Home() {
                   flexDirection: "column",
                 }}
               >
-                <img src={item[1]} width="140px" height="140px" />
+                <img src={item[1]} height={140} width={140} />
+
                 <div
                   style={{
                     backgroundColor: "black",
