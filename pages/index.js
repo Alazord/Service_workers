@@ -32,14 +32,14 @@ export default function Home() {
     >
       <Head>
         <title>Rick and Morty Wiki</title>
-        {/* <link rel="manifest" href="/manifest.json" /> */}
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <Navbar id="homeNavbar" />
       <div className="all" id="home">
         <div className="home">HOME</div>
         <div className="welcomeBox">
-          <div className="welcome">WELCOME TO RICK AND MORTY!</div>
+          <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
           <div className="carousal">
             <Image alt="" src="/images/rickMorty.jpeg" width="800px" height="400px" />
           </div>
