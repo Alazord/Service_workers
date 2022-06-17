@@ -39,7 +39,7 @@ export default function Home() {
       <div className="all" id="home">
         <div className="home">HOME</div>
         <div className="welcomeBox">
-          <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
+          <div className="welcome">WELCOME TO RICK AND MORTY!</div>
           <div className="carousal">
             <Image alt="" src="/images/rickMorty.jpeg" width="800px" height="400px" />
           </div>
@@ -77,7 +77,8 @@ export default function Home() {
                   flexDirection: "column",
                 }}
               >
-                <Image alt="" src="https://comicvine.gamespot.com/a/uploads/original/6/66303/4472083-vlcsnap-2015-01-31-18h46m55s179.png" width="140px" height="140px" />
+                {/* <Image alt="" src="https://comicvine.gamespot.com/a/uploads/original/6/66303/4472083-vlcsnap-2015-01-31-18h46m55s179.png" width="140px" height="140px" /> */}
+                <Image alt="" src="/images/rickMorty.jpeg" width="140px" height="140px" />
                 {/* MyImage (item[1]) */}
                 <div
                   style={{
