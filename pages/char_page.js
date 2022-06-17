@@ -68,7 +68,6 @@ export default function Home2(results) {
             <Input
               placeholder="Search"
               value={search}
-              // border="none"
               onChange={(e) => setSearch(e.target.value)}
               width="300px"
               borderRadius={5}
@@ -90,7 +89,6 @@ export default function Home2(results) {
               width="80px"
               borderRadius={5}
               backgroundColor="white"
-              // icon={<CloseIcon />}
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");
