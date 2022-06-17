@@ -372,3 +372,12 @@ a {
   margin: 0 auto;
   width: auto;
 }
+
+/* Episode Page */
+.episodeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: auto;
+}
