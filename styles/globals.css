@@ -35,8 +35,6 @@ a {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  /* background-color: aqua; */
-  /* identical to box height */
   color: #000000;
   margin-right: 28px;
   align-items: center;
@@ -48,7 +46,7 @@ a {
   width: 1040px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffffff;
+  background-color: rgba(255,255,255, 0.8);
 }
 
 .home {
@@ -282,18 +280,16 @@ a {
 .latestComicContent {
   display: flex;
   margin-top: 28px;
-  /* background-color: yellow; */
 }
-.latestComicContent img {
-  margin-right: 24px;
+.latestComicContentImg {
+  padding: 24px;
+  margin: 24px;
 }
 .latestComicTitle {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height */
-
   color: #000000;
 }
 .latestComicDescription {
@@ -307,7 +303,6 @@ a {
 }
 .latestComicDetails {
   flex-grow: 1;
-  /* background-color: green; */
   display: flex;
   flex-direction: column;
 }
@@ -316,7 +311,7 @@ a {
   flex-direction: column;
   width: 800px;
   height: 596px;
-  margin-top: 80px;
+  margin-top: 20px;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -339,16 +334,13 @@ a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* background-color: beige; */
 }
 .exploreTitle {
   text-align: center;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 24px;
-  /* identical to box height */
-
+  line-height: 24px; 
   text-align: center;
   background-color: black;
   color: #ffffff;
@@ -373,6 +365,30 @@ a {
   width: auto;
 }
 
+.characterCardHeading{
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.characterCardItems {
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.7);
+}
+
+.characterCardReturn {
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 10px;
+  width: 150px;
+  margin-top: 10px;
+  border-color: white;
+}
+
 /* Episode Page */
 .episodeCard {
   display: flex;
@@ -380,4 +396,28 @@ a {
   align-items: center;
   margin: 0 auto;
   width: auto;
+}
+
+.episodeCardHeading{
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.episodeCardItems {
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.7);
+}
+
+.episodeCardReturn {
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 10px;
+  width: 150px;
+  margin-top: 10px;
+  border-color: white;
 }

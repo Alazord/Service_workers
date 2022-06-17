@@ -47,23 +47,23 @@ export default function MyEpisode(results) {
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1
-        style={{
-          backgroundColor: "purple",
-          color: "white",
-          padding: "10px",
-          borderRadius: "5px",
-        }}
+      <h1 className="episodeCardHeading"
+        // style={{
+        //   backgroundColor: "purple",
+        //   color: "white",
+        //   padding: "10px",
+        //   borderRadius: "5px",
+        // }}
       >
         Details of the Episode you clicked on:
       </h1>
-      <div
-        style={{
-          alignItems: "center",
-          padding: "10px",
-          borderRadius: "10px",
-          backgroundColor: "rgba(255,255,255,0.7)",
-        }}
+      <div className="episodeCardItems"
+        // style={{
+        //   alignItems: "center",
+        //   padding: "10px",
+        //   borderRadius: "10px",
+        //   backgroundColor: "rgba(255,255,255,0.7)",
+        // }}
       >
         <ul
           style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
@@ -82,16 +82,16 @@ export default function MyEpisode(results) {
           </li>
         </ul>
       </div>
-      <button
-        style={{
-          padding: "10px",
-          fontSize: "18px",
-          backgroundColor: "rgba(255,255,255,0.5)",
-          borderRadius: "10px",
-          width: "150px",
-          marginTop: "10px",
-          borderColor: "white",
-        }}
+      <button className="episodeCardReturn"
+        // style={{
+        //   padding: "10px",
+        //   fontSize: "18px",
+        //   backgroundColor: "rgba(255,255,255,0.5)",
+        //   borderRadius: "10px",
+        //   width: "150px",
+        //   marginTop: "10px",
+        //   borderColor: "white",
+        // }}
       >
         <Link href={"/episode_page"}>Return</Link>
       </button>

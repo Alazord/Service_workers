@@ -108,7 +108,7 @@ export default function Home() {
           <div className="latestComicHead">LATEST COMIC</div>
           <div className="Line"></div>
           <div className="latestComicContent">
-            <Image alt="" src="/images/rickMorty.jpeg" width="180px" height="240px" />
+          <Image className="latestComicContentImg" alt="" src="/images/rickMorty.jpeg" width="1000%" height="300%" />
             <div className="latestComicDetails">
               <div className="latestComicTitle">
                 Rick And Morty Presents: The Hotel Immortal
@@ -118,7 +118,7 @@ export default function Home() {
                   Murder at the Hotel Immortal?! Impossible, you say? Not so!
                   Find out who done stabbed whom in this whodunnit issue of Rick
                   and Morty Presents. When Cornvelious Daniels checks in for
-                  some R&R at the Hotel Immortal, bodies start dropping--and
+                  some RnR at the Hotel Immortal, bodies start dropping--and
                   accusations start flying!
                 </p>
               </div>

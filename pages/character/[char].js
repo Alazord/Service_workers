@@ -11,23 +11,23 @@ export default function MyChar(results) {
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1
-        style={{
-          backgroundColor: "purple",
-          color: "white",
-          padding: "10px",
-          borderRadius: "5px",
-        }}
+      <h1 className="characterCardHeading"
+        // style={{
+        //   backgroundColor: "purple",
+        //   color: "white",
+        //   padding: "10px",
+        //   borderRadius: "5px",
+        // }}
       >
         Details of the character you clicked on:
       </h1>
-      <div
-        style={{
-          alignItems: "center",
-          padding: "10px",
-          borderRadius: "10px",
-          backgroundColor: "rgba(255,255,255,0.7)",
-        }}
+      <div className="characterCardItems"
+        // style={{
+        //   alignItems: "center",
+        //   padding: "10px",
+        //   borderRadius: "10px",
+        //   backgroundColor: "rgba(255,255,255,0.7)",
+        // }}
       >
         <Image alt="" src={character.image} width={300} height={300} />
         <ul
@@ -47,16 +47,16 @@ export default function MyChar(results) {
           </li>
         </ul>
       </div>
-      <button
-        style={{
-          padding: "10px",
-          fontSize: "18px",
-          backgroundColor: "rgba(255,255,255,0.5)",
-          borderRadius: "10px",
-          width: "150px",
-          marginTop: "10px",
-          borderColor: "white",
-        }}
+      <button className="characterCardReturn"
+        // style={{
+        //   padding: "10px",
+        //   fontSize: "18px",
+        //   backgroundColor: "rgba(255,255,255,0.5)",
+        //   borderRadius: "10px",
+        //   width: "150px",
+        //   marginTop: "10px",
+        //   borderColor: "white",
+        // }}
       >
         <Link href={"/char_page"}>Return</Link>
       </button>
