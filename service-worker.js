@@ -8,10 +8,7 @@ import { matchPrecache, precacheAndRoute, cleanupOutdatedCaches } from 'workbox-
 skipWaiting();
 clientsClaim();
 
-// must include following lines when using inject manifest module from workbox
-// https://developers.google.com/web/tools/workbox/guides/precache-files/workbox-build#add_an_injection_point
 const WB_MANIFEST = self.__WB_MANIFEST;
-// Precache fallback route and image
 WB_MANIFEST.push({
   url: '/fallback',
   revision: '1234567890',
@@ -61,7 +58,6 @@ registerRoute(
   }),
   'GET'
 );
-// disable image cache, so we could observe the placeholder image when offline
 registerRoute(
   /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
   new NetworkFirst({
@@ -149,39 +145,15 @@ registerRoute(
   'GET'
 );
 
-// following lines gives you control of the offline fallback strategies
-// https://developers.google.com/web/tools/workbox/guides/advanced-recipes#comprehensive_fallbacks
-
-// Use a stale-while-revalidate strategy for all other requests.
-setDefaultHandler(new StaleWhileRevalidate());
-
-// This "catch" handler is triggered when any of the other routes fail to
-// generate a response.
+setDefaultHandler(new NetworkFirst());
 setCatchHandler(({ event }) => {
-  // The FALLBACK_URL entries must be added to the cache ahead of time, either
-  // via runtime or precaching. If they are precached, then call
-  // `matchPrecache(FALLBACK_URL)` (from the `workbox-precaching` package)
-  // to get the response from the correct cache.
-  //
-  // Use event, request, and url to figure out how to respond.
-  // One approach would be to use request.destination, see
-  // https://medium.com/dev-channel/service-worker-caching-strategies-based-on-request-types-57411dd7652c
   switch (event.request.destination) {
     case 'document':
-      // If using precached URLs:
       return matchPrecache('/fallback');
-      // return caches.match('/fallback')
       break;
     case 'image':
-      // If using precached URLs:
-      return matchPrecache('/static/images/fallback.png');
-      // return caches.match('/static/images/fallback.png')
       break;
     case 'font':
-    // If using precached URLs:
-    // return matchPrecache(FALLBACK_FONT_URL);
-    // return caches.match('/static/fonts/fallback.otf')
-    // break
     default:
       // If we don't have a fallback, just return an error response.
       return Response.error();

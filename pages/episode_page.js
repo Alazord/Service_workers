@@ -26,21 +26,23 @@ export default function Home4(results) {
     <div>
       <Navbar />
       <Flex direction="column" justify="center" align="center">
+      {/* <div id="epi"> */}
         <Head>
           <title>Episodes</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Box
+        {/* <Box
           mb={4}
           flexDirection="column"
           align="center"
           justify="center"
           py={8}
           bg="aqua"
-        >
+        > */}
           <Heading fontSize="44px" size="2xl" mb={8} marginTop={60}>
             Rick and Morty{" "}
           </Heading>
+          {/* <h1 style={j}>Rick and Morty</h1> */}
           <form
             onSubmit={async (event) => {
               event.preventDefault();
@@ -107,9 +109,10 @@ export default function Home4(results) {
             </Stack>
           </form>
           <Episode episodes={episodes} />
-        </Box>
+        {/* </Box> */}
         <footer className={styles.footer}>&copy;</footer>
       </Flex>
+      {/* </div> */}
     </div>
   );
 }
