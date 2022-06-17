@@ -15,8 +15,8 @@ export default function Home() {
   };
 
   const characterList = [
-    // ["Beth Smith", "/images/bethSmith.png"],
-    ["Beth Smith", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcomicvine.gamespot.com%2Fa%2Fuploads%2Foriginal%2F6%2F66303%2F4472083-vlcsnap-2015-01-31-18h46m55s179.png&imgrefurl=https%3A%2F%2Fcomicvine.gamespot.com%2Fbeth-smith%2F4005-117107%2Fimages%2F&tbnid=ZrM4x0Xl_GHm8M&vet=12ahUKEwihoZDwoLT4AhWFNLcAHbGbDj8QMygDegUIARCbAQ..i&docid=FEYs-vZWintFkM&w=622&h=831&q=beth%20smith%20image%20url&ved=2ahUKEwihoZDwoLT4AhWFNLcAHbGbDj8QMygDegUIARCbAQ"],
+    ["Beth Smith", "/images/bethSmith.png"],
+    // ["Beth Smith", "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcomicvine.gamespot.com%2Fa%2Fuploads%2Foriginal%2F6%2F66303%2F4472083-vlcsnap-2015-01-31-18h46m55s179.png&imgrefurl=https%3A%2F%2Fcomicvine.gamespot.com%2Fbeth-smith%2F4005-117107%2Fimages%2F&tbnid=ZrM4x0Xl_GHm8M&vet=12ahUKEwihoZDwoLT4AhWFNLcAHbGbDj8QMygDegUIARCbAQ..i&docid=FEYs-vZWintFkM&w=622&h=831&q=beth%20smith%20image%20url&ved=2ahUKEwihoZDwoLT4AhWFNLcAHbGbDj8QMygDegUIARCbAQ"],
     ["Summer Smith", "/images/summerSmith.png"],
     ["Rick Sanchez", "/images/rickSanchez.png"],
     ["Morty Smith", "/images/mortySmith.png"],
@@ -39,7 +39,7 @@ export default function Home() {
       <div className="all" id="home">
         <div className="home">HOME</div>
         <div className="welcomeBox">
-          <div className="welcome">WELCOME TO RICK AND MORTY!</div>
+          <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
           <div className="carousal">
             <Image alt="" src="/images/rickMorty.jpeg" width="800px" height="400px" />
           </div>
@@ -77,7 +77,7 @@ export default function Home() {
                   flexDirection: "column",
                 }}
               >
-                <Image alt="" src={item[1]} width="140px" height="140px" />
+                <Image alt="" src="https://comicvine.gamespot.com/a/uploads/original/6/66303/4472083-vlcsnap-2015-01-31-18h46m55s179.png" width="140px" height="140px" />
                 {/* MyImage (item[1]) */}
                 <div
                   style={{
