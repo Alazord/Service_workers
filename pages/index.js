@@ -34,7 +34,7 @@ export default function Home() {
         <div className="welcomeBox">
           <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
           <div className="carousal">
-            <img src="/images/rickMorty.jpeg" width="50px" height="50px" />
+            <Image alt="" src="/images/rickMorty.jpeg" width="800px" height="400px" />
           </div>
         </div>
         <div className="descriptionBox">
@@ -42,14 +42,14 @@ export default function Home() {
           <div className="Line"></div>
           <div className="descriptionContent">
             <p>
-              There are some slight differences between Rick's earlier fake
-              memory in which his Diane and Beth died, and what really happened.
+              There are some slight differences between earlier fake
+              memory of Rick, in which his Diane and Beth died, and what really happened.
               In the fake memory, he immediately designed a portal gun to escape
               to other realities where his family was still alive. In reality,
               he spent a long time consumed by grief and drinking, before
               eventually perfecting a portal gun - after which he went on
               adventures, but all the while searching for the specific Rick who
-              killed his family. As seen in Birdperson's memories, he then
+              killed his family. As seen in memories of Birdperson, he then
               started attacking the pre-Citadel, interdimensional club of Ricks
               - not to bring his family back or get an alternate version of
               them, but purely for revenge. Nor was he satisfied with killing
@@ -64,13 +64,13 @@ export default function Home() {
           <div className="Line"></div>
           <div className="mainCharacterImages" style={{ display: "flex" }}>
             {characterList.map((item) => (
-              <div
+              <div key={1}
                 style={{
                   display: "flex",
                   flexDirection: "column",
                 }}
               >
-                <img src={item[1]} height={140} width={140} />
+                <Image alt="" src={item[1]} height={140} width={140} />
 
                 <div
                   style={{
@@ -92,13 +92,13 @@ export default function Home() {
           <div className="episodeContent">
             <div className="episodePrevious">
               <div>Previous Episode</div>
-              <img src="/images/rickMorty.jpeg" width="386px" height="240px" />
+              <Image alt="" src="/images/rickMorty.jpeg" width="386px" height="240px" />
               <div className="episodeName">Name of Episode</div>
               <div className="episodeDescription">Small description</div>
             </div>
             <div className="episodeNext">
               <div>Next Episode</div>
-              <img src="/images/rickMorty.jpeg" width="386px" height="240px" />
+              <Image alt="" src="/images/rickMorty.jpeg" width="386px" height="240px" />
               <div className="episodeName">Name of Episode</div>
               <div className="episodeDescription">Small description</div>
             </div>
@@ -108,7 +108,7 @@ export default function Home() {
           <div className="latestComicHead">LATEST COMIC</div>
           <div className="Line"></div>
           <div className="latestComicContent">
-            <img src="/images/rickMorty.jpeg" width="180px" height="240px" />
+            <Image alt="" src="/images/rickMorty.jpeg" width="180px" height="240px" />
             <div className="latestComicDetails">
               <div className="latestComicTitle">
                 Rick And Morty Presents: The Hotel Immortal
@@ -145,7 +145,7 @@ export default function Home() {
                   width: "240px",
                 }}
               >
-                <img
+                <Image alt=""
                   src="/images/rickMorty.jpeg"
                   width="240px"
                   height="168px"
@@ -162,14 +162,14 @@ export default function Home() {
                   width: "240px",
                 }}
               >
-                <img
+                <Image alt=""
                   src="/images/rickMorty.jpeg"
                   width="240px"
                   height="168px"
                 />
                 <div className="exploreTitle">SONGS</div>
                 <div className="exploreDescription">
-                  There's some real toasty music in the show dawg.
+                  There is some real toasty music in the show dawg.
                 </div>
               </div>
               <div
@@ -179,7 +179,7 @@ export default function Home() {
                   width: "240px",
                 }}
               >
-                <img
+                <Image alt=""
                   src="/images/rickMorty.jpeg"
                   width="240px"
                   height="168px"
@@ -206,7 +206,7 @@ export default function Home() {
                   width: "240px",
                 }}
               >
-                <img
+                <Image alt=""
                   src="/images/rickMorty.jpeg"
                   width="240px"
                   height="168px"
@@ -223,7 +223,7 @@ export default function Home() {
                   width: "240px",
                 }}
               >
-                <img
+                <Image alt=""
                   src="/images/rickMorty.jpeg"
                   width="240px"
                   height="168px"
@@ -240,7 +240,7 @@ export default function Home() {
                   width: "240px",
                 }}
               >
-                <img
+                <Image alt=""
                   src="/images/rickMorty.jpeg"
                   width="240px"
                   height="168px"
