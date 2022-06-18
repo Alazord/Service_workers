@@ -447,13 +447,30 @@ a {
   display: grid;
   column-count: 4;
   margin: 0 30px;
-  align-self: center;
+  align-items: center;
 }
 
-/* .characterList {
-  display: grid;
-  column-count: 4;
-} */
+.charItem {
+  max-width: 300px;
+  background-color: rgba(255,255,255, 0.7);
+  align-self: center;
+  border-radius: 10px;
+}
+
+.charItem img{
+  border-radius: 10px;;
+}
+
+.charInd {
+  display: flex;
+  justify-content: center;
+}
+
+.charTxt {
+  /* background-color: #ff01c1; */
+  text-align: center;
+  overflow-wrap: break-word;
+}
 
 /* Character Page */
 .characterCard {

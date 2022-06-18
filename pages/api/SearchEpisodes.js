@@ -25,13 +25,9 @@ const xyz=async (req, res) => {
     });
     res.status(200).json({ episodes: data.episodes.results, error: null });
   } catch (error) {
-    if (error.message === "404: Not Found") {
-      res.status(404).json({ episodes: null, error: "No Episodes found" });
-    } else {
-      res
-        .status(500)
-        .json({ episodes: null, error: "Internal Error, Please try again" });
-    }
+    res
+      .status(500)
+      .json({ episodes: null, error: "Internal Error, Please try again" });
   }
 };
 

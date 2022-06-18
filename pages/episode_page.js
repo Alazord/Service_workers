@@ -2,19 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
-import Navbar from "/pages/navBar";
-import {
-  Heading,
-  Input,
-  Stack,
-  IconButton,
-  Box,
-  Flex,
-  useToast,
-  Link,
-} from "@chakra-ui/react";
-import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import {Link,} from "@chakra-ui/react";
 
 import Episode from "../components/Episode";
 
