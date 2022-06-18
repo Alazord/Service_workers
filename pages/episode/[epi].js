@@ -1,48 +1,51 @@
-import { useRouter } from "next/router";
 import Head from "next/head";
-import { useState } from "react";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import styles from "../../styles/Home2.module.css";
-import {
-  Input,
-  Stack,
-  IconButton,
-  Box,
-  Flex,
-  useToast,
-} from "@chakra-ui/react";
-import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
-import Image from "next/image";
 import Link from "next/link";
-import { Heading, Text, SimpleGrid } from "@chakra-ui/react";
-import Char from "../../components/Char";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
-export default function MyChar(results) {
+export default function MyEpisode(results) {
   const episode = results.episode;
   return (
-    <Flex direction="column" justify="center" align="center">
+    <div className="episodeCard">
       <Head>
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
-        <Heading as="h1" size="2xl" mb={8}>
-          Details of the episode you clicked on:{" "}
-        </Heading>
-        <Text align="center">Episode: {episode.episode}</Text>
-        <Text align="center">Air-Date: {episode.air_date}</Text>
-        <Text align="center">Name: {episode.name}</Text>
-        <Text align="center">Created: {episode.created}</Text>
-      </Box>
-    </Flex>
+      <h1
+        className="episodeCardHeading"
+      >
+        Details of the Episode you clicked on:
+      </h1>
+      <div
+        className="episodeCardItems"
+      >
+        <ul
+          style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
+        >
+          <li>
+            <b>Episode:</b> {episode.episode}
+          </li>
+          <li>
+            <b>Air-Date:</b> {episode.air_date}
+          </li>
+          <li>
+            <b>Name:</b> {episode.name}
+          </li>
+          <li>
+            <b>Created:</b> {episode.created}
+          </li>
+        </ul>
+      </div>
+      <button
+        className="episodeCardReturn"
+      >
+        <Link href={"/episode_page"}>Return</Link>
+      </button>
+    </div>
   );
 }
 
 export async function getServerSideProps(context) {
   const id = context.params.epi;
-  // const { query } = context
-  // console.log(query);
   const client = new ApolloClient({
     uri: "https://rickandmortyapi.com/graphql/",
     cache: new InMemoryCache(),

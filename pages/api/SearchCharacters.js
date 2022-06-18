@@ -39,13 +39,9 @@ const xyz=async (req, res) => {
     });
     res.status(200).json({ characters: data.characters.results, error: null });
   } catch (error) {
-    if (error.message === "404: Not Found") {
-      res.status(404).json({ characters: null, error: "No Characters found" });
-    } else {
-      res
-        .status(500)
-        .json({ characters: null, error: "Internal Error, Please try again" });
-    }
+    res
+      .status(404)
+      .json({ characters: null, error: "Internal Error, Please try again" });
   }
 };
 

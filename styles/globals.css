@@ -5,8 +5,11 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Poppins";
-  /* background-color: #eeecdf; */
   background-image: url("../images/Background.png");
+  background-attachment: fixed;
+}
+Image {
+  object-fit: cover;
 }
 
 a {
@@ -26,6 +29,7 @@ a {
   background-color: #ff01c1;
   justify-content: flex-start;
   align-items: center;
+  z-index: 100;
 }
 .nav-element {
   display: flex;
@@ -35,8 +39,6 @@ a {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  /* background-color: aqua; */
-  /* identical to box height */
   color: #000000;
   margin-right: 28px;
   align-items: center;
@@ -48,8 +50,9 @@ a {
   width: 1040px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
 }
+
 .home {
   width: 800px;
   height: 54px;
@@ -281,18 +284,16 @@ a {
 .latestComicContent {
   display: flex;
   margin-top: 28px;
-  /* background-color: yellow; */
 }
-.latestComicContent img {
-  margin-right: 24px;
+.latestComicContentImg {
+  padding: 24px;
+  margin: 24px;
 }
 .latestComicTitle {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height */
-
   color: #000000;
 }
 .latestComicDescription {
@@ -306,7 +307,6 @@ a {
 }
 .latestComicDetails {
   flex-grow: 1;
-  /* background-color: green; */
   display: flex;
   flex-direction: column;
 }
@@ -315,7 +315,7 @@ a {
   flex-direction: column;
   width: 800px;
   height: 596px;
-  margin-top: 80px;
+  margin-top: 20px;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -338,7 +338,6 @@ a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* background-color: beige; */
 }
 .exploreTitle {
   text-align: center;
@@ -346,8 +345,6 @@ a {
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height */
-
   text-align: center;
   background-color: black;
   color: #ffffff;
@@ -361,4 +358,182 @@ a {
   text-align: center;
   background-color: black;
   color: #ffffff;
+}
+
+/* Home Page */
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainCharacterImgList{
+  display: flex;
+  flex-direction: column;
+}
+
+.mainCharacterImgList img{
+  object-fit: cover;
+}
+
+.mainCharacterImgTag {
+  background-color: black;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.exploreContentTag {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+}
+
+.explore1 {
+  height: 249px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.explore2 {
+  height: 249px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Char + Episode list */
+.page {
+  direction: column;
+  align-items: center;
+}
+
+.pageHeading {
+  background-color: purple;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 90px;
+    text-align: center;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchBar {
+  margin: 0 auto;
+  justify-content: center;
+  height: 40px;
+  margin-top: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.searchBarInpt {
+  width: 400px;
+  border-radius: 5px;
+}
+
+.searchBtn {
+  border-radius: 5px;
+  background-color: #4a58ed;
+  color: white;
+  border-color: white;
+}
+
+.resetBtn {
+  width: 80px;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  border-color: white;
+}
+
+.charItem {
+  max-width: 300px;
+  background-color: rgba(255,255,255, 0.7);
+  align-self: center;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.charItem img{
+  border-radius: 10px;;
+}
+
+.charInd {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 20px 30px;
+}
+
+.charTxt {
+  /* background-color: #ff01c1; */
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+/* Character Page */
+.characterCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: auto;
+}
+
+.characterCardHeading {
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.characterCardItems {
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.characterCardReturn {
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  width: 150px;
+  margin-top: 10px;
+  border-color: white;
+}
+
+/* Episode Page */
+.episodeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: auto;
+}
+
+.episodeCardHeading {
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.episodeCardItems {
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.episodeCardReturn {
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  width: 150px;
+  margin-top: 10px;
+  border-color: white;
 }

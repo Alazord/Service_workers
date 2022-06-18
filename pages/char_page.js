@@ -2,18 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
-import {
-  Heading,
-  Input,
-  Stack,
-  IconButton,
-  Box,
-  Flex,
-  useToast,
-  Link,
-} from "@chakra-ui/react";
-import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Link} from "@chakra-ui/react";
 
 import Character from "../components/Character";
 
@@ -21,20 +10,30 @@ export default function Home2(results) {
   const intialState = results;
   const [search, setSearch] = useState("");
   const [characters, setCharacters] = useState(intialState.characters);
-  const toast = useToast();
+  const optionList = [
+    ["RICK AND MORTY WIKI", "/"],
+    ["EXPLORE", "/#explore"],
+    ["EPISODES", "/episode_page"],
+    ["CHARACTERS", "/char_page"],
+  ];
 
   return (
-    <Flex direction="column" justify="center" align="center">
-      <Head>
-        <title>Characters</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
-        <Heading as="h1">
-          <a href="/">Rick and Morty</a>
-        </Heading>
-
+    <div className="nav">
+      <div className="nav-container">
+        {optionList.map(([item, URL], index) => (
+          <Link className="nav-element" key={index} href={URL}>
+            {item}
+          </Link>
+        ))}
+      </div>
+      <div className="page">
+        <Head>
+          <title>Characters</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <h1 className="pageHeading">
+          <Link href="/">Rick and Morty</Link>
+        </h1>
         <form
           onSubmit={async (event) => {
             event.preventDefault();
@@ -43,54 +42,22 @@ export default function Home2(results) {
               body: search,
             });
             const { characters, error } = await results.json();
-            if (error) {
-              toast({
-                position: "bottom",
-                title: "An error occurred.",
-                description: error,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-              });
-            } else {
-              setCharacters(characters);
-            }
+            setCharacters(characters);
           }}
         >
-          <Stack
-            isInline
-            mb={8}
-            margin="0 auto"
-            justifyContent="center"
-            height="30px"
-            marginTop={20}
-          >
-            <Input
+          <div className="searchBar">
+            <input className="searchBarInpt"
               placeholder="Search"
               value={search}
-              // border="none"
               onChange={(e) => setSearch(e.target.value)}
-              width="300px"
-              borderRadius={5}
-            ></Input>
-            <IconButton
-              color="blue"
-              aria-label="Search database"
-              icon={<SearchIcon />}
+            />
+            <button className="searchBtn"
               disabled={search === ""}
               type="submit"
-              width="30px"
-              height="30px"
-              borderRadius={5}
-              backgroundColor="white"
-            />
-            <Button
-              color="Green"
-              aria-label="Reset "
-              width="80px"
-              borderRadius={5}
-              backgroundColor="white"
-              // icon={<CloseIcon />}
+            >
+              Search
+            </button>
+            <button className="resetBtn"
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");
@@ -98,14 +65,16 @@ export default function Home2(results) {
               }}
             >
               Reset
-            </Button>
-          </Stack>
+            </button>
+          </div>
         </form>
-        <Character characters={characters} />
-      </Box>
+        <div className="items">
+          <Character characters={characters} />
+        </div>
 
-      <footer className={styles.footer}>&copy;</footer>
-    </Flex>
+        <footer className={styles.footer}>&copy;</footer>
+      </div>
+    </div>
   );
 }
 
