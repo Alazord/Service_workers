@@ -23,6 +23,10 @@ export default function Home() {
   ];
   return (
     <div className="nav">
+      <Head>
+        <title>Rick and Morty</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Navbar id="homeNavbar" />
       <div className="all" id="home">
         <div className="home">HOME</div>
@@ -64,13 +68,9 @@ export default function Home() {
           <div className="Line"></div>
           <div className="mainCharacterImages" style={{ display: "flex" }}>
             {characterList.map((item) => (
-              <div className="mainCharacterImgList" key={1}
-              >
+              <div className="mainCharacterImgList" key={1}>
                 <Image alt="" src={item[1]} height={140} width={140} />
-                <div className="mainCharacterImgTag"
-                >
-                  {item[0]}
-                </div>
+                <div className="mainCharacterImgTag">{item[0]}</div>
               </div>
             ))}
           </div>
@@ -137,8 +137,7 @@ export default function Home() {
           <div className="Line"></div>
           <div className="exploreContent">
             <div className="explore1">
-              <div className="exploreContentTag"
-              >
+              <div className="exploreContentTag">
                 <Image
                   alt=""
                   src="/images/comic3.avif"
@@ -150,8 +149,7 @@ export default function Home() {
                   Some weird stuff happens in the comics broh.
                 </div>
               </div>
-              <div className="exploreContentTag"
-              >
+              <div className="exploreContentTag">
                 <Image
                   alt=""
                   src="/images/song.jpeg"
@@ -163,8 +161,7 @@ export default function Home() {
                   There is some real toasty music in the show dawg.
                 </div>
               </div>
-              <div className="exploreContentTag"
-              >
+              <div className="exploreContentTag">
                 <Image
                   alt=""
                   src="/images/location.jpeg"
@@ -179,8 +176,7 @@ export default function Home() {
             </div>
 
             <div className="explore2">
-              <div className="exploreContentTag"
-              >
+              <div className="exploreContentTag">
                 <Image
                   alt=""
                   src="/images/episode.jpeg"
@@ -192,8 +188,7 @@ export default function Home() {
                   The stuff that happens in these episodes is sick yo.
                 </div>
               </div>
-              <div className="exploreContentTag"
-              >
+              <div className="exploreContentTag">
                 <Image
                   alt=""
                   src="/images/character.jpg"
@@ -205,8 +200,7 @@ export default function Home() {
                   Things get weeeird when these guys are around.
                 </div>
               </div>
-              <div className="exploreContentTag"
-              >
+              <div className="exploreContentTag">
                 <Image
                   alt=""
                   src="/images/cast.jpeg"
