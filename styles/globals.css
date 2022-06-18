@@ -375,3 +375,7 @@ image{
   background-color: black;
   color: #ffffff;
 }
+
+.fallback {
+  background-color: #ffffff;
+}
