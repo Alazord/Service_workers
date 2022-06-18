@@ -401,6 +401,60 @@ a {
   margin-top: 20px;
 }
 
+/* Char + Episode list */
+.page {
+  direction: column;
+  align-items: center;
+}
+
+.pageHeading {
+  background-color: purple;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 90px;
+    text-align: center;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchBar {
+  margin: 0 auto;
+  justify-content: center;
+  height: 40px;
+  margin-top: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.searchBtn {
+  border-radius: 5px;
+  background-color: #4a58ed;
+  color: white;
+  border-color: white;
+}
+
+.resetBtn {
+  width: 80px;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  border-color: white;
+}
+
+.items {
+  display: grid;
+  column-count: 4;
+  margin: 0 30px;
+  align-self: center;
+}
+
+/* .characterList {
+  display: grid;
+  column-count: 4;
+} */
+
 /* Character Page */
 .characterCard {
   display: flex;

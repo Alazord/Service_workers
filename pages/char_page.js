@@ -1,20 +1,8 @@
 import Head from "next/head";
-// import Link from "next/Link";
 import { useState } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
-import {
-  Heading,
-  Input,
-  Stack,
-  IconButton,
-  Box,
-  Flex,
-  useToast,
-  Link,
-} from "@chakra-ui/react";
-import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Link} from "@chakra-ui/react";
 
 import Character from "../components/Character";
 
@@ -30,12 +18,7 @@ export default function Home2(results) {
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <div className="nav">
       <div className="nav-container">
         {optionList.map(([item, URL], index) => (
           <Link className="nav-element" key={index} href={URL}>
@@ -43,26 +26,12 @@ export default function Home2(results) {
           </Link>
         ))}
       </div>
-      <div
-        style={{ direction: "column", justify: "center", alignItems: "center" }}
-      >
+      <div className="page">
         <Head>
           <title>Characters</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <h1
-          style={{
-            backgroundColor: "purple",
-            color: "white",
-            padding: "10px",
-            borderRadius: "5px",
-            marginTop: "90px",
-            textAlign: "center",
-            width: "300px",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
+        <h1 className="pageHeading">
           <Link href="/">Rick and Morty</Link>
         </h1>
         <form
@@ -73,58 +42,23 @@ export default function Home2(results) {
               body: search,
             });
             const { characters, error } = await results.json();
-            if (error) {
-              toast({
-                position: "bottom",
-                title: "An error occurred.",
-                description: error,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-              });
-            } else {
-              setCharacters(characters);
-            }
+            setCharacters(characters);
           }}
         >
-          <div
-            style={{
-              margin: "0 auto",
-              justifyContent: "center",
-              height: "40px",
-              marginTop: "20px",
-              display: "flex",
-              gap: "5px",
-            }}
-          >
+          <div className="searchBar">
             <input
               placeholder="Search"
               value={search}
-              // border="none"
               onChange={(e) => setSearch(e.target.value)}
               style={{ width: "400px", borderRadius: "5px" }}
             />
-            <button
+            <button className="searchBtn"
               disabled={search === ""}
               type="submit"
-              style={{
-                borderRadius: "5px",
-                backgroundColor: "#4a58ed",
-                color: "white",
-                borderColor: "white",
-              }}
             >
               Search
             </button>
-            <button
-              style={{
-                width: "80px",
-                borderRadius: "5px",
-                backgroundColor: "red",
-                color: "white",
-                borderColor: "white",
-              }}
-              // icon={<CloseIcon />}
+            <button className="resetBtn"
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");
@@ -135,13 +69,7 @@ export default function Home2(results) {
             </button>
           </div>
         </form>
-        <div
-          style={{
-            display: "grid",
-            columnCount: "4",
-            margin: "0 30px",
-          }}
-        >
+        <div className="items">
           <Character characters={characters} />
         </div>
 
