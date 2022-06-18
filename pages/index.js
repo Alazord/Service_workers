@@ -23,6 +23,10 @@ export default function Home() {
   ];
   return (
     <div className="nav">
+      <Head>
+          <title>Home</title>
+          <link rel='manifest' href='/manifest.json' />
+        </Head>
       <Navbar id="homeNavbar" />
       <div className="all" id="home">
         <div className="home">HOME</div>
