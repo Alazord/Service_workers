@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
-import {Link,} from "@chakra-ui/react";
+import {Link} from "@chakra-ui/react";
 
 import Episode from "../components/Episode";
 
