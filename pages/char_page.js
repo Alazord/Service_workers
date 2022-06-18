@@ -46,11 +46,10 @@ export default function Home2(results) {
           }}
         >
           <div className="searchBar">
-            <input
+            <input className="searchBarInpt"
               placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{ width: "400px", borderRadius: "5px" }}
             />
             <button className="searchBtn"
               disabled={search === ""}

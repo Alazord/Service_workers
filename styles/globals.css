@@ -428,6 +428,11 @@ a {
   gap: 5px;
 }
 
+.searchBarInpt {
+  width: 400px;
+  border-radius: 5px;
+}
+
 .searchBtn {
   border-radius: 5px;
   background-color: #4a58ed;
@@ -441,11 +446,6 @@ a {
   background-color: red;
   color: white;
   border-color: white;
-}
-
-.items {
- 
-  /* align-items: center; */
 }
 
 .charItem {
@@ -463,7 +463,7 @@ a {
 .charInd {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: 0 30px;
+  margin: 20px 30px;
 }
 
 .charTxt {

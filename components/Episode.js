@@ -1,12 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { SimpleGrid } from "@chakra-ui/react";
-
 
 const Episode = ({ episodes }) => {
   return (
-    <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" marginTop={40}>
-    {/* <div className="charInd"> */}
+    <div className="charInd"> 
       {episodes.map((episode) => {
         return (
           <div key={episode.id}>
@@ -20,8 +17,7 @@ const Episode = ({ episodes }) => {
             </div>
         );
       })}
-       {/* </div> */}
-    </SimpleGrid>
+       </div>
   );
 };
 

@@ -2,8 +2,6 @@ import Head from "next/head";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
-// import { Heading, Text, SimpleGrid } from "@chakra-ui/react";
-// import Char from "../../components/Char";
 
 export default function MyChar(results) {
   const character = results.character;
@@ -15,23 +13,11 @@ export default function MyChar(results) {
       </Head>
       <h1
         className="characterCardHeading"
-        // style={{
-        //   backgroundColor: "purple",
-        //   color: "white",
-        //   padding: "10px",
-        //   borderRadius: "5px",
-        // }}
       >
         Details of the character you clicked on:
       </h1>
       <div
         className="characterCardItems"
-        // style={{
-        //   alignItems: "center",
-        //   padding: "10px",
-        //   borderRadius: "10px",
-        //   backgroundColor: "rgba(255,255,255,0.7)",
-        // }}
       >
         <Image alt="" src={character.image} width={300} height={300} />
         <ul
@@ -53,15 +39,6 @@ export default function MyChar(results) {
       </div>
       <button
         className="characterCardReturn"
-        // style={{
-        //   padding: "10px",
-        //   fontSize: "18px",
-        //   backgroundColor: "rgba(255,255,255,0.5)",
-        //   borderRadius: "10px",
-        //   width: "150px",
-        //   marginTop: "10px",
-        //   borderColor: "white",
-        // }}
       >
         <Link href={"/char_page"}>Return</Link>
       </button>

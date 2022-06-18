@@ -1,11 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { SimpleGrid} from "@chakra-ui/react";
 
 const Character = ({ characters }) => {
   return (
-    // <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" marginTop={40}>
     <div className="charInd"> 
       {characters.map((character) => {
         return (
@@ -20,7 +18,7 @@ const Character = ({ characters }) => {
             </div>
         );
       })}
-       </div> 
+      </div> 
   );
 };
 
