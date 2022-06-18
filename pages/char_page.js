@@ -1,4 +1,5 @@
 import Head from "next/head";
+// import Link from "next/Link";
 import { useState } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
@@ -21,20 +22,49 @@ export default function Home2(results) {
   const intialState = results;
   const [search, setSearch] = useState("");
   const [characters, setCharacters] = useState(intialState.characters);
-  const toast = useToast();
+  const optionList = [
+    ["RICK AND MORTY WIKI", "/"],
+    ["EXPLORE", "/#explore"],
+    ["EPISODES", "/episode_page"],
+    ["CHARACTERS", "/char_page"],
+  ];
 
   return (
-    <Flex direction="column" justify="center" align="center">
-      <Head>
-        <title>Characters</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
-        <Heading as="h1" marginTop={60}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div className="nav-container">
+        {optionList.map(([item, URL], index) => (
+          <Link className="nav-element" key={index} href={URL}>
+            {item}
+          </Link>
+        ))}
+      </div>
+      <div
+        style={{ direction: "column", justify: "center", alignItems: "center" }}
+      >
+        <Head>
+          <title>Characters</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <h1
+          style={{
+            backgroundColor: "purple",
+            color: "white",
+            padding: "10px",
+            borderRadius: "5px",
+            marginTop: "90px",
+            textAlign: "center",
+            width: "300px",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
           <Link href="/">Rick and Morty</Link>
-        </Heading>
-
+        </h1>
         <form
           onSubmit={async (event) => {
             event.preventDefault();
@@ -57,39 +87,43 @@ export default function Home2(results) {
             }
           }}
         >
-          <Stack
-            isInline
-            mb={8}
-            margin="0 auto"
-            justifyContent="center"
-            height="30px"
-            marginTop={20}
+          <div
+            style={{
+              margin: "0 auto",
+              justifyContent: "center",
+              height: "40px",
+              marginTop: "20px",
+              display: "flex",
+              gap: "5px",
+            }}
           >
-            <Input
+            <input
               placeholder="Search"
               value={search}
               // border="none"
               onChange={(e) => setSearch(e.target.value)}
-              width="300px"
-              borderRadius={5}
-            ></Input>
-            <IconButton
-              color="blue"
-              aria-label="Search database"
-              icon={<SearchIcon />}
+              style={{ width: "400px", borderRadius: "5px" }}
+            />
+            <button
               disabled={search === ""}
               type="submit"
-              width="30px"
-              height="30px"
-              borderRadius={5}
-              backgroundColor="white"
-            />
-            <Button
-              color="Green"
-              aria-label="Reset "
-              width="80px"
-              borderRadius={5}
-              backgroundColor="white"
+              style={{
+                borderRadius: "5px",
+                backgroundColor: "#4a58ed",
+                color: "white",
+                borderColor: "white",
+              }}
+            >
+              Search
+            </button>
+            <button
+              style={{
+                width: "80px",
+                borderRadius: "5px",
+                backgroundColor: "red",
+                color: "white",
+                borderColor: "white",
+              }}
               // icon={<CloseIcon />}
               disabled={search === ""}
               onClick={async () => {
@@ -98,14 +132,22 @@ export default function Home2(results) {
               }}
             >
               Reset
-            </Button>
-          </Stack>
+            </button>
+          </div>
         </form>
-        <Character characters={characters} />
-      </Box>
+        <div
+          style={{
+            display: "grid",
+            columnCount: "4",
+            margin: "0 30px",
+          }}
+        >
+          <Character characters={characters} />
+        </div>
 
-      <footer className={styles.footer}>&copy;</footer>
-    </Flex>
+        <footer className={styles.footer}>&copy;</footer>
+      </div>
+    </div>
   );
 }
 

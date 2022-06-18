@@ -8,12 +8,7 @@ const Character = ({ characters }) => {
     <SimpleGrid columns={[1, 2, 3, 4]} spacing="40px" marginTop={40}>
       {characters.map((character) => {
         return (
-          <Box
-            key={character.id}
-            border="1px solid white"
-            bg="white"
-            opacity={0.9}
-          >
+          <Box key={character.id} border="1px solid white" bg="white">
             <Link href={`/character/${character.id}`}>
               <div>
                 <Image alt="" src={character.image} width={300} height={300} />

@@ -1,15 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-
-// export default function MyChar(results) {
-//   const episode = results.episode;
-//   return (
-//     <Flex direction="column" justify="center" align="center">
-//       <Head>
-//         <title>Episode Details</title>
-//         <link rel="icon" href="/favicon.ico" />
-//       </Head>
+// import { Heading, Text, SimpleGrid } from "@chakra-ui/react";
+// import Char from "../../components/Char";
 
 //       <Box
 //         mb={4}
@@ -47,7 +39,8 @@ export default function MyEpisode(results) {
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="episodeCardHeading"
+      <h1
+        className="episodeCardHeading"
         // style={{
         //   backgroundColor: "purple",
         //   color: "white",
@@ -57,7 +50,8 @@ export default function MyEpisode(results) {
       >
         Details of the Episode you clicked on:
       </h1>
-      <div className="episodeCardItems"
+      <div
+        className="episodeCardItems"
         // style={{
         //   alignItems: "center",
         //   padding: "10px",
@@ -82,7 +76,8 @@ export default function MyEpisode(results) {
           </li>
         </ul>
       </div>
-      <button className="episodeCardReturn"
+      <button
+        className="episodeCardReturn"
         // style={{
         //   padding: "10px",
         //   fontSize: "18px",

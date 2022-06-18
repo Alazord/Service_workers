@@ -2,6 +2,8 @@ import Head from "next/head";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
+// import { Heading, Text, SimpleGrid } from "@chakra-ui/react";
+// import Char from "../../components/Char";
 
 export default function MyChar(results) {
   const character = results.character;
@@ -11,7 +13,8 @@ export default function MyChar(results) {
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="characterCardHeading"
+      <h1
+        className="characterCardHeading"
         // style={{
         //   backgroundColor: "purple",
         //   color: "white",
@@ -21,7 +24,8 @@ export default function MyChar(results) {
       >
         Details of the character you clicked on:
       </h1>
-      <div className="characterCardItems"
+      <div
+        className="characterCardItems"
         // style={{
         //   alignItems: "center",
         //   padding: "10px",
@@ -47,7 +51,8 @@ export default function MyChar(results) {
           </li>
         </ul>
       </div>
-      <button className="characterCardReturn"
+      <button
+        className="characterCardReturn"
         // style={{
         //   padding: "10px",
         //   fontSize: "18px",
