@@ -22,12 +22,7 @@ export default function Home() {
     ["Jerry Smith", "/images/jerrySmith.jpg"],
   ];
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <div className="nav">
       <Navbar id="homeNavbar" />
       <div className="all" id="home">
         <div className="home">HOME</div>
@@ -36,7 +31,7 @@ export default function Home() {
           <div className="carousal">
             <Image
               alt=""
-              src="/images/rickMorty.jpeg"
+              src="/images/rickMortyHome.jpeg"
               width="800px"
               height="400px"
             />
@@ -69,22 +64,10 @@ export default function Home() {
           <div className="Line"></div>
           <div className="mainCharacterImages" style={{ display: "flex" }}>
             {characterList.map((item) => (
-              <div
-                key={1}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
+              <div className="mainCharacterImgList" key={1}
               >
                 <Image alt="" src={item[1]} height={140} width={140} />
-
-                <div
-                  style={{
-                    backgroundColor: "black",
-                    color: "white",
-                    width: "100%",
-                    textAlign: "center",
-                  }}
+                <div className="mainCharacterImgTag"
                 >
                   {item[0]}
                 </div>
@@ -100,7 +83,7 @@ export default function Home() {
               <div>Previous Episode</div>
               <Image
                 alt=""
-                src="/images/rickMorty.jpeg"
+                src="/images/s1e1.jpeg"
                 width="386px"
                 height="240px"
               />
@@ -111,7 +94,7 @@ export default function Home() {
               <div>Next Episode</div>
               <Image
                 alt=""
-                src="/images/rickMorty.jpeg"
+                src="/images/s5e5.jpeg"
                 width="386px"
                 height="240px"
               />
@@ -127,7 +110,7 @@ export default function Home() {
             <Image
               className="latestComicContentImg"
               alt=""
-              src="/images/rickMorty.jpeg"
+              src="/images/comic2.jpeg"
               width="1000%"
               height="300%"
             />
@@ -153,23 +136,12 @@ export default function Home() {
           </div>
           <div className="Line"></div>
           <div className="exploreContent">
-            <div
-              style={{
-                height: "249px",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "240px",
-                }}
+            <div className="explore1">
+              <div className="exploreContentTag"
               >
                 <Image
                   alt=""
-                  src="/images/rickMorty.jpeg"
+                  src="/images/comic3.avif"
                   width="240px"
                   height="168px"
                 />
@@ -178,16 +150,11 @@ export default function Home() {
                   Some weird stuff happens in the comics broh.
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "240px",
-                }}
+              <div className="exploreContentTag"
               >
                 <Image
                   alt=""
-                  src="/images/rickMorty.jpeg"
+                  src="/images/song.jpeg"
                   width="240px"
                   height="168px"
                 />
@@ -196,16 +163,11 @@ export default function Home() {
                   There is some real toasty music in the show dawg.
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "240px",
-                }}
+              <div className="exploreContentTag"
               >
                 <Image
                   alt=""
-                  src="/images/rickMorty.jpeg"
+                  src="/images/location.jpeg"
                   width="240px"
                   height="168px"
                 />
@@ -216,24 +178,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div
-              style={{
-                height: "249px",
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "20px",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "240px",
-                }}
+            <div className="explore2">
+              <div className="exploreContentTag"
               >
                 <Image
                   alt=""
-                  src="/images/rickMorty.jpeg"
+                  src="/images/episode.jpeg"
                   width="240px"
                   height="168px"
                 />
@@ -242,16 +192,11 @@ export default function Home() {
                   The stuff that happens in these episodes is sick yo.
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "240px",
-                }}
+              <div className="exploreContentTag"
               >
                 <Image
                   alt=""
-                  src="/images/rickMorty.jpeg"
+                  src="/images/character.jpg"
                   width="240px"
                   height="168px"
                 />
@@ -260,16 +205,11 @@ export default function Home() {
                   Things get weeeird when these guys are around.
                 </div>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "240px",
-                }}
+              <div className="exploreContentTag"
               >
                 <Image
                   alt=""
-                  src="/images/rickMorty.jpeg"
+                  src="/images/cast.jpeg"
                   width="240px"
                   height="168px"
                 />
