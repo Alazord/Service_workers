@@ -52,15 +52,23 @@ a {
   margin-right: auto;
   background-color: rgba(255, 255, 255, 0.8);
 }
-
+.home,
+.welcomeBox,
+.welcome,
+.descriptionBox,
+.descriptionHead,
+.descriptionContent,
+.mainCharactersBox,
+.episodeBox,
+.latestComicBox,
+.exploreBox {
+  margin-left: auto;
+  margin-right: auto;
+}
 .home {
   width: 800px;
   height: 54px;
   margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
-
-  font-style: normal;
   font-weight: 300;
   font-size: 36px;
   line-height: 54px;
@@ -73,16 +81,10 @@ a {
   margin-top: 30px;
   height: 417px;
   width: 800px;
-  margin-left: auto;
-  margin-right: auto;
   /* background-color: yellow; */
 }
 .welcome {
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 36px;
-  font-style: normal;
   font-weight: 400;
   font-size: 28px;
   line-height: 42px;
@@ -106,22 +108,15 @@ a {
   flex-direction: column;
   width: 800px;
   height: 290px;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 80px;
-  /* background-color: #808080; */
+  font-size: 28px;
+  line-height: 42px;
+  font-weight: 300;
 }
 .descriptionHead {
   height: 42px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 42px;
-  /* identical to box height */
-  /* background-color: orange; */
+
   color: #000000;
 }
 .descriptionBox .Line {
@@ -129,17 +124,11 @@ a {
 }
 .descriptionContent {
   margin-top: 28px;
-  width: 100%;
   flex-grow: 1;
-
-  margin-left: auto;
-  margin-right: auto;
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: justify;
-  /* background-color: beige; */
   color: #000000;
 }
 
@@ -149,16 +138,11 @@ a {
   margin-top: 80px;
   width: 800px;
   height: 244px;
-  margin-left: auto;
-  margin-right: auto;
-  /* background-color: aqua; */
 }
 .mainCharactersHead {
   height: 42px;
-  /* background-color: yellow; */
   margin-bottom: 0px;
 
-  font-style: normal;
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
@@ -180,8 +164,6 @@ a {
   flex-direction: column;
   width: 800px;
   height: 476px;
-  margin-left: auto;
-  margin-right: auto;
   /* background-color: bisque; */
   margin-top: 80px;
 }
@@ -200,7 +182,6 @@ a {
 .episodeContent {
   display: flex;
   margin-top: 28px;
-  /* background-color: yellow; */
   width: 100%;
   flex-grow: 1;
   gap: 28px;
@@ -209,52 +190,39 @@ a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* background-color: green; */
 }
 .episodePrevious :first-child {
-  font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  /* background-color: white; */
-  /* identical to box height */
   text-align: center;
   margin-bottom: 12px;
   color: #000000;
 }
 .episodeName {
   margin-top: 24px;
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height */
-  /* background-color: white; */
   color: #000000;
 }
 .episodeDescription {
   flex-grow: 1;
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: justify;
-  /* background-color: beige; */
   color: #000000;
 }
 .episodeNext {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* background-color: green; */
 }
 .episodeNext :first-child {
-  font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  /* background-color: white; */
-  /* identical to box height */
   text-align: center;
   margin-bottom: 12px;
   color: #000000;
@@ -265,12 +233,8 @@ a {
   width: 800px;
   height: 314px;
   margin-top: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  /* background-color: aquamarine; */
 }
 .latestComicHead {
-  font-style: normal;
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
@@ -284,6 +248,7 @@ a {
 .latestComicContent {
   display: flex;
   margin-top: 28px;
+  gap: 20px;
 }
 .latestComicContentImg {
   padding: 24px;
@@ -292,7 +257,7 @@ a {
 .latestComicTitle {
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 24px;
   color: #000000;
 }
@@ -317,16 +282,13 @@ a {
   height: 596px;
   margin-top: 20px;
   margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  /* background-color: aquamarine; */
+  font-size: 16px;
+  line-height: 24px;
 }
 .exploreHead {
-  font-style: normal;
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
-  /* identical to box height */
 
   color: #000000;
 }
@@ -341,20 +303,13 @@ a {
 }
 .exploreTitle {
   text-align: center;
-  font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
   text-align: center;
   background-color: black;
   color: #ffffff;
 }
 .exploreDescription {
-  font-family: "Poppins";
-  font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
   text-align: center;
   background-color: black;
   color: #ffffff;
@@ -366,12 +321,12 @@ a {
   flex-direction: column;
 }
 
-.mainCharacterImgList{
+.mainCharacterImgList {
   display: flex;
   flex-direction: column;
 }
 
-.mainCharacterImgList img{
+.mainCharacterImgList img {
   object-fit: cover;
 }
 
@@ -409,14 +364,14 @@ a {
 
 .pageHeading {
   background-color: purple;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 90px;
-    text-align: center;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 90px;
+  text-align: center;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .searchBar {
@@ -438,6 +393,7 @@ a {
   background-color: #4a58ed;
   color: white;
   border-color: white;
+  width: 80px;
 }
 
 .resetBtn {
@@ -450,14 +406,14 @@ a {
 
 .charItem {
   max-width: 300px;
-  background-color: rgba(255,255,255, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   align-self: center;
   border-radius: 10px;
   margin: 0 auto;
 }
 
-.charItem img{
-  border-radius: 10px;;
+.charItem img {
+  border-radius: 10px;
 }
 
 .charInd {
@@ -467,11 +423,13 @@ a {
 }
 
 .charTxt {
-  /* background-color: #ff01c1; */
   text-align: center;
   overflow-wrap: break-word;
 }
-
+#heading {
+  background-color: lightyellow;
+  border-radius: 10px;
+}
 /* Character Page */
 .characterCard {
   display: flex;
