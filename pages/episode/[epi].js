@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+
 // import { Heading, Text, SimpleGrid } from "@chakra-ui/react";
 // import Char from "../../components/Char";
 

@@ -444,10 +444,8 @@ a {
 }
 
 .items {
-  display: grid;
-  column-count: 4;
-  margin: 0 30px;
-  align-items: center;
+ 
+  /* align-items: center; */
 }
 
 .charItem {
@@ -455,6 +453,7 @@ a {
   background-color: rgba(255,255,255, 0.7);
   align-self: center;
   border-radius: 10px;
+  margin: 0 auto;
 }
 
 .charItem img{
@@ -462,8 +461,9 @@ a {
 }
 
 .charInd {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 30px;
 }
 
 .charTxt {
