@@ -31,7 +31,7 @@ export default function Home4(results) {
           <title>Episodes</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <h1 className="pageHeading">
+        <h1 className="page-heading">
           <Link href="/">Rick and Morty</Link>
         </h1>
         <form
@@ -45,19 +45,19 @@ export default function Home4(results) {
             setEpisodes(episodes);
           }}
         >
-          <div className="searchBar">
-            <input className="searchBarInpt"
+          <div className="search-bar">
+            <input className="search-bar-inpt"
               placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button className="searchBtn"
+            <button className="search-btn"
               disabled={search === ""}
               type="submit"
             >
               Search
             </button>
-            <button className="resetBtn"
+            <button className="reset-btn"
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");

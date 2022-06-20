@@ -34,7 +34,6 @@ a {
 .nav-element {
   display: flex;
   height: 24px;
-  font-style: normal;
   padding: 5px;
   font-weight: 700;
   font-size: 16px;
@@ -53,15 +52,15 @@ a {
   background-color: rgba(255, 255, 255, 0.8);
 }
 .home,
-.welcomeBox,
+.welcome-box,
 .welcome,
-.descriptionBox,
-.descriptionHead,
-.descriptionContent,
-.mainCharactersBox,
-.episodeBox,
-.latestComicBox,
-.exploreBox {
+.description-box,
+.description-head,
+.description-content,
+.main-characters-box,
+.episode-box,
+.latest-comic-box,
+.explore-box {
   margin-left: auto;
   margin-right: auto;
 }
@@ -75,7 +74,7 @@ a {
   /* identical to box height */
   color: #000000;
 }
-.welcomeBox {
+.welcome-box {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -103,7 +102,7 @@ a {
   border-radius: 5px;
 }
 
-.descriptionBox {
+.description-box {
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -113,16 +112,16 @@ a {
   line-height: 42px;
   font-weight: 300;
 }
-.descriptionHead {
+.description-head {
   height: 42px;
   width: 100%;
 
   color: #000000;
 }
-.descriptionBox .Line {
+.description-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.descriptionContent {
+.description-content {
   margin-top: 28px;
   flex-grow: 1;
   font-weight: 400;
@@ -132,14 +131,14 @@ a {
   color: #000000;
 }
 
-.mainCharactersBox {
+.main-characters-box {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
   width: 800px;
   height: 244px;
 }
-.mainCharactersHead {
+.main-characters-head {
   height: 42px;
   margin-bottom: 0px;
 
@@ -149,17 +148,17 @@ a {
   /* identical to box height */
   color: #000000;
 }
-.mainCharactersBox .Line {
+.main-characters-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.mainCharacterImages {
+.main-characters-images {
   flex-grow: 1;
 }
-.mainCharacterImages {
+.main-characters-images {
   margin-top: 28px;
   justify-content: space-between;
 }
-.episodeBox {
+.episode-box {
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -167,8 +166,7 @@ a {
   /* background-color: bisque; */
   margin-top: 80px;
 }
-.episodeHead {
-  font-style: normal;
+.episode-head {
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
@@ -176,17 +174,17 @@ a {
   /* background-color: pink; */
   color: #000000;
 }
-.episodeBox .Line {
+.episode-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.episodeContent {
+.episode-content {
   display: flex;
   margin-top: 28px;
   width: 100%;
   flex-grow: 1;
   gap: 28px;
 }
-.episodePrevious {
+.episode-previous {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -199,14 +197,14 @@ a {
   margin-bottom: 12px;
   color: #000000;
 }
-.episodeName {
+.episode-name {
   margin-top: 24px;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   color: #000000;
 }
-.episodeDescription {
+.episode-description {
   flex-grow: 1;
   font-weight: 400;
   font-size: 16px;
@@ -214,12 +212,12 @@ a {
   text-align: justify;
   color: #000000;
 }
-.episodeNext {
+.episode-next {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-.episodeNext :first-child {
+.episode-next :first-child {
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
@@ -227,14 +225,14 @@ a {
   margin-bottom: 12px;
   color: #000000;
 }
-.latestComicBox {
+.latest-comic-box {
   display: flex;
   flex-direction: column;
   width: 800px;
   height: 314px;
   margin-top: 80px;
 }
-.latestComicHead {
+.latest-comic-head {
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
@@ -242,27 +240,25 @@ a {
 
   color: #000000;
 }
-.latestComicBox .Line {
+.latest-comic-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.latestComicContent {
+.latest-comic-content {
   display: flex;
   margin-top: 28px;
   gap: 20px;
 }
-.latestComicContentImg {
+.latest-comic-content-img {
   padding: 24px;
   margin: 24px;
 }
-.latestComicTitle {
-  font-style: normal;
+.latest-comic-title {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: #000000;
 }
-.latestComicDescription {
-  font-style: normal;
+.latest-comic-description {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -270,12 +266,12 @@ a {
 
   color: #000000;
 }
-.latestComicDetails {
+.latest-comic-details {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-.exploreBox {
+.explore-box {
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -292,23 +288,24 @@ a {
 
   color: #000000;
 }
-.exploreBox .Line {
+.explore-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.exploreContent {
+.explore-content {
   margin-top: 28px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  height: 249px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
 }
-.exploreTitle {
+.explore-title {
   text-align: center;
   font-weight: 600;
   text-align: center;
   background-color: black;
   color: #ffffff;
 }
-.exploreDescription {
+.explore-description {
   font-weight: 400;
   text-align: center;
   background-color: black;
@@ -321,39 +318,26 @@ a {
   flex-direction: column;
 }
 
-.mainCharacterImgList {
+.main-character-img-list {
   display: flex;
   flex-direction: column;
 }
 
-.mainCharacterImgList img {
+.main-character-img-list img {
   object-fit: cover;
 }
 
-.mainCharacterImgTag {
+.main-character-img-tag {
   background-color: black;
   color: white;
   width: 100%;
   text-align: center;
 }
 
-.exploreContentTag {
+.explore-content-tag {
   display: flex;
   flex-direction: column;
   width: 240px;
-}
-
-.explore1 {
-  height: 249px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.explore2 {
-  height: 249px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
 }
 
 /* Char + Episode list */
@@ -362,7 +346,7 @@ a {
   align-items: center;
 }
 
-.pageHeading {
+.page-heading {
   background-color: purple;
   color: white;
   padding: 10px;
@@ -374,7 +358,7 @@ a {
   margin-right: auto;
 }
 
-.searchBar {
+.search-bar {
   margin: 0 auto;
   justify-content: center;
   height: 40px;
@@ -383,12 +367,12 @@ a {
   gap: 5px;
 }
 
-.searchBarInpt {
+.search-bar-inpt {
   width: 400px;
   border-radius: 5px;
 }
 
-.searchBtn {
+.search-btn {
   border-radius: 5px;
   background-color: #4a58ed;
   color: white;
@@ -396,7 +380,7 @@ a {
   width: 80px;
 }
 
-.resetBtn {
+.reset-btn {
   width: 80px;
   border-radius: 5px;
   background-color: red;
@@ -404,7 +388,7 @@ a {
   border-color: white;
 }
 
-.charItem {
+.char-item {
   max-width: 300px;
   background-color: rgba(255, 255, 255, 0.7);
   align-self: center;
@@ -412,17 +396,18 @@ a {
   margin: 0 auto;
 }
 
-.charItem img {
+.char-item img {
   border-radius: 10px;
 }
 
-.charInd {
+.char-ind {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 20px 30px;
+  cursor: pointer;
 }
 
-.charTxt {
+.char-txt {
   text-align: center;
   overflow-wrap: break-word;
 }
@@ -431,7 +416,7 @@ a {
   border-radius: 10px;
 }
 /* Character Page */
-.characterCard {
+.character-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -439,21 +424,21 @@ a {
   width: auto;
 }
 
-.characterCardHeading {
+.character-card-heading {
   background-color: purple;
   color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
-.characterCardItems {
+.character-card-items {
   align-items: center;
   padding: 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.characterCardReturn {
+.character-card-return {
   padding: 10px;
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -464,7 +449,7 @@ a {
 }
 
 /* Episode Page */
-.episodeCard {
+.episode-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -472,21 +457,21 @@ a {
   width: auto;
 }
 
-.episodeCardHeading {
+.episode-card-heading {
   background-color: purple;
   color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
-.episodeCardItems {
+.episode-card-items {
   align-items: center;
   padding: 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.episodeCardReturn {
+.episode-card-return {
   padding: 10px;
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.5);
