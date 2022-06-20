@@ -4,40 +4,34 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 export default function MyEpisode(results) {
   const episode = results.episode;
+  const episodeData = [
+    ["Episode: ", episode.episode],
+    ["Air-Date: ", episode.air_date],
+    ["Name: ", episode.name],
+    ["Created: ", episode.created],
+  ];
   return (
-    <div className="episodeCard">
+    <div className="episode-card">
       <Head>
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1
-        className="episodeCardHeading"
-      >
+      <h1 className="episode-card-heading">
         Details of the Episode you clicked on:
       </h1>
-      <div
-        className="episodeCardItems"
-      >
+      <div className="episode-card-items">
         <ul
           style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
         >
-          <li>
-            <b>Episode:</b> {episode.episode}
-          </li>
-          <li>
-            <b>Air-Date:</b> {episode.air_date}
-          </li>
-          <li>
-            <b>Name:</b> {episode.name}
-          </li>
-          <li>
-            <b>Created:</b> {episode.created}
-          </li>
+          {episodeData.map((item, index) => (
+            <li key={`item${index}`}>
+              <b>{item[0]}</b>
+              {item[1]}
+            </li>
+          ))}
         </ul>
       </div>
-      <button
-        className="episodeCardReturn"
-      >
+      <button className="episode-card-return">
         <Link href={"/episode_page"}>Return</Link>
       </button>
     </div>

@@ -5,41 +5,35 @@ import Link from "next/link";
 
 export default function MyChar(results) {
   const character = results.character;
+  const characterData = [
+    ["Species: ", character.species],
+    ["Status: ", character.status],
+    ["Name: ", character.name],
+    ["Gender: ", character.gender],
+  ];
   return (
-    <div className="characterCard">
+    <div className="character-card">
       <Head>
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1
-        className="characterCardHeading"
-      >
+      <h1 className="character-card-heading">
         Details of the character you clicked on:
       </h1>
-      <div
-        className="characterCardItems"
-      >
+      <div className="character-card-items">
         <Image alt="" src={character.image} width={300} height={300} />
         <ul
           style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
         >
-          <li>
-            <b>Species:</b> {character.species}
-          </li>
-          <li>
-            <b>Status:</b> {character.status}
-          </li>
-          <li>
-            <b>Name:</b> {character.name}
-          </li>
-          <li>
-            <b>Gender:</b> {character.gender}
-          </li>
+          {characterData.map((item, index) => (
+            <li key={`item${index}`}>
+              <b>{item[0]}</b>
+              {item[1]}
+            </li>
+          ))}
         </ul>
       </div>
-      <button
-        className="characterCardReturn"
-      >
+      <button className="character-card-return">
         <Link href={"/char_page"}>Return</Link>
       </button>
     </div>
