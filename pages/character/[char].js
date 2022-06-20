@@ -12,15 +12,15 @@ export default function MyChar(results) {
     ["Gender: ", character.gender],
   ];
   return (
-    <div className="characterCard">
+    <div className="character-card">
       <Head>
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="characterCardHeading">
+      <h1 className="character-card-heading">
         Details of the character you clicked on:
       </h1>
-      <div className="characterCardItems">
+      <div className="character-card-items">
         <Image alt="" src={character.image} width={300} height={300} />
         <ul
           style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
@@ -33,7 +33,7 @@ export default function MyChar(results) {
           ))}
         </ul>
       </div>
-      <button className="characterCardReturn">
+      <button className="character-card-return">
         <Link href={"/char_page"}>Return</Link>
       </button>
     </div>

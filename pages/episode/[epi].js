@@ -11,15 +11,15 @@ export default function MyEpisode(results) {
     ["Created: ", episode.created],
   ];
   return (
-    <div className="episodeCard">
+    <div className="episode-card">
       <Head>
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="episodeCardHeading">
+      <h1 className="episode-card-heading">
         Details of the Episode you clicked on:
       </h1>
-      <div className="episodeCardItems">
+      <div className="episode-card-items">
         <ul
           style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
         >
@@ -31,7 +31,7 @@ export default function MyEpisode(results) {
           ))}
         </ul>
       </div>
-      <button className="episodeCardReturn">
+      <button className="episode-card-return">
         <Link href={"/episode_page"}>Return</Link>
       </button>
     </div>

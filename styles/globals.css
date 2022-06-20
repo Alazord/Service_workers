@@ -346,7 +346,7 @@ a {
   align-items: center;
 }
 
-.pageHeading {
+.page-heading {
   background-color: purple;
   color: white;
   padding: 10px;
@@ -358,7 +358,7 @@ a {
   margin-right: auto;
 }
 
-.searchBar {
+.search-bar {
   margin: 0 auto;
   justify-content: center;
   height: 40px;
@@ -367,12 +367,12 @@ a {
   gap: 5px;
 }
 
-.searchBarInpt {
+.search-bar-inpt {
   width: 400px;
   border-radius: 5px;
 }
 
-.searchBtn {
+.search-btn {
   border-radius: 5px;
   background-color: #4a58ed;
   color: white;
@@ -380,7 +380,7 @@ a {
   width: 80px;
 }
 
-.resetBtn {
+.reset-btn {
   width: 80px;
   border-radius: 5px;
   background-color: red;
@@ -416,7 +416,7 @@ a {
   border-radius: 10px;
 }
 /* Character Page */
-.characterCard {
+.character-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -424,21 +424,21 @@ a {
   width: auto;
 }
 
-.characterCardHeading {
+.character-card-heading {
   background-color: purple;
   color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
-.characterCardItems {
+.character-card-items {
   align-items: center;
   padding: 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.characterCardReturn {
+.character-card-return {
   padding: 10px;
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -449,7 +449,7 @@ a {
 }
 
 /* Episode Page */
-.episodeCard {
+.episode-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -457,21 +457,21 @@ a {
   width: auto;
 }
 
-.episodeCardHeading {
+.episode-card-heading {
   background-color: purple;
   color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
-.episodeCardItems {
+.episode-card-items {
   align-items: center;
   padding: 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.episodeCardReturn {
+.episode-card-return {
   padding: 10px;
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.5);
