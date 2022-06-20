@@ -3,17 +3,17 @@ import Link from "next/link";
 
 const Episode = ({ episodes }) => {
   return (
-    <div className="charInd">
+    <div className="char-ind">
       {episodes.map((episode) => {
         return (
           <div key={episode.id}>
             <Link href={`/episode/${episode.id}`}>
-              <div className="charItem">
-                <h2 className="charTxt" id="heading">
+              <div className="char-item">
+                <h2 className="char-txt" id="heading">
                   {episode.name}
                 </h2>
-                <h4 className="charTxt">Episode: {episode.episode}</h4>
-                <h4 className="charTxt">Name: {episode.name}</h4>
+                <h4 className="char-txt">Episode: {episode.episode}</h4>
+                <h4 className="char-txt">Name: {episode.name}</h4>
               </div>
             </Link>
           </div>

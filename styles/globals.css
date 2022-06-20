@@ -55,11 +55,11 @@ a {
 .home,
 .welcomeBox,
 .welcome,
-.descriptionBox,
-.descriptionHead,
+.description-box,
+.description-head,
 .descriptionContent,
 .mainCharactersBox,
-.episodeBox,
+.episode-box,
 .latestComicBox,
 .exploreBox {
   margin-left: auto;
@@ -103,7 +103,7 @@ a {
   border-radius: 5px;
 }
 
-.descriptionBox {
+.description-box {
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -113,13 +113,13 @@ a {
   line-height: 42px;
   font-weight: 300;
 }
-.descriptionHead {
+.description-head {
   height: 42px;
   width: 100%;
 
   color: #000000;
 }
-.descriptionBox .Line {
+.description-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .descriptionContent {
@@ -149,7 +149,7 @@ a {
   /* identical to box height */
   color: #000000;
 }
-.mainCharactersBox .Line {
+.mainCharactersBox .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .mainCharacterImages {
@@ -159,7 +159,7 @@ a {
   margin-top: 28px;
   justify-content: space-between;
 }
-.episodeBox {
+.episode-box {
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -167,7 +167,7 @@ a {
   /* background-color: bisque; */
   margin-top: 80px;
 }
-.episodeHead {
+.episode-head {
   font-style: normal;
   font-weight: 300;
   font-size: 28px;
@@ -176,17 +176,17 @@ a {
   /* background-color: pink; */
   color: #000000;
 }
-.episodeBox .Line {
+.episode-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.episodeContent {
+.episode-content {
   display: flex;
   margin-top: 28px;
   width: 100%;
   flex-grow: 1;
   gap: 28px;
 }
-.episodePrevious {
+.episode-previous {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -199,14 +199,14 @@ a {
   margin-bottom: 12px;
   color: #000000;
 }
-.episodeName {
+.episode-name {
   margin-top: 24px;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   color: #000000;
 }
-.episodeDescription {
+.episode-description {
   flex-grow: 1;
   font-weight: 400;
   font-size: 16px;
@@ -214,12 +214,12 @@ a {
   text-align: justify;
   color: #000000;
 }
-.episodeNext {
+.episode-next {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-.episodeNext :first-child {
+.episode-next :first-child {
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
@@ -242,7 +242,7 @@ a {
 
   color: #000000;
 }
-.latestComicBox .Line {
+.latestComicBox .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .latestComicContent {
@@ -292,14 +292,15 @@ a {
 
   color: #000000;
 }
-.exploreBox .Line {
+.exploreBox .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .exploreContent {
   margin-top: 28px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  height: 249px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
 }
 .exploreTitle {
   text-align: center;
@@ -341,19 +342,6 @@ a {
   display: flex;
   flex-direction: column;
   width: 240px;
-}
-
-.explore1 {
-  height: 249px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.explore2 {
-  height: 249px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
 }
 
 /* Char + Episode list */
@@ -404,7 +392,7 @@ a {
   border-color: white;
 }
 
-.charItem {
+.char-item {
   max-width: 300px;
   background-color: rgba(255, 255, 255, 0.7);
   align-self: center;
@@ -412,17 +400,17 @@ a {
   margin: 0 auto;
 }
 
-.charItem img {
+.char-item img {
   border-radius: 10px;
 }
 
-.charInd {
+.char-ind {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 20px 30px;
 }
 
-.charTxt {
+.char-txt {
   text-align: center;
   overflow-wrap: break-word;
 }
