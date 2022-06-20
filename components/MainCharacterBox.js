@@ -8,14 +8,14 @@ export default function MainCharacterBox() {
     ["Jerry Smith", "/images/jerrySmith.jpg"],
   ];
   return (
-    <div className="mainCharactersBox">
-      <div className="mainCharactersHead">MAIN CHARACTERS</div>
+    <div className="main-characters-box">
+      <div className="main-characters-head">MAIN CHARACTERS</div>
       <div className="Line"></div>
-      <div className="mainCharacterImages" style={{ display: "flex" }}>
+      <div className="main-characters-images" style={{ display: "flex" }}>
         {characterList.map((item) => (
-          <div className="mainCharacterImgList" key={1}>
+          <div className="main-character-img-list" key={1}>
             <Image alt="" src={item[1]} height={140} width={140} />
-            <div className="mainCharacterImgTag">{item[0]}</div>
+            <div className="main-character-img-tag">{item[0]}</div>
           </div>
         ))}
       </div>

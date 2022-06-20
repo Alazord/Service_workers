@@ -1,19 +1,19 @@
 import Image from "next/image";
 export default function LatestComicBox() {
   return (
-    <div className="latestComicBox">
-      <div className="latestComicHead">LATEST COMIC</div>
-      <div className="Line"></div>
-      <div className="latestComicContent">
+    <div className="latest-comic-box">
+      <div className="latest-comic-head">LATEST COMIC</div>
+      <div className="line"></div>
+      <div className="latest-comic-content">
         <Image
-          className="latestComicContentImg"
+          className="latest-comic-content-img"
           alt=""
           src="/images/comic2.jpeg"
           width="1000%"
           height="300%"
         />
-        <div className="latestComicDetails">
-          <div className="latestComicTitle">
+        <div className="latest-comic-details">
+          <div className="latest-comic-title">
             Rick And Morty Presents: The Hotel Immortal
           </div>
           <div className="latestComicDescription">

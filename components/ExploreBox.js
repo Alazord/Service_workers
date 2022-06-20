@@ -39,17 +39,17 @@ export default function ExploreBox() {
     ),
   ];
   return (
-    <div className="exploreBox">
-      <div className="exploreHead" id="explore">
+    <div className="explore-box">
+      <div className="explore-head" id="explore">
         EXPLORE AND DISCOVER
       </div>
-      <div className="Line"></div>
-      <div className="exploreContent">
+      <div className="line"></div>
+      <div className="explore-content">
         {explore.map((item) => (
-          <div className="exploreContentTag">
+          <div className="explore-content-tag">
             <Image alt="" src={item.src} width="240px" height="168px" />
-            <div className="exploreTitle">{item.expTitle}</div>
-            <div className="exploreDescription">{item.expDesc}</div>
+            <div className="explore-title">{item.expTitle}</div>
+            <div className="explore-description">{item.expDesc}</div>
           </div>
         ))}
       </div>

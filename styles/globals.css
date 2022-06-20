@@ -34,7 +34,6 @@ a {
 .nav-element {
   display: flex;
   height: 24px;
-  font-style: normal;
   padding: 5px;
   font-weight: 700;
   font-size: 16px;
@@ -53,15 +52,15 @@ a {
   background-color: rgba(255, 255, 255, 0.8);
 }
 .home,
-.welcomeBox,
+.welcome-box,
 .welcome,
 .description-box,
 .description-head,
-.descriptionContent,
-.mainCharactersBox,
+.description-content,
+.main-characters-box,
 .episode-box,
-.latestComicBox,
-.exploreBox {
+.latest-comic-box,
+.explore-box {
   margin-left: auto;
   margin-right: auto;
 }
@@ -75,7 +74,7 @@ a {
   /* identical to box height */
   color: #000000;
 }
-.welcomeBox {
+.welcome-box {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -122,7 +121,7 @@ a {
 .description-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.descriptionContent {
+.description-content {
   margin-top: 28px;
   flex-grow: 1;
   font-weight: 400;
@@ -132,14 +131,14 @@ a {
   color: #000000;
 }
 
-.mainCharactersBox {
+.main-characters-box {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
   width: 800px;
   height: 244px;
 }
-.mainCharactersHead {
+.main-characters-head {
   height: 42px;
   margin-bottom: 0px;
 
@@ -149,13 +148,13 @@ a {
   /* identical to box height */
   color: #000000;
 }
-.mainCharactersBox .line {
+.main-characters-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.mainCharacterImages {
+.main-characters-images {
   flex-grow: 1;
 }
-.mainCharacterImages {
+.main-characters-images {
   margin-top: 28px;
   justify-content: space-between;
 }
@@ -168,7 +167,6 @@ a {
   margin-top: 80px;
 }
 .episode-head {
-  font-style: normal;
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
@@ -227,14 +225,14 @@ a {
   margin-bottom: 12px;
   color: #000000;
 }
-.latestComicBox {
+.latest-comic-box {
   display: flex;
   flex-direction: column;
   width: 800px;
   height: 314px;
   margin-top: 80px;
 }
-.latestComicHead {
+.latest-comic-head {
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
@@ -242,27 +240,25 @@ a {
 
   color: #000000;
 }
-.latestComicBox .line {
+.latest-comic-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.latestComicContent {
+.latest-comic-content {
   display: flex;
   margin-top: 28px;
   gap: 20px;
 }
-.latestComicContentImg {
+.latest-comic-content-img {
   padding: 24px;
   margin: 24px;
 }
-.latestComicTitle {
-  font-style: normal;
+.latest-comic-title {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: #000000;
 }
-.latestComicDescription {
-  font-style: normal;
+.latest-comic-description {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -270,12 +266,12 @@ a {
 
   color: #000000;
 }
-.latestComicDetails {
+.latest-comic-details {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
-.exploreBox {
+.explore-box {
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -292,24 +288,24 @@ a {
 
   color: #000000;
 }
-.exploreBox .line {
+.explore-box .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.exploreContent {
+.explore-content {
   margin-top: 28px;
   height: 249px;
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 20px;
 }
-.exploreTitle {
+.explore-title {
   text-align: center;
   font-weight: 600;
   text-align: center;
   background-color: black;
   color: #ffffff;
 }
-.exploreDescription {
+.explore-description {
   font-weight: 400;
   text-align: center;
   background-color: black;
@@ -322,23 +318,23 @@ a {
   flex-direction: column;
 }
 
-.mainCharacterImgList {
+.main-character-img-list {
   display: flex;
   flex-direction: column;
 }
 
-.mainCharacterImgList img {
+.main-character-img-list img {
   object-fit: cover;
 }
 
-.mainCharacterImgTag {
+.main-character-img-tag {
   background-color: black;
   color: white;
   width: 100%;
   text-align: center;
 }
 
-.exploreContentTag {
+.explore-content-tag {
   display: flex;
   flex-direction: column;
   width: 240px;
@@ -408,6 +404,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 20px 30px;
+  cursor: pointer;
 }
 
 .char-txt {

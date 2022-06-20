@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function WelcomeBox() {
   return (
-    <div className="welcomeBox">
+    <div className="welcome-box">
       <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
       <div className="carousal">
         <Image
