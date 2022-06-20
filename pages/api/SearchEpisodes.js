@@ -1,9 +1,9 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
-const client = new ApolloClient({
-  uri: "https://rickandmortyapi.com/graphql/",
-  cache: new InMemoryCache(),
-});
+// const client = new ApolloClient({
+//   uri: "https://rickandmortyapi.com/graphql/",
+//   cache: new InMemoryCache(),
+// });
 
 const xyz=async (req, res) => {
   const search = req.body;
@@ -20,7 +20,7 @@ const xyz=async (req, res) => {
       }     
     }
   `;
-  fetch('https://rickandmortyapi.com/graphql/', {
+  const { data } = await fetch('https://rickandmortyapi.com/graphql/', {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -28,42 +28,38 @@ const xyz=async (req, res) => {
       'Cache-Control': 'max-age=60',
     },
     body: JSON.stringify({
-      'query': queryString.replace(/\s{2,}/g, ' ')
-    }),
+      query: `
+      query getEpisodes{
+        episodes(filter: { name: "${search}" }){
+          results{
+            name
+            id
+            air_date
+            episode
+            created
+          }
+        }     
+      }
+    `
+    })
   })
-  .then(async (response) => {
-    let result = await response.json();
-    let restaurants = result.data.restaurants;
-    restaurants.forEach((restaurant) => {
-      $('#list').append(`
-        <li class="card">
-          <div class="card-body row">
-            <div class="col-sm-8">
-              <h4>${restaurant.name}<span class="stars star-${restaurant.stars}"></span></h4>
-              <div class="type">${restaurant.type}</div>
-            </div>
-            <div class="col-sm-4">
-              <a class="btn btn-outline-primary pull-right" target="_blank" href="${restaurant.map}">Direction</a>
-            </div>
-          </div>
-        </li>`);
-    });
-    $('#count').text(restaurants.length);
-  });
+  // .then(res => res.json())
+  // .then(data => console.log(data.data))
+  return data.episodes.results;
   // try {
   //   const { data } = await client.query({
   //     query: gql`
-      // query {
-      //   episodes(filter: { name: "${search}" }){
-      //     results{
-      //       name
-      //       id
-      //       air_date
-      //       episode
-      //       created
-      //     }
-      //   }     
-      // }
+  //     query {
+  //       episodes(filter: { name: "${search}" }){
+  //         results{
+  //           name
+  //           id
+  //           air_date
+  //           episode
+  //           created
+  //         }
+  //       }     
+  //     }
   //     `,
   //   });
   //   res.status(200).json({ episodes: data.episodes.results, error: null });
