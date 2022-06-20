@@ -37,12 +37,32 @@ export default function Home4(results) {
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            const results = await fetch("/api/SearchEpisodes", {
-              method: "post",
-              body: search,
+            const results = await fetch('https://rickandmortyapi.com/graphql/', {
+              method: 'POST',
+              mode: 'cors',
+              headers: {
+                'Content-Type': 'application/json',
+                // 'Cache-Control': 'max-age=60',
+              },
+              body: JSON.stringify({
+                query: `
+                query getEpisodes{
+                  episodes(filter: { name: "${search}" }){
+                    results{
+                      name
+                      id
+                      air_date
+                      episode
+                      created
+                    }
+                  }     
+                }
+              `
+              })
             });
-            const { episodes, error } = await results.json();
-            setEpisodes(episodes);
+            const data = await results.json();
+            console.log(data);
+            setEpisodes(data.data.episodes.results);
           }}
         >
           <div className="searchBar">

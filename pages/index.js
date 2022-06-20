@@ -68,7 +68,7 @@ export default function Home() {
           <div className="Line"></div>
           <div className="mainCharacterImages" style={{ display: "flex" }}>
             {characterList.map((item) => (
-              <div className="mainCharacterImgList" key={1}>
+              <div className="mainCharacterImgList" key={item[0]}>
                 <Image alt="" src={item[1]} height={140} width={140} />
                 <div className="mainCharacterImgTag">{item[0]}</div>
               </div>

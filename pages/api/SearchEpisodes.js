@@ -5,30 +5,19 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 //   cache: new InMemoryCache(),
 // });
 
-const xyz=async (req, res) => {
+let temp;
+
+const xyz=async (req, result) => {
   const search = req.body;
-  let queryString = `
-    query {
-      episodes(filter: { name: "${search}" }){
-        results{
-          name
-          id
-          air_date
-          episode
-          created
-        }
-      }     
-    }
-  `;
-  const { data } = await fetch('https://rickandmortyapi.com/graphql/', {
+  fetch('https://rickandmortyapi.com/graphql/', {
     method: 'POST',
-    mode: 'cors',
+    // mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      'Cache-Control': 'max-age=60',
+      // 'Cache-Control': 'max-age=60',
     },
     body: JSON.stringify({
-      query: `
+      'query': `
       query getEpisodes{
         episodes(filter: { name: "${search}" }){
           results{
@@ -40,12 +29,17 @@ const xyz=async (req, res) => {
           }
         }     
       }
-    `
+    `.replace(/\s{2,}/g, ' ')
     })
   })
-  // .then(res => res.json())
-  // .then(data => console.log(data.data))
-  return data.episodes.results;
+  .then(res => res.json())
+  .then((data) => {
+    console.log(data.data);
+    temp= data.data;
+    result.status(200).json({ episodes: data.episodes.results, error: null });
+  })
+  
+  // return data.episodes.results;
   // try {
   //   const { data } = await client.query({
   //     query: gql`
