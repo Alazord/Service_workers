@@ -410,6 +410,7 @@ a {
   align-self: center;
   border-radius: 10px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .charItem img {
