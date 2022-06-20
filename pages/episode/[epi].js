@@ -40,26 +40,30 @@ export default function MyEpisode(results) {
 
 export async function getServerSideProps(context) {
   const id = context.params.epi;
-  const client = new ApolloClient({
-    uri: "https://rickandmortyapi.com/graphql/",
-    cache: new InMemoryCache(),
-  });
-  const { data } = await client.query({
-    query: gql`
-      query {
-        episode(id:${id}){
+  const results = await fetch('https://rickandmortyapi.com/graphql/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Cache-Control': 'max-age=60',
+      },
+      body: JSON.stringify({
+        query: `
+        query getEpisodes{
+          episode(id:${id}){
             name
             air_date
             episode
             created
-        }     
-      }
-      `,
-  });
-
+          }    
+        }
+      `
+      })
+    });
+    const data = await results.json();
   return {
     props: {
-      episode: data.episode,
+      episode: data.data.episode,
     },
   };
 }

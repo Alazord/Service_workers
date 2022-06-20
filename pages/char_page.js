@@ -37,12 +37,51 @@ export default function Home2(results) {
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            const results = await fetch("/api/SearchCharacters", {
-              method: "post",
-              body: search,
-            });
-            const { characters, error } = await results.json();
-            setCharacters(characters);
+            try{
+              const results = await fetch('https://rickandmortyapi.com/graphql/', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json',
+                  // 'Cache-Control': 'max-age=60',
+                },
+                body: JSON.stringify({
+                  query: `
+                  query getCharacters{
+                    characters(filter: { name: "${search}" }) {
+                      info {
+                        count
+                      }
+                      results {
+                        name
+                        id
+                        location {
+                          name
+                          id
+                        }
+                        image
+                        origin {
+                          name
+                          id
+                        }
+                        episode {
+                          id
+                          episode
+                          air_date
+                        }
+                      }
+                    }
+                  }
+                `
+                })
+              });
+              const data = await results.json();
+              console.log(data);
+              setCharacters(data.data.characters.results);
+            } catch(error){
+              alert("Sorry, you are offline. New searches cannot be requested");
+              console.log("error: ", error[0]);
+            }
           }}
         >
           <div className="search-bar">
@@ -79,44 +118,50 @@ export default function Home2(results) {
 }
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: "https://rickandmortyapi.com/graphql/",
-    cache: new InMemoryCache(),
-  });
-  const { data } = await client.query({
-    query: gql`
-      query {
-        characters(filter: {}) {
-          info {
-            count
-            pages
-          }
-          results {
-            name
-            id
-            location {
+  const results = await fetch('https://rickandmortyapi.com/graphql/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Cache-Control': 'max-age=60',
+      },
+      body: JSON.stringify({
+        query: `
+        query getCharacters{
+          characters(filter: {}) {
+            info {
+              count
+              pages
+            }
+            results {
               name
               id
-            }
-            image
-            origin {
-              name
-              id
-            }
-            episode {
-              id
-              episode
-              air_date
+              location {
+                name
+                id
+              }
+              image
+              origin {
+                name
+                id
+              }
+              episode {
+                id
+                episode
+                air_date
+              }
             }
           }
         }
-      }
-    `,
-  });
+      `
+      })
+    });
+    const data = await results.json();
+    console.log(data);
 
   return {
     props: {
-      characters: data.characters.results,
+      characters: data.data.characters.results,
     },
   };
 }

@@ -42,32 +42,36 @@ export default function MyChar(results) {
 
 export async function getServerSideProps(context) {
   const id = context.params.char;
-  const client = new ApolloClient({
-    uri: "https://rickandmortyapi.com/graphql/",
-    cache: new InMemoryCache(),
-  });
-  const { data } = await client.query({
-    query: gql`
-      query {
-        character(id:${id}){
-          image
-          name
-          status
-          species
-          type
-          gender
-          created
-          episode{
-            episode
-          }
-          }
-      }
-      `,
-  });
-
+  const results = await fetch('https://rickandmortyapi.com/graphql/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Cache-Control': 'max-age=60',
+      },
+      body: JSON.stringify({
+        query: `
+        query getCharacters{
+          character(id:${id}){
+            image
+            name
+            status
+            species
+            type
+            gender
+            created
+            episode{
+              episode
+            }
+          } 
+        }
+      `
+      })
+    });
+    const data = await results.json();
   return {
     props: {
-      character: data.character,
+      character: data.data.character,
     },
   };
 }

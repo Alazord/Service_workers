@@ -37,12 +37,37 @@ export default function Home4(results) {
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            const results = await fetch("/api/SearchEpisodes", {
-              method: "post",
-              body: search,
-            });
-            const { episodes, error } = await results.json();
-            setEpisodes(episodes);
+            try{
+              const results = await fetch('https://rickandmortyapi.com/graphql/', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json',
+                  // 'Cache-Control': 'max-age=60',
+                },
+                body: JSON.stringify({
+                  query: `
+                  query getEpisodes{
+                    episodes(filter: { name: "${search}" }){
+                      results{
+                        name
+                        id
+                        air_date
+                        episode
+                        created
+                      }
+                    }     
+                  }
+                `
+                })
+              });
+              const data = await results.json();
+              console.log(data);
+              setEpisodes(data.data.episodes.results);
+            } catch(error){
+              alert("Sorry, you are offline. New searches cannot be requested");
+              console.log("error: ", error[0]);
+            }
           }}
         >
           <div className="search-bar">
@@ -79,29 +104,36 @@ export default function Home4(results) {
 }
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: "https://rickandmortyapi.com/graphql/",
-    cache: new InMemoryCache(),
-  });
-  const { data } = await client.query({
-    query: gql`
-      query {
-        episodes(filter: null) {
-          results {
-            name
-            id
-            air_date
-            episode
-            created
-          }
+
+    const results = await fetch('https://rickandmortyapi.com/graphql/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Cache-Control': 'max-age=60',
+      },
+      body: JSON.stringify({
+        query: `
+        query getEpisodes{
+          episodes(filter: null) {
+            results {
+              name
+              id
+              air_date
+              episode
+              created
+            }
+          } 
         }
-      }
-    `,
-  });
+      `
+      })
+    });
+    const data = await results.json();
+    console.log(data);
 
   return {
     props: {
-      episodes: data.episodes.results,
+      episodes: data.data.episodes.results,
     },
   };
 }
