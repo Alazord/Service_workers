@@ -18,7 +18,8 @@
     "next-pwa": "^5.5.4",
     "npm": "^8.12.1",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "sharp": "^0.30.6"
   },
   "devDependencies": {
     "eslint": "8.17.0",
