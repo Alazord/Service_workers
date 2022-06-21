@@ -390,28 +390,42 @@ a {
 
 .char-item {
   max-width: 300px;
+
+  min-width: 100%;
+  min-height: 100%;
   background-color: rgba(255, 255, 255, 0.7);
-  align-self: center;
+  /* align-self: center;
+  align-items: center; */
+  border:2px solid red;
   border-radius: 10px;
-  margin: 0 auto;
+  /* margin: 0 20px; */
   cursor: pointer;
+}
+
+.char-subitem {
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .char-item img {
   border-radius: 10px;
+  /* align-items: center; */
 }
 
 .char-ind {
+  border:2px solid red;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: 20px 30px;
+  margin: 20px auto;
   cursor: pointer;
-}
-
-.char-txt {
   text-align: center;
   overflow-wrap: break-word;
 }
+
+/* .char-txt {
+  text-align: center;
+  overflow-wrap: break-word; */
+/* } */
 #heading {
   background-color: lightyellow;
   border-radius: 10px;

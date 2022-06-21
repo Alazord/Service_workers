@@ -7,9 +7,9 @@ const Character = ({ characters }) => {
     <div className="char-ind">
       {characters.map((character) => {
         return (
-          <div key={character.id}>
+          <div className="char-item" key={character.id}>
             <Link href={`/character/${character.id}`}>
-              <div className="char-item">
+              <div className="char-subitem">
                 <Image alt="" src={character.image} width={300} height={300} />
                 <h4 className="char-txt">{character.name}</h4>
                 <h4 className="char-txt">Origin: {character.origin.name}</h4>
