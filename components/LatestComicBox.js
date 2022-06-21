@@ -16,7 +16,7 @@ export default function LatestComicBox() {
           <div className="latest-comic-title">
             Rick And Morty Presents: The Hotel Immortal
           </div>
-          <div className="latestComicDescription">
+          <div className="latest-comic-description">
             <p>
               Murder at the Hotel Immortal?! Impossible, you say? Not so! Find
               out who done stabbed whom in this whodunnit issue of Rick and
