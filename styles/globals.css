@@ -407,8 +407,8 @@ a {
 }
 
 .char-subitem {
-  padding-top: 250px;
-  padding-bottom: 50px;
+  padding-top: 300px;
+  /* padding-bottom: 50px; */
   min-width: 100%;
   min-height: 100%;
 }
@@ -437,6 +437,7 @@ a {
   color:white;
   max-width: 329px;
   /* max-width: 100%; */
+  font-size: larger;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
