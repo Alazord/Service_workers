@@ -2,55 +2,44 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox
 importScripts('https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js');
 importScripts('https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js');
 
-var CACHE_NAME = 'main-cache-v1';
-var urlsToCache = [
-  // '/index.html',
-];
+import { skipWaiting, clientsClaim } from 'workbox-core';
+import { ExpirationPlugin } from 'workbox-expiration';
+import { NetworkOnly, NetworkFirst, CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { registerRoute, setDefaultHandler, setCatchHandler } from 'workbox-routing';
+import { matchPrecache, precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
 
-// Init indexedDB using idb-keyval, https://github.com/jakearchibald/idb-keyval
+skipWaiting();
+clientsClaim();
+
+const WB_MANIFEST = self.__WB_MANIFEST;
+WB_MANIFEST.push({
+  url: '/fallback',
+  revision: '1234567890',
+});
+precacheAndRoute(WB_MANIFEST);
+cleanupOutdatedCaches();
+
 const store = new idbKeyval.Store('GraphQL-Cache', 'PostResponses');
 
 if (workbox) {
-  console.log(`Yay! Workbox is loaded 🎉`);
+  console.log(`Workbox is loaded`);
 } else {
-  console.log(`Boo! Workbox didn't load 😬`);
+  console.log(`Workbox didn't load`);
 }
 
-// Workbox with custom handler to use IndexedDB for cache.
 workbox.routing.registerRoute(
   new RegExp('https://rickandmortyapi.com/graphql(/)?'),
-  // Uncomment below to see the error thrown from Cache Storage API.
-  //workbox.strategies.staleWhileRevalidate(),
-  async ({
-    event
-  }) => {
+  async ({event}) => {
     return staleWhileRevalidate(event);
   },
   'POST'
 );
 
-/*
-// When installing SW.
-self.addEventListener('install', (event) => {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-    .then((cache) => {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
-    })
-  );
-});
-*/
-
-// Return cached response when possible, and fetch new results from server in
-// the background and update the cache.
+// Return cached response when possible, and fetch new results from server in the background and update the cache.
 self.addEventListener('fetch', async (event) => {
   if (event.request.method === 'POST') {
     event.respondWith(staleWhileRevalidate(event));
   }
-
-  // TODO: Handles other types of requests.
 });
 
 async function staleWhileRevalidate(event) {
@@ -62,7 +51,7 @@ async function staleWhileRevalidate(event) {
       return response;
     })
     .catch((err) => {
-      console.error(err);
+      // console.error(err);
     });
   return cachedResponse ? Promise.resolve(cachedResponse) : fetchPromise;
 }
@@ -106,11 +95,10 @@ async function getCache(request) {
     let cacheControl = request.headers.get('Cache-Control');
     let maxAge = cacheControl ? parseInt(cacheControl.split('=')[1]) : 3600;
     if (Date.now() - data.timestamp > maxAge * 1000) {
-      console.log(`Cache expired. Load from API endpoint.`);
+      // console.log(`Cache expired. Load from API endpoint.`);
       return null;
     }
-
-    console.log(`Load response from cache.`);
+    // console.log(`Load response from cache.`);
     return new Response(JSON.stringify(data.response.body), data.response);
   } catch (err) {
     return null;
@@ -122,24 +110,6 @@ async function getPostKey(request) {
   return JSON.stringify(body);
 }
 
-
-import { skipWaiting, clientsClaim } from 'workbox-core';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { NetworkOnly, NetworkFirst, CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
-import { registerRoute, setDefaultHandler, setCatchHandler } from 'workbox-routing';
-import { matchPrecache, precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
-
-skipWaiting();
-clientsClaim();
-
-const WB_MANIFEST = self.__WB_MANIFEST;
-WB_MANIFEST.push({
-  url: '/fallback',
-  revision: '1234567890',
-});
-precacheAndRoute(WB_MANIFEST);
-
-cleanupOutdatedCaches();
 registerRoute(
   '/',
   new NetworkFirst({

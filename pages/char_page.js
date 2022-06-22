@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
+import Router from "next/router";
 
 import Character from "../components/Character";
 
