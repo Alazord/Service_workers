@@ -46,7 +46,7 @@ export default function ExploreBox() {
       <div className="line"></div>
       <div className="explore-content">
         {explore.map((item) => (
-          <div className="explore-content-tag">
+          <div key={item.expTitle} className="explore-content-tag">
             <Image alt="" src={item.src} width="240px" height="168px" />
             <div className="explore-title">{item.expTitle}</div>
             <div className="explore-description">{item.expDesc}</div>

@@ -1,12 +1,33 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
-import { Link} from "@chakra-ui/react";
+import { Link } from "@chakra-ui/react";
+import Router from "next/router";
 
 import Character from "../components/Character";
 
 export default function Home2(results) {
+  function hasNetwork(online) {
+    console.log(online);
+    const element = document.querySelector(".nav-container");
+    if (online) {
+      element.style.backgroundColor = "#ff01c1";
+    } else {
+      element.style.backgroundColor = "grey";
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      hasNetwork(navigator.onLine);
+    });
+    window.addEventListener("online", () => {
+      hasNetwork(true);
+    });
+    window.addEventListener("offline", () => {
+      hasNetwork(false);
+    });
+  });
   const intialState = results;
   const [search, setSearch] = useState("");
   const [characters, setCharacters] = useState(intialState.characters);
@@ -37,16 +58,18 @@ export default function Home2(results) {
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            try{
-              const results = await fetch('https://rickandmortyapi.com/graphql/', {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                  'Content-Type': 'application/json',
-                  // 'Cache-Control': 'max-age=60',
-                },
-                body: JSON.stringify({
-                  query: `
+            try {
+              const results = await fetch(
+                "https://rickandmortyapi.com/graphql/",
+                {
+                  method: "POST",
+                  mode: "cors",
+                  headers: {
+                    "Content-Type": "application/json",
+                    // 'Cache-Control': 'max-age=3600',
+                  },
+                  body: JSON.stringify({
+                    query: `
                   query getCharacters{
                     characters(filter: { name: "${search}" }) {
                       info {
@@ -72,31 +95,36 @@ export default function Home2(results) {
                       }
                     }
                   }
-                `
-                })
-              });
+                `,
+                  }),
+                }
+              );
               const data = await results.json();
               console.log(data);
               setCharacters(data.data.characters.results);
-            } catch(error){
-              alert("Sorry, you are offline. New searches cannot be requested");
-              console.log("error: ", error[0]);
+            } catch (error) {
+              Router.push("/fallback");
+              // alert("Sorry, you are offline. New searches cannot be requested");
+              // console.log("error: ", error[0]);
             }
           }}
         >
           <div className="search-bar">
-            <input className="search-bar-inpt"
+            <input
+              className="search-bar-inpt"
               placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button className="search-btn"
+            <button
+              className="search-btn"
               disabled={search === ""}
               type="submit"
             >
               Search
             </button>
-            <button className="reset-btn"
+            <button
+              className="reset-btn"
               disabled={search === ""}
               onClick={async () => {
                 setSearch("");
@@ -118,15 +146,15 @@ export default function Home2(results) {
 }
 
 export async function getStaticProps() {
-  const results = await fetch('https://rickandmortyapi.com/graphql/', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Cache-Control': 'max-age=60',
-      },
-      body: JSON.stringify({
-        query: `
+  const results = await fetch("https://rickandmortyapi.com/graphql/", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Cache-Control': 'max-age=60',
+    },
+    body: JSON.stringify({
+      query: `
         query getCharacters{
           characters(filter: {}) {
             info {
@@ -153,11 +181,11 @@ export async function getStaticProps() {
             }
           }
         }
-      `
-      })
-    });
-    const data = await results.json();
-    console.log(data);
+      `,
+    }),
+  });
+  const data = await results.json();
+  console.log(data);
 
   return {
     props: {

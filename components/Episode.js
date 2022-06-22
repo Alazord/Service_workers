@@ -13,7 +13,7 @@ const Episode = ({ episodes }) => {
                   {episode.name}
                 </h2>
                 <h4 className="char-txt">Episode: {episode.episode}</h4>
-                <h4 className="char-txt">Name: {episode.name}</h4>
+                <h4 className="char-txt">Air-Date: {episode.air_date}</h4>
               </div>
             </Link>
           </div>
