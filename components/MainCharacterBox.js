@@ -14,7 +14,7 @@ export default function MainCharacterBox() {
       <div className="main-characters-images" style={{ display: "flex" }}>
         {characterList.map((item) => (
           <div className="main-character-img-list" key={1}>
-            <Image alt="" src={item[1]} height={140} width={140} />
+            <Image alt="Main Character" src={item[1]} height={140} width={140} />
             <div className="main-character-img-tag">{item[0]}</div>
           </div>
         ))}

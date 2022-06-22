@@ -20,11 +20,9 @@ export default function MyEpisode(results) {
         Details of the Episode you clicked on:
       </h1>
       <div className="episode-card-items">
-        <ul
-          style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
-        >
-          {episodeData.map((item, index) => (
-            <li key={`item${index}`}>
+        <ul className="character-card-list">
+          {episodeData.map((item, id) => (
+            <li key={`item${id}`}>
               <b>{item[0]}</b>
               {item[1]}
             </li>
@@ -32,7 +30,7 @@ export default function MyEpisode(results) {
         </ul>
       </div>
       <button className="episode-card-return">
-        <Link href={"/episode_page"}>Return</Link>
+        <Link href={"/episodePage"}>Return</Link>
       </button>
     </div>
   );

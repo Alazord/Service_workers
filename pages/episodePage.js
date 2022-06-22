@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
@@ -34,9 +34,49 @@ export default function Home4(results) {
   const optionList = [
     ["RICK AND MORTY WIKI", "/"],
     ["EXPLORE", "/#explore"],
-    ["EPISODES", "/episode_page"],
-    ["CHARACTERS", "/char_page"],
+    ["EPISODES", "/episodePage"],
+    ["CHARACTERS", "/charPage"],
   ];
+
+  const memoizedCallback = useCallback(
+    async (event) => {
+      event.preventDefault();
+      try {
+        const results = await fetch(
+          "https://rickandmortyapi.com/graphql/",
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              // 'Cache-Control': 'max-age=3600',
+            },
+            body: JSON.stringify({
+              query: `
+            query getEpisodes{
+              episodes(filter: { name: "${search}" }){
+                results{
+                  name
+                  id
+                  air_date
+                  episode
+                  created
+                }
+              }     
+            }
+          `,
+            }),
+          }
+        );
+        const data = await results.json();
+        console.log(data);
+        setEpisodes(data.data.episodes.results);
+      } catch (error) {
+        Router.push("/fallback");
+      }
+    },
+    [search],
+  );
 
   return (
     <div className="nav">
@@ -56,44 +96,7 @@ export default function Home4(results) {
           <Link href="/">Rick and Morty</Link>
         </h1>
         <form
-          onSubmit={async (event) => {
-            event.preventDefault();
-            try {
-              const results = await fetch(
-                "https://rickandmortyapi.com/graphql/",
-                {
-                  method: "POST",
-                  mode: "cors",
-                  headers: {
-                    "Content-Type": "application/json",
-                    // 'Cache-Control': 'max-age=3600',
-                  },
-                  body: JSON.stringify({
-                    query: `
-                  query getEpisodes{
-                    episodes(filter: { name: "${search}" }){
-                      results{
-                        name
-                        id
-                        air_date
-                        episode
-                        created
-                      }
-                    }     
-                  }
-                `,
-                  }),
-                }
-              );
-              const data = await results.json();
-              console.log(data);
-              setEpisodes(data.data.episodes.results);
-            } catch (error) {
-              Router.push("/fallback");
-              // alert("Sorry, you are offline. New searches cannot be requested");
-              // console.log("error: ", error[0]);
-            }
-          }}
+          onSubmit={memoizedCallback}
         >
           <div className="search-bar">
             <input

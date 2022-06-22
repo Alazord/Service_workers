@@ -7,7 +7,7 @@ export default function LatestComicBox() {
       <div className="latest-comic-content">
         <Image
           className="latest-comic-content-img"
-          alt=""
+          alt="Latest Comic"
           src="/images/comic2.jpeg"
           width="1000%"
           height="300%"

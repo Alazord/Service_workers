@@ -1,11 +1,12 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
 import Router from "next/router";
 
 import Character from "../components/Character";
+import { memo } from "react";
 
 export default function Home2(results) {
   function hasNetwork(online) {
@@ -34,9 +35,63 @@ export default function Home2(results) {
   const optionList = [
     ["RICK AND MORTY WIKI", "/"],
     ["EXPLORE", "/#explore"],
-    ["EPISODES", "/episode_page"],
-    ["CHARACTERS", "/char_page"],
+    ["EPISODES", "/episodePage"],
+    ["CHARACTERS", "/charPage"],
   ];
+
+  const memoizedCallback = useCallback(
+    async (event) => {
+      event.preventDefault();
+      try {
+        const results = await fetch(
+          "https://rickandmortyapi.com/graphql/",
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              // 'Cache-Control': 'max-age=3600',
+            },
+            body: JSON.stringify({
+              query: `
+            query getCharacters{
+              characters(filter: { name: "${search}" }) {
+                info {
+                  count
+                }
+                results {
+                  name
+                  id
+                  location {
+                    name
+                    id
+                  }
+                  image
+                  origin {
+                    name
+                    id
+                  }
+                  episode {
+                    id
+                    episode
+                    air_date
+                  }
+                }
+              }
+            }
+          `,
+            }),
+          }
+        );
+        const data = await results.json();
+        console.log(data);
+        setCharacters(data.data.characters.results);
+      } catch (error) {
+        Router.push("/fallback");
+      }
+    },
+    [search]
+  );
 
   return (
     <div className="nav">
@@ -56,58 +111,7 @@ export default function Home2(results) {
           <Link href="/">Rick and Morty</Link>
         </h1>
         <form
-          onSubmit={async (event) => {
-            event.preventDefault();
-            try {
-              const results = await fetch(
-                "https://rickandmortyapi.com/graphql/",
-                {
-                  method: "POST",
-                  mode: "cors",
-                  headers: {
-                    "Content-Type": "application/json",
-                    // 'Cache-Control': 'max-age=3600',
-                  },
-                  body: JSON.stringify({
-                    query: `
-                  query getCharacters{
-                    characters(filter: { name: "${search}" }) {
-                      info {
-                        count
-                      }
-                      results {
-                        name
-                        id
-                        location {
-                          name
-                          id
-                        }
-                        image
-                        origin {
-                          name
-                          id
-                        }
-                        episode {
-                          id
-                          episode
-                          air_date
-                        }
-                      }
-                    }
-                  }
-                `,
-                  }),
-                }
-              );
-              const data = await results.json();
-              console.log(data);
-              setCharacters(data.data.characters.results);
-            } catch (error) {
-              Router.push("/fallback");
-              // alert("Sorry, you are offline. New searches cannot be requested");
-              // console.log("error: ", error[0]);
-            }
-          }}
+          onSubmit={memoizedCallback}
         >
           <div className="search-bar">
             <input

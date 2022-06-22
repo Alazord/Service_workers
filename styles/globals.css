@@ -443,6 +443,12 @@ a {
   border-radius: 5px;
 }
 
+.character-card-list {
+  list-style: none;
+  align-items: center;
+  font-size: 21px;
+}
+
 .character-card-items {
   align-items: center;
   padding: 10px;

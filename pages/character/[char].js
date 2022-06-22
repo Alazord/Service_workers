@@ -21,12 +21,10 @@ export default function MyChar(results) {
         Details of the character you clicked on:
       </h1>
       <div className="character-card-items">
-        <Image alt="" src={character.image} width={300} height={300} />
-        <ul
-          style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
-        >
-          {characterData.map((item, index) => (
-            <li key={`item${index}`}>
+        <Image alt="Character Image" src={character.image} width={300} height={300} />
+        <ul className="character-card-list">
+          {characterData.map((item, id) => (
+            <li key={`item${id}`}>
               <b>{item[0]}</b>
               {item[1]}
             </li>
@@ -34,7 +32,7 @@ export default function MyChar(results) {
         </ul>
       </div>
       <button className="character-card-return">
-        <Link href={"/char_page"}>Return</Link>
+        <Link href={"/charPage"}>Return</Link>
       </button>
     </div>
   );

@@ -5,7 +5,7 @@ export default function WelcomeBox() {
       <div className="welcome">WELCOME TO RICK AND MORTY WIKI!</div>
       <div className="carousal">
         <Image
-          alt=""
+          alt="Rick and Morty"
           src="/images/rickMortyHome.jpeg"
           width="800px"
           height="400px"
