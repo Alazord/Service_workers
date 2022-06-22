@@ -65,7 +65,7 @@ export default function Home2(results) {
                   mode: "cors",
                   headers: {
                     "Content-Type": "application/json",
-                    // 'Cache-Control': 'max-age=60',
+                    // 'Cache-Control': 'max-age=3600',
                   },
                   body: JSON.stringify({
                     query: `
@@ -102,8 +102,9 @@ export default function Home2(results) {
               console.log(data);
               setCharacters(data.data.characters.results);
             } catch (error) {
-              alert("Sorry, you are offline. New searches cannot be requested");
-              console.log("error: ", error[0]);
+              Router.push("/fallback");
+              // alert("Sorry, you are offline. New searches cannot be requested");
+              // console.log("error: ", error[0]);
             }
           }}
         >

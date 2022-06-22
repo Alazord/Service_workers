@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
+import Router from "next/router";
 
 import Episode from "../components/Episode";
 
@@ -65,7 +66,7 @@ export default function Home4(results) {
                   mode: "cors",
                   headers: {
                     "Content-Type": "application/json",
-                    // 'Cache-Control': 'max-age=60',
+                    // 'Cache-Control': 'max-age=3600',
                   },
                   body: JSON.stringify({
                     query: `
@@ -88,8 +89,9 @@ export default function Home4(results) {
               console.log(data);
               setEpisodes(data.data.episodes.results);
             } catch (error) {
-              alert("Sorry, you are offline. New searches cannot be requested");
-              console.log("error: ", error[0]);
+              Router.push("/fallback");
+              // alert("Sorry, you are offline. New searches cannot be requested");
+              // console.log("error: ", error[0]);
             }
           }}
         >
