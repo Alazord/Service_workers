@@ -1,5 +1,12 @@
 import "../styles/globals.css";
 import { useEffect } from "react";
+// import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "https://rickandmortyapi.com/graphql/",
+  cache: new InMemoryCache(),
+});
 
 function MyApp({ Component, pageProps }) {
   // if ('serviceWorker' in navigator) {
@@ -29,7 +36,11 @@ function MyApp({ Component, pageProps }) {
   //     });
   //   }
   // }, [])
-  return <Component {...pageProps} />;
+  return (
+    <ApolloProvider client={client}>
+      <Component {...pageProps} />
+    </ApolloProvider>
+  );
 }
 
 export default MyApp;

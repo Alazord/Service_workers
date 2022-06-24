@@ -3,50 +3,68 @@ import { useState, useEffect, useCallback } from "react";
 import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
 import Router from "next/router";
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { useQuery,gql } from "@apollo/client";
 
 import Episode from "../components/Episode";
 
-const queryClient = new QueryClient();
+const EPISODE_LIST= gql`
+  query getEpisodes($name: String!){
+    episodes(filter: { name: $name }) {
+        results {
+        name
+        id
+        air_date
+        episode
+        created
+        }
+    } 
+  }
+`
 
 const Episode_List = () => {
-    const [episodes,setEpisodes]=useState([]);
+  
+    // const [episodes,setEpisodes]=useState([]);
     const [search, setSearch] = useState("");
-    const { loading, error, data, refetch } = useQuery('Episodes', async () => {
-        try{
-            const res = await fetch("https://rickandmortyapi.com/graphql/", {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                "Content-Type": "application/json",
-                // 'Cache-Control': 'max-age=60',
-                },
-                body: JSON.stringify({
-                query: `
-                    query getEpisodes{
-                    episodes(filter: { name: "${search}" }) {
-                        results {
-                        name
-                        id
-                        air_date
-                        episode
-                        created
-                        }
-                    } 
-                    }
-                `,
-                }),
-            });
-            
-            const res2= await res.json();
-            // console.log("abc",res2.data.episodes.results);
-            setEpisodes(res2.data.episodes.results);
-            return res2.data.episodes.results;
-        }
-        catch(error){
-                Router.push("/fallback");
-        }
+    const { loading, error, data, refetch} = useQuery(EPISODE_LIST, {variables: {name: search}});
+    console.log(data);
+    useEffect(() => {
+      refetch({name:search});
     });
+    // const { loading, error, data, refetch } = useQuery('Episodes', async () => {
+    //     try{
+    //         const res = await fetch("https://rickandmortyapi.com/graphql/", {
+    //             method: "POST",
+    //             mode: "cors",
+    //             headers: {
+    //             "Content-Type": "application/json",
+    //             // 'Cache-Control': 'max-age=60',
+    //             },
+    //             body: JSON.stringify({
+    //             query: `
+                    // query getEpisodes{
+                    // episodes(filter: { name: "${search}" }) {
+                    //     results {
+                    //     name
+                    //     id
+                    //     air_date
+                    //     episode
+                    //     created
+                    //     }
+                    // } 
+                    // }
+    //             `,
+    //             }),
+    //         });
+            
+    //         const res2= await res.json();
+    //         // console.log("abc",res2.data.episodes.results);
+    //         setEpisodes(res2.data.episodes.results);
+    //         return res2.data.episodes.results;
+    //     }
+    //     catch(error){
+    //             Router.push("/fallback");
+    //     }
+    // });
     const optionList = [
     ["RICK AND MORTY WIKI", "/"],
     ["EXPLORE", "/#explore"],
@@ -74,7 +92,7 @@ const Episode_List = () => {
         <form
           onSubmit={async (event) => {
               event.preventDefault();
-              refetch();
+              // refetch({name:{search}});
           }}
         >
           <div className="search-bar">
@@ -95,10 +113,10 @@ const Episode_List = () => {
             </button>
             <button
               className="reset-btn"
-              disabled={search === ""}
-              onClick={async () => {
-                await setSearch("");
-                refetch();
+              // disabled={search === ""}
+              onClick={()=>{
+                setSearch("");
+                refetch({name:""});
               }}
             >
               Reset
@@ -106,10 +124,11 @@ const Episode_List = () => {
           </div>
         </form>
         <div className="items">
-             {loading?
+          {data?<Episode episodes={data.episodes.results} />:<div> Loading...</div>}
+             {/* {loading?
             <div> Loading...</div>:
             error?<div> Error...</div>:
-           <Episode episodes={episodes} />}
+           <Episode episodes={data.episodes.results} />} */}
         </div>
 
         <footer className={styles.footer}>&copy;</footer>
@@ -141,8 +160,8 @@ export default function Home4() {
   });
 
   return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
+    // <QueryClientProvider client={queryClient} contextSharing={true}>
       <Episode_List />
-    </QueryClientProvider>
+    // </QueryClientProvider>
   );
 }
