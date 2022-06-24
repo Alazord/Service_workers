@@ -7,6 +7,7 @@ import { ExpirationPlugin } from 'workbox-expiration';
 import { NetworkOnly, NetworkFirst, CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import { registerRoute, setDefaultHandler, setCatchHandler } from 'workbox-routing';
 import { matchPrecache, precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
+import { ProvidedRequiredArgumentsOnDirectivesRule } from 'graphql/validation/rules/ProvidedRequiredArgumentsRule';
 
 skipWaiting();
 clientsClaim();
@@ -54,6 +55,57 @@ async function staleWhileRevalidate(event) {
       // console.error(err);
     });
   return cachedResponse ? Promise.resolve(cachedResponse) : fetchPromise;
+}
+
+async function cacheOnly(event) {
+  let promise = null;
+  let cachedResponse = await getCache(event.request.clone());
+  return  Promise.resolve(cachedResponse);
+}
+
+async function networkOnly(event) {
+  let promise = null;
+  let fetchPromise = fetch(event.request.clone())
+    .then((response) => {
+      setCache(event.request.clone(), response.clone());
+      return response;
+    })
+    .catch((err) => {
+      // console.error(err);
+    });
+  return fetchPromise;
+}
+
+async function cacheFirst(event) {
+  let promise = null;
+  let cachedResponse = await getCache(event.request.clone());
+  if(cachedResponse){
+    return Promise.resolve(cachedResponse);
+  }
+  let fetchPromise = fetch(event.request.clone())
+    .then((response) => {
+      setCache(event.request.clone(), response.clone());
+      return response;
+    })
+    .catch((err) => {
+      // console.error(err);
+    });
+  return fetchPromise;
+}
+
+async function networkFirst(event) {
+  let promise = null;
+  let cachedResponse = await getCache(event.request.clone());
+  let fetchPromise = fetch(event.request.clone())
+    .then((response) => {
+      setCache(event.request.clone(), response.clone());
+      return response;
+    })
+    .catch((err) => {
+      // console.error(err);
+      cachedResponse?Promise.resolve(cachedResponse):null;
+    });
+  return fetchPromise;
 }
 
 async function serializeResponse(response) {
