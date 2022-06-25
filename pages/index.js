@@ -1,28 +1,26 @@
 import Head from "next/head";
-import Navbar from "./navBar";
-import MainContent from "../components/MainContent.js";
+import Navbar from "../components/navBar/navBar";
+import MainContent from "../components/mainContent/mainContent";
 import { useEffect } from "react";
 
 export default function Home() {
-  function hasNetwork(online) {
-    console.log(online);
+  useEffect(() => {
+    const episodes = document.querySelectorAll(".nav-element");
+    episodes[0].style.backgroundColor = "lightblue";
+
     const element = document.querySelector(".nav-container");
-    if (online) {
+    const bg = document.querySelector("body");
+    if (navigator.onLine) {
       element.style.backgroundColor = "#ff01c1";
+      bg.style.backgroundImage = `url("/images/Background.png")`;
     } else {
       element.style.backgroundColor = "grey";
+      bg.style.backgroundImage = "none";
+      bg.style.backgroundColor = "#D3D3D3";
     }
-  }
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      hasNetwork(navigator.onLine);
-    });
-    window.addEventListener("online", () => {
-      hasNetwork(true);
-    });
-    window.addEventListener("offline", () => {
-      hasNetwork(false);
-    });
+    return () => {
+      episodes[0].style.backgroundColor = "none";
+    };
   });
 
   return (

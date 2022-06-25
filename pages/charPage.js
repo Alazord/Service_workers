@@ -5,29 +5,27 @@ import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
 import Router from "next/router";
 
-import Character from "../components/Character";
+import Character from "../components/character/character";
 import { memo } from "react";
 
 export default function Home2(results) {
-  function hasNetwork(online) {
-    console.log(online);
+  useEffect(() => {
+    const episodes = document.querySelectorAll(".nav-element");
+    episodes[3].style.backgroundColor = "lightblue";
+
     const element = document.querySelector(".nav-container");
-    if (online) {
+    const bg = document.querySelector("body");
+    if (navigator.onLine) {
       element.style.backgroundColor = "#ff01c1";
+      bg.style.backgroundImage = `url("/images/Background.png")`;
     } else {
       element.style.backgroundColor = "grey";
+      bg.style.backgroundImage = "none";
+      bg.style.backgroundColor = "#D3D3D3";
     }
-  }
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      hasNetwork(navigator.onLine);
-    });
-    window.addEventListener("online", () => {
-      hasNetwork(true);
-    });
-    window.addEventListener("offline", () => {
-      hasNetwork(false);
-    });
+    return () => {
+      episodes[3].style.backgroundColor = "none";
+    };
   });
   const intialState = results;
   const [search, setSearch] = useState("");
@@ -43,17 +41,15 @@ export default function Home2(results) {
     async (event) => {
       event.preventDefault();
       try {
-        const results = await fetch(
-          "https://rickandmortyapi.com/graphql/",
-          {
-            method: "POST",
-            mode: "cors",
-            headers: {
-              "Content-Type": "application/json",
-              // 'Cache-Control': 'max-age=3600',
-            },
-            body: JSON.stringify({
-              query: `
+        const results = await fetch("https://rickandmortyapi.com/graphql/", {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            // 'Cache-Control': 'max-age=3600',
+          },
+          body: JSON.stringify({
+            query: `
             query getCharacters{
               characters(filter: { name: "${search}" }) {
                 info {
@@ -80,9 +76,8 @@ export default function Home2(results) {
               }
             }
           `,
-            }),
-          }
-        );
+          }),
+        });
         const data = await results.json();
         console.log(data);
         setCharacters(data.data.characters.results);
@@ -110,9 +105,7 @@ export default function Home2(results) {
         <h1 className="page-heading">
           <Link href="/">Rick and Morty</Link>
         </h1>
-        <form
-          onSubmit={memoizedCallback}
-        >
+        <form onSubmit={memoizedCallback}>
           <div className="search-bar">
             <input
               className="search-bar-inpt"

@@ -1,9 +1,11 @@
+import styles from "./descriptionBox.module.css";
+
 export default function DescriptionBox() {
   return (
-    <div className="description-box">
-      <div className="description-head">DESCRIPTION</div>
-      <div className="line"></div>
-      <div className="description-content">
+    <div className={styles["description-box"]}>
+      <div className={styles["description-head"]}>DESCRIPTION</div>
+      <div className={styles["line"]}></div>
+      <div className={styles["description-content"]}>
         <p>
           There are some slight differences between earlier fake memory of Rick,
           in which his Diane and Beth died, and what really happened. In the

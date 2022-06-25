@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import styles from "./epi.module.css";
+import { useEffect } from "react";
 
 export default function MyEpisode(results) {
   const episode = results.episode;
@@ -10,17 +12,26 @@ export default function MyEpisode(results) {
     ["Name: ", episode.name],
     ["Created: ", episode.created],
   ];
+  useEffect(() => {
+    const bg = document.querySelector("body");
+    if (navigator.onLine) {
+      bg.style.backgroundImage = `url("/images/Background.png")`;
+    } else {
+      bg.style.backgroundImage = "none";
+      bg.style.backgroundColor = "#D3D3D3";
+    }
+  });
   return (
-    <div className="episode-card">
+    <div className={styles["episode-card"]}>
       <Head>
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="episode-card-heading">
+      <h1 className={styles["episode-card-heading"]}>
         Details of the Episode you clicked on:
       </h1>
-      <div className="episode-card-items">
-        <ul className="character-card-list">
+      <div className={styles["episode-card-items"]}>
+        <ul className={styles["episode-card-list"]}>
           {episodeData.map((item, id) => (
             <li key={`item${id}`}>
               <b>{item[0]}</b>
@@ -29,7 +40,7 @@ export default function MyEpisode(results) {
           ))}
         </ul>
       </div>
-      <button className="episode-card-return">
+      <button className={styles["episode-card-return"]}>
         <Link href={"/episodePage"}>Return</Link>
       </button>
     </div>
@@ -38,15 +49,15 @@ export default function MyEpisode(results) {
 
 export async function getServerSideProps(context) {
   const id = context.params.epi;
-  const results = await fetch('https://rickandmortyapi.com/graphql/', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Cache-Control': 'max-age=60',
-      },
-      body: JSON.stringify({
-        query: `
+  const results = await fetch("https://rickandmortyapi.com/graphql/", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Cache-Control': 'max-age=60',
+    },
+    body: JSON.stringify({
+      query: `
         query getEpisodes{
           episode(id:${id}){
             name
@@ -55,10 +66,10 @@ export async function getServerSideProps(context) {
             created
           }    
         }
-      `
-      })
-    });
-    const data = await results.json();
+      `,
+    }),
+  });
+  const data = await results.json();
   return {
     props: {
       episode: data.data.episode,

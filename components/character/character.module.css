@@ -1,0 +1,35 @@
+.char-ind {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.char-item {
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: 30px 40px;
+  width: 250px;
+}
+
+.char-subitem {
+  padding-top: 200px;
+  /* padding-bottom: 50px; */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.char-txt {
+  color: white;
+  max-width: 100%;
+  /* max-width: 100%; */
+  font-size: larger;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: rgba(0, 0, 0, 0.4);
+}
