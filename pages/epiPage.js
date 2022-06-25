@@ -3,69 +3,70 @@ import { useState, useEffect, useCallback } from "react";
 import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
 import Router from "next/router";
-import { useQuery,gql } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
-import Episode from "../components/Episode";
+import Episode from "../components/episode/episode";
 
-const EPISODE_LIST= gql`
-  query getEpisodes($name: String!){
+const EPISODE_LIST = gql`
+  query getEpisodes($name: String!) {
     episodes(filter: { name: $name }) {
-        results {
+      results {
         name
         id
         air_date
         episode
         created
-        }
-    } 
+      }
+    }
   }
-`
+`;
 
 const Episode_List = () => {
-  
-    // const [episodes,setEpisodes]=useState([]);
-    const [search, setSearch] = useState("");
-    const { loading, error, data, refetch} = useQuery(EPISODE_LIST, {variables: {name: search}});
-    console.log(data);
-    useEffect(() => {
-      refetch({name:search});
-    });
-    // const { loading, error, data, refetch } = useQuery('Episodes', async () => {
-    //     try{
-    //         const res = await fetch("https://rickandmortyapi.com/graphql/", {
-    //             method: "POST",
-    //             mode: "cors",
-    //             headers: {
-    //             "Content-Type": "application/json",
-    //             // 'Cache-Control': 'max-age=60',
-    //             },
-    //             body: JSON.stringify({
-    //             query: `
-                    // query getEpisodes{
-                    // episodes(filter: { name: "${search}" }) {
-                    //     results {
-                    //     name
-                    //     id
-                    //     air_date
-                    //     episode
-                    //     created
-                    //     }
-                    // } 
-                    // }
-    //             `,
-    //             }),
-    //         });
-            
-    //         const res2= await res.json();
-    //         // console.log("abc",res2.data.episodes.results);
-    //         setEpisodes(res2.data.episodes.results);
-    //         return res2.data.episodes.results;
-    //     }
-    //     catch(error){
-    //             Router.push("/fallback");
-    //     }
-    // });
-    const optionList = [
+  // const [episodes,setEpisodes]=useState([]);
+  const [search, setSearch] = useState("");
+  const { loading, error, data, refetch } = useQuery(EPISODE_LIST, {
+    variables: { name: search },
+  });
+  console.log(data);
+  useEffect(() => {
+    refetch({ name: search });
+  });
+  // const { loading, error, data, refetch } = useQuery('Episodes', async () => {
+  //     try{
+  //         const res = await fetch("https://rickandmortyapi.com/graphql/", {
+  //             method: "POST",
+  //             mode: "cors",
+  //             headers: {
+  //             "Content-Type": "application/json",
+  //             // 'Cache-Control': 'max-age=60',
+  //             },
+  //             body: JSON.stringify({
+  //             query: `
+  // query getEpisodes{
+  // episodes(filter: { name: "${search}" }) {
+  //     results {
+  //     name
+  //     id
+  //     air_date
+  //     episode
+  //     created
+  //     }
+  // }
+  // }
+  //             `,
+  //             }),
+  //         });
+
+  //         const res2= await res.json();
+  //         // console.log("abc",res2.data.episodes.results);
+  //         setEpisodes(res2.data.episodes.results);
+  //         return res2.data.episodes.results;
+  //     }
+  //     catch(error){
+  //             Router.push("/fallback");
+  //     }
+  // });
+  const optionList = [
     ["RICK AND MORTY WIKI", "/"],
     ["EXPLORE", "/#explore"],
     ["EPISODES", "/episodePage"],
@@ -91,8 +92,8 @@ const Episode_List = () => {
         </h1>
         <form
           onSubmit={async (event) => {
-              event.preventDefault();
-              // refetch({name:{search}});
+            event.preventDefault();
+            // refetch({name:{search}});
           }}
         >
           <div className="search-bar">
@@ -100,9 +101,8 @@ const Episode_List = () => {
               className="search-bar-inpt"
               value={search}
               onChange={(e) => {
-                  setSearch(e.target.value)
-                  
-            }}
+                setSearch(e.target.value);
+              }}
             />
             <button
               className="search-btn"
@@ -114,9 +114,9 @@ const Episode_List = () => {
             <button
               className="reset-btn"
               // disabled={search === ""}
-              onClick={()=>{
+              onClick={() => {
                 setSearch("");
-                refetch({name:""});
+                refetch({ name: "" });
               }}
             >
               Reset
@@ -124,8 +124,12 @@ const Episode_List = () => {
           </div>
         </form>
         <div className="items">
-          {data?<Episode episodes={data.episodes.results} />:<div> Loading...</div>}
-             {/* {loading?
+          {data ? (
+            <Episode episodes={data.episodes.results} />
+          ) : (
+            <div> Loading...</div>
+          )}
+          {/* {loading?
             <div> Loading...</div>:
             error?<div> Error...</div>:
            <Episode episodes={data.episodes.results} />} */}
@@ -134,8 +138,8 @@ const Episode_List = () => {
         <footer className={styles.footer}>&copy;</footer>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default function Home4() {
   function hasNetwork(online) {
@@ -161,7 +165,7 @@ export default function Home4() {
 
   return (
     // <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Episode_List />
+    <Episode_List />
     // </QueryClientProvider>
   );
 }

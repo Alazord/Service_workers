@@ -1,26 +1,45 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js');
-importScripts('https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js');
-importScripts('https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js');
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js"
+);
+importScripts(
+  "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"
+);
+importScripts(
+  "https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js"
+);
 
-import { skipWaiting, clientsClaim } from 'workbox-core';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { NetworkOnly, NetworkFirst, CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
-import { registerRoute, setDefaultHandler, setCatchHandler } from 'workbox-routing';
-import { matchPrecache, precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
-import { ProvidedRequiredArgumentsOnDirectivesRule } from 'graphql/validation/rules/ProvidedRequiredArgumentsRule';
+import { skipWaiting, clientsClaim } from "workbox-core";
+import { ExpirationPlugin } from "workbox-expiration";
+import {
+  NetworkOnly,
+  NetworkFirst,
+  CacheFirst,
+  StaleWhileRevalidate,
+} from "workbox-strategies";
+import {
+  registerRoute,
+  setDefaultHandler,
+  setCatchHandler,
+} from "workbox-routing";
+import {
+  matchPrecache,
+  precacheAndRoute,
+  cleanupOutdatedCaches,
+} from "workbox-precaching";
+import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
 
 skipWaiting();
 clientsClaim();
 
 const WB_MANIFEST = self.__WB_MANIFEST;
 WB_MANIFEST.push({
-  url: '/fallback',
-  revision: '1234567890',
+  url: "/fallback",
+  revision: "1234567890",
 });
 precacheAndRoute(WB_MANIFEST);
 cleanupOutdatedCaches();
 
-const store = new idbKeyval.Store('GraphQL-Cache', 'PostResponses');
+const store = new idbKeyval.Store("GraphQL-Cache", "PostResponses");
 
 if (workbox) {
   console.log(`Workbox is loaded`);
@@ -29,16 +48,16 @@ if (workbox) {
 }
 
 workbox.routing.registerRoute(
-  new RegExp('https://rickandmortyapi.com/graphql(/)?'),
-  async ({event}) => {
+  new RegExp("https://rickandmortyapi.com/graphql(/)?"),
+  async ({ event }) => {
     return staleWhileRevalidate(event);
   },
-  'POST'
+  "POST"
 );
 
 // Return cached response when possible, and fetch new results from server in the background and update the cache.
-self.addEventListener('fetch', async (event) => {
-  if (event.request.method === 'POST') {
+self.addEventListener("fetch", async (event) => {
+  if (event.request.method === "POST") {
     event.respondWith(staleWhileRevalidate(event));
   }
 });
@@ -60,7 +79,7 @@ async function staleWhileRevalidate(event) {
 async function cacheOnly(event) {
   let promise = null;
   let cachedResponse = await getCache(event.request.clone());
-  return  Promise.resolve(cachedResponse);
+  return Promise.resolve(cachedResponse);
 }
 
 async function networkOnly(event) {
@@ -79,7 +98,7 @@ async function networkOnly(event) {
 async function cacheFirst(event) {
   let promise = null;
   let cachedResponse = await getCache(event.request.clone());
-  if(cachedResponse){
+  if (cachedResponse) {
     return Promise.resolve(cachedResponse);
   }
   let fetchPromise = fetch(event.request.clone())
@@ -103,7 +122,7 @@ async function networkFirst(event) {
     })
     .catch((err) => {
       // console.error(err);
-      cachedResponse?Promise.resolve(cachedResponse):null;
+      cachedResponse ? Promise.resolve(cachedResponse) : null;
     });
   return fetchPromise;
 }
@@ -116,7 +135,7 @@ async function serializeResponse(response) {
   let serialized = {
     headers: serializedHeaders,
     status: response.status,
-    statusText: response.statusText
+    statusText: response.statusText,
   };
   serialized.body = await response.json();
   return serialized;
@@ -130,7 +149,7 @@ async function setCache(request, response) {
   var entry = {
     query: body.query,
     response: await serializeResponse(response),
-    timestamp: Date.now()
+    timestamp: Date.now(),
   };
   idbKeyval.set(id, entry, store);
 }
@@ -144,8 +163,8 @@ async function getCache(request) {
     if (!data) return null;
 
     // Check cache max age.
-    let cacheControl = request.headers.get('Cache-Control');
-    let maxAge = cacheControl ? parseInt(cacheControl.split('=')[1]) : 3600;
+    let cacheControl = request.headers.get("Cache-Control");
+    let maxAge = cacheControl ? parseInt(cacheControl.split("=")[1]) : 3600;
     if (Date.now() - data.timestamp > maxAge * 1000) {
       // console.log(`Cache expired. Load from API endpoint.`);
       return null;
@@ -163,9 +182,9 @@ async function getPostKey(request) {
 }
 
 registerRoute(
-  '/',
+  "/",
   new NetworkFirst({
-    cacheName: 'start-url',
+    cacheName: "start-url",
     plugins: [
       new ExpirationPlugin({
         maxEntries: 1,
@@ -174,12 +193,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
   new NetworkFirst({
-    cacheName: 'google-fonts',
+    cacheName: "google-fonts",
     plugins: [
       new ExpirationPlugin({
         maxEntries: 4,
@@ -188,12 +207,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
   new NetworkFirst({
-    cacheName: 'static-font-assets',
+    cacheName: "static-font-assets",
     plugins: [
       new ExpirationPlugin({
         maxEntries: 4,
@@ -202,12 +221,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
   new NetworkFirst({
-    cacheName: 'static-image-assets',
+    cacheName: "static-image-assets",
     plugins: [
       new ExpirationPlugin({
         maxEntries: 64,
@@ -216,12 +235,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /\.(?:js)$/i,
   new NetworkFirst({
-    cacheName: 'static-js-assets',
+    cacheName: "static-js-assets",
     plugins: [
       new ExpirationPlugin({
         maxEntries: 32,
@@ -230,12 +249,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /\.(?:css|less)$/i,
   new NetworkFirst({
-    cacheName: 'static-style-assets',
+    cacheName: "static-style-assets",
     plugins: [
       new ExpirationPlugin({
         maxEntries: 32,
@@ -244,12 +263,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /\.(?:json|xml|csv)$/i,
   new NetworkFirst({
-    cacheName: 'static-data-assets',
+    cacheName: "static-data-assets",
     plugins: [
       new ExpirationPlugin({
         maxEntries: 32,
@@ -258,12 +277,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /\/api\/.*$/i,
   new NetworkFirst({
-    cacheName: 'apis',
+    cacheName: "apis",
     networkTimeoutSeconds: 10,
     plugins: [
       new ExpirationPlugin({
@@ -273,12 +292,12 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 registerRoute(
   /.*/i,
   new NetworkFirst({
-    cacheName: 'others',
+    cacheName: "others",
     networkTimeoutSeconds: 10,
     plugins: [
       new ExpirationPlugin({
@@ -288,16 +307,16 @@ registerRoute(
       }),
     ],
   }),
-  'GET'
+  "GET"
 );
 
 setDefaultHandler(new NetworkFirst());
 setCatchHandler(({ event }) => {
   switch (event.request.destination) {
-    case 'document':
-    case 'image':
-    case 'font':
-        return matchPrecache('/fallback');
+    case "document":
+    case "image":
+    case "font":
+      return matchPrecache("/fallback");
     default:
       // If we don't have a fallback, just return an error response.
       return Response.error();

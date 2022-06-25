@@ -10,6 +10,7 @@ export default function Home() {
 
     const element = document.querySelector(".nav-container");
     const bg = document.querySelector("body");
+    // console.log("Online status:", navigator.onLine);
     if (navigator.onLine) {
       element.style.backgroundColor = "#ff01c1";
       bg.style.backgroundImage = `url("/images/Background.png")`;
