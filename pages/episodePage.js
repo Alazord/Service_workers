@@ -1,77 +1,223 @@
+// import Head from "next/head";
+// import { useState, useEffect, useCallback } from "react";
+// import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+// import styles from "../styles/Home2.module.css";
+// import { Link } from "@chakra-ui/react";
+// import Router from "next/router";
+
+// import Episode from "../components/episode/episode";
+
+// export default function Episode_List(results) {
+//   useEffect(() => {
+//     const episodes = document.querySelectorAll(".nav-element");
+//     episodes[2].style.backgroundColor = "lightblue";
+
+//     const element = document.querySelector(".nav-container");
+//     const bg = document.querySelector("body");
+//     if (navigator.onLine) {
+//       element.style.backgroundColor = "#ff01c1";
+//       bg.style.backgroundImage = `url("/images/Background.png")`;
+//     } else {
+//       element.style.backgroundColor = "grey";
+//       bg.style.backgroundImage = "none";
+//       bg.style.backgroundColor = "#D3D3D3";
+//     }
+//     return () => {
+//       episodes[2].style.backgroundColor = "none";
+//     };
+//   });
+//   const intialState = results;
+//   const [search, setSearch] = useState("");
+//   const [episodes, setEpisodes] = useState(intialState.episodes);
+//   const optionList = [
+//     ["RICK AND MORTY WIKI", "/"],
+//     ["EXPLORE", "/#explore"],
+//     ["EPISODES", "/episodePage"],
+//     ["CHARACTERS", "/charPage"],
+//   ];
+
+//   const memoizedCallback = useCallback(
+//     async (event) => {
+//       event.preventDefault();
+//       try {
+//         const results = await fetch("https://rickandmortyapi.com/graphql/", {
+//           method: "POST",
+//           mode: "cors",
+//           headers: {
+//             "Content-Type": "application/json",
+//             'Cache-Control': 'max-age=3600',
+//           },
+//           body: JSON.stringify({
+//             query: `
+//             query getEpisodes{
+//               episodes(filter: { name: "${search}" }){
+//                 results{
+//                   name
+//                   id
+//                   air_date
+//                   episode
+//                   created
+//                 }
+//               }     
+//             }
+//           `,
+//           }),
+//         });
+//         const data = await results.json();
+//         console.log(data);
+//         setEpisodes(data.data.episodes.results);
+//       } catch (error) {
+//         Router.push("/searchFallback");
+//       }
+//     },
+//     [search]
+//   );
+
+//   return (
+//     <div className="nav">
+//       <div className="nav-container">
+//         {optionList.map(([item, URL], index) => (
+//           <Link className="nav-element" key={index} href={URL}>
+//             {item}
+//           </Link>
+//         ))}
+//       </div>
+//       <div className="page">
+//         <Head>
+//           <title>Episodes</title>
+//           <link rel="icon" href="/favicon.ico" />
+//         </Head>
+//         <h1 className="page-heading">
+//           <Link href="/">Rick and Morty</Link>
+//         </h1>
+//         <form onSubmit={memoizedCallback}>
+//           <div className="search-bar">
+//             <input
+//               className="search-bar-inpt"
+//               placeholder="Search"
+//               value={search}
+//               onChange={(e) => setSearch(e.target.value)}
+//             />
+//             <button
+//               className="search-btn"
+//               disabled={search === ""}
+//               type="submit"
+//             >
+//               Search
+//             </button>
+//             <button
+//               className="reset-btn"
+//               disabled={search === ""}
+//               onClick={async () => {
+//                 setSearch("");
+//                 setEpisodes(intialState.episodes);
+//               }}
+//             >
+//               Reset
+//             </button>
+//           </div>
+//         </form>
+//         <div className="items">
+//           <Episode episodes={episodes} />
+//         </div>
+
+//         <footer className={styles.footer}>&copy;</footer>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export async function getStaticProps() {
+//   const results = await fetch("https://rickandmortyapi.com/graphql/", {
+//     method: "POST",
+//     mode: "cors",
+//     headers: {
+//       "Content-Type": "application/json",
+//       // 'Cache-Control': 'max-age=60',
+//     },
+//     body: JSON.stringify({
+//       query: `
+//         query getEpisodes{
+//           episodes(filter: null) {
+//             results {
+//               name
+//               id
+//               air_date
+//               episode
+//               created
+//             }
+//           } 
+//         }
+//       `,
+//     }),
+//   });
+//   const data = await results.json();
+//   console.log(data);
+
+//   return {
+//     props: {
+//       episodes: data.data.episodes.results,
+//     },
+//   };
+// }
+
 import Head from "next/head";
 import { useState, useEffect, useCallback } from "react";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home2.module.css";
 import { Link } from "@chakra-ui/react";
 import Router from "next/router";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 
 import Episode from "../components/episode/episode";
+import fetchEpisodeList from "../components/fetchEpisodeList";
 
-export default function Home4(results) {
-  useEffect(() => {
-    const episodes = document.querySelectorAll(".nav-element");
-    episodes[2].style.backgroundColor = "lightblue";
+const queryClient = new QueryClient();
 
-    const element = document.querySelector(".nav-container");
-    const bg = document.querySelector("body");
-    if (navigator.onLine) {
-      element.style.backgroundColor = "#ff01c1";
-      bg.style.backgroundImage = `url("/images/Background.png")`;
-    } else {
-      element.style.backgroundColor = "grey";
-      bg.style.backgroundImage = "none";
-      bg.style.backgroundColor = "#D3D3D3";
-    }
-    return () => {
-      episodes[2].style.backgroundColor = "none";
-    };
-  });
-  const intialState = results;
-  const [search, setSearch] = useState("");
-  const [episodes, setEpisodes] = useState(intialState.episodes);
-  const optionList = [
+// const fetchEpisodeList = async ({queryKey}) => {
+//   try{
+//     const [_key, search] = queryKey
+//     const res = await fetch("https://rickandmortyapi.com/graphql/", {
+//         method: "POST",
+//         mode: "cors",
+//         headers: {
+//         "Content-Type": "application/json",
+//         'Cache-Control': 'max-age=3600',
+//         },
+//         body: JSON.stringify({
+//         query: `
+//             query getEpisodes{
+//             episodes(filter: { name: "${search}" }) {
+//                 results {
+//                 name
+//                 id
+//                 air_date
+//                 episode
+//                 created
+//                 }
+//             } 
+//             }
+//         `,
+//         }),
+//     });
+//     const episode_object= await res.json();
+//     const episode_list=episode_object.data.episodes.results;
+//     return episode_list;
+//   }
+//   catch(error){
+//     Router.push("/searchFallback");
+//   }
+// };
+
+const Episode_List = () => {
+    const [search, setSearch] = useState("");
+    const query_id="Episodes";
+    const { isLoading, isError, data, refetch } = useQuery([query_id,search], fetchEpisodeList);
+    const optionList = [
     ["RICK AND MORTY WIKI", "/"],
     ["EXPLORE", "/#explore"],
     ["EPISODES", "/episodePage"],
     ["CHARACTERS", "/charPage"],
   ];
-
-  const memoizedCallback = useCallback(
-    async (event) => {
-      event.preventDefault();
-      try {
-        const results = await fetch("https://rickandmortyapi.com/graphql/", {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-            // 'Cache-Control': 'max-age=3600',
-          },
-          body: JSON.stringify({
-            query: `
-            query getEpisodes{
-              episodes(filter: { name: "${search}" }){
-                results{
-                  name
-                  id
-                  air_date
-                  episode
-                  created
-                }
-              }     
-            }
-          `,
-          }),
-        });
-        const data = await results.json();
-        console.log(data);
-        setEpisodes(data.data.episodes.results);
-      } catch (error) {
-        Router.push("/fallback");
-      }
-    },
-    [search]
-  );
 
   return (
     <div className="nav">
@@ -90,13 +236,19 @@ export default function Home4(results) {
         <h1 className="page-heading">
           <Link href="/">Rick and Morty</Link>
         </h1>
-        <form onSubmit={memoizedCallback}>
+        <form
+          onSubmit={async (event) => {
+              event.preventDefault();
+              refetch();
+          }}
+        >
           <div className="search-bar">
             <input
               className="search-bar-inpt"
-              placeholder="Search"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                  setSearch(e.target.value)
+            }}
             />
             <button
               className="search-btn"
@@ -108,9 +260,8 @@ export default function Home4(results) {
             <button
               className="reset-btn"
               disabled={search === ""}
-              onClick={async () => {
+              onClick={() => {
                 setSearch("");
-                setEpisodes(intialState.episodes);
               }}
             >
               Reset
@@ -118,45 +269,41 @@ export default function Home4(results) {
           </div>
         </form>
         <div className="items">
-          <Episode episodes={episodes} />
+             {isLoading?
+            <div> Loading...</div>:
+            isError?<div> Error...</div>:data?
+           <Episode episodes={data} />:""}
         </div>
 
         <footer className={styles.footer}>&copy;</footer>
       </div>
     </div>
-  );
+  )
 }
 
-export async function getStaticProps() {
-  const results = await fetch("https://rickandmortyapi.com/graphql/", {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-      // 'Cache-Control': 'max-age=60',
-    },
-    body: JSON.stringify({
-      query: `
-        query getEpisodes{
-          episodes(filter: null) {
-            results {
-              name
-              id
-              air_date
-              episode
-              created
-            }
-          } 
-        }
-      `,
-    }),
-  });
-  const data = await results.json();
-  console.log(data);
+export default function Episodes_List() {
+useEffect(() => {
+  const episodes = document.querySelectorAll(".nav-element");
+  episodes[2].style.backgroundColor = "lightblue";
 
-  return {
-    props: {
-      episodes: data.data.episodes.results,
-    },
+  const element = document.querySelector(".nav-container");
+  const bg = document.querySelector("body");
+  if (navigator.onLine) {
+    element.style.backgroundColor = "#ff01c1";
+    bg.style.backgroundImage = `url("/images/Background.png")`;
+  } else {
+    element.style.backgroundColor = "grey";
+    bg.style.backgroundImage = "none";
+    bg.style.backgroundColor = "#D3D3D3";
+  }
+  return () => {
+    episodes[2].style.backgroundColor = "none";
   };
+});
+
+return (
+  <QueryClientProvider client={queryClient} contextSharing={true}>
+    <Episode_List />
+  </QueryClientProvider>
+);
 }

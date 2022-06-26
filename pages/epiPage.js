@@ -22,49 +22,13 @@ const EPISODE_LIST = gql`
 `;
 
 const Episode_List = () => {
-  // const [episodes,setEpisodes]=useState([]);
   const [search, setSearch] = useState("");
   const { loading, error, data, refetch } = useQuery(EPISODE_LIST, {
     variables: { name: search },
   });
-  console.log(data);
-  useEffect(() => {
-    refetch({ name: search });
-  });
-  // const { loading, error, data, refetch } = useQuery('Episodes', async () => {
-  //     try{
-  //         const res = await fetch("https://rickandmortyapi.com/graphql/", {
-  //             method: "POST",
-  //             mode: "cors",
-  //             headers: {
-  //             "Content-Type": "application/json",
-  //             // 'Cache-Control': 'max-age=60',
-  //             },
-  //             body: JSON.stringify({
-  //             query: `
-  // query getEpisodes{
-  // episodes(filter: { name: "${search}" }) {
-  //     results {
-  //     name
-  //     id
-  //     air_date
-  //     episode
-  //     created
-  //     }
-  // }
-  // }
-  //             `,
-  //             }),
-  //         });
-
-  //         const res2= await res.json();
-  //         // console.log("abc",res2.data.episodes.results);
-  //         setEpisodes(res2.data.episodes.results);
-  //         return res2.data.episodes.results;
-  //     }
-  //     catch(error){
-  //             Router.push("/fallback");
-  //     }
+  // console.log(data);
+  // useEffect(() => {
+  //   refetch({ name: search });
   // });
   const optionList = [
     ["RICK AND MORTY WIKI", "/"],
@@ -93,7 +57,7 @@ const Episode_List = () => {
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            // refetch({name:{search}});
+            refetch({name:{search}});
           }}
         >
           <div className="search-bar">
@@ -114,7 +78,7 @@ const Episode_List = () => {
             <button
               className="reset-btn"
               // disabled={search === ""}
-              onClick={() => {
+              onClick={async () => {
                 setSearch("");
                 refetch({ name: "" });
               }}
@@ -129,12 +93,7 @@ const Episode_List = () => {
           ) : (
             <div> Loading...</div>
           )}
-          {/* {loading?
-            <div> Loading...</div>:
-            error?<div> Error...</div>:
-           <Episode episodes={data.episodes.results} />} */}
         </div>
-
         <footer className={styles.footer}>&copy;</footer>
       </div>
     </div>
