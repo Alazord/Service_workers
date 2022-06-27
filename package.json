@@ -19,7 +19,9 @@
     "npm": "^8.12.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "sharp": "^0.30.6"
+    "react-query": "^3.39.1",
+    "sharp": "^0.30.6",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "eslint": "8.17.0",
