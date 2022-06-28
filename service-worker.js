@@ -26,8 +26,6 @@ import {
   precacheAndRoute,
   cleanupOutdatedCaches,
 } from "workbox-precaching";
-import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
-import { Router } from "next/router";
 
 skipWaiting();
 clientsClaim();
@@ -122,16 +120,9 @@ async function networkFirst(event) {
       return response;
     })
     .catch((err) => {
-      error=err;
-      return null;
+      return cachedResponse? Promise.resolve(cachedResponse):null;
     });
-  if(fetchPromise){
-    return fetchPromise;
-  }
-  if(cachedResponse){
-    return Promise.resolve(cachedResponse);
-  }
-  return error;
+  return fetchPromise;
 }
 
 async function serializeResponse(response) {
@@ -212,8 +203,8 @@ registerRoute(
     cacheName: "google-fonts",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 4,
-        maxAgeSeconds: 31536e3,
+        maxEntries: 40,
+        maxAgeSeconds: 86400,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -226,8 +217,8 @@ registerRoute(
     cacheName: "static-font-assets",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 4,
-        maxAgeSeconds: 604800,
+        maxEntries: 40,
+        maxAgeSeconds: 86400,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -240,7 +231,7 @@ registerRoute(
     cacheName: "static-image-assets",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 64,
+        maxEntries: 264,
         maxAgeSeconds: 86400,
         purgeOnQuotaError: !0,
       }),
@@ -294,7 +285,7 @@ registerRoute(
   /\/api\/.*$/i,
   new NetworkFirst({
     cacheName: "apis",
-    networkTimeoutSeconds: 1000,
+    networkTimeoutSeconds: 86400,
     plugins: [
       new ExpirationPlugin({
         maxEntries: 32,
@@ -309,10 +300,10 @@ registerRoute(
   /.*/i,
   new NetworkFirst({
     cacheName: "others",
-    networkTimeoutSeconds: 10,
+    networkTimeoutSeconds: 86400,
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 32,
+        maxEntries: 320,
         maxAgeSeconds: 86400,
         purgeOnQuotaError: !0,
       }),
