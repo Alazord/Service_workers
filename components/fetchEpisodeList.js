@@ -1,3 +1,5 @@
+import Router from "next/router";
+
 export default async function fetchEpisodeList ({queryKey}) {
     try{
       const [_key, search] = queryKey

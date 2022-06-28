@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "./episode.module.css";
 
 const Episode = ({ episodes }) => {
+  // console.log("episode",episodes);
   return (
     <div className={styles["ep-ind"]}>
       {episodes.map((episode) => {

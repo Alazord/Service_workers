@@ -6,7 +6,6 @@ import { Link } from "@chakra-ui/react";
 import Router from "next/router";
 
 import Character from "../components/character/character";
-import { memo } from "react";
 
 export default function Character_List(results) {
 useEffect(() => {
@@ -46,7 +45,7 @@ const memoizedCallback = useCallback(
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
-          'Cache-Control': 'max-age=3600',
+          // 'Cache-Control': 'max-age=3600',
         },
         body: JSON.stringify({
           query: `

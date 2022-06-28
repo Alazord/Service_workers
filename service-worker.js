@@ -27,6 +27,7 @@ import {
   cleanupOutdatedCaches,
 } from "workbox-precaching";
 import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
+import { Router } from "next/router";
 
 skipWaiting();
 clientsClaim();
@@ -50,15 +51,14 @@ if (workbox) {
 workbox.routing.registerRoute(
   new RegExp("https://rickandmortyapi.com/graphql(/)?"),
   async ({ event }) => {
-    return staleWhileRevalidate(event);
+    return networkFirst(event);
   },
   "POST"
 );
 
-// Return cached response when possible, and fetch new results from server in the background and update the cache.
 self.addEventListener("fetch", async (event) => {
   if (event.request.method === "POST") {
-    event.respondWith(staleWhileRevalidate(event));
+    event.respondWith(networkFirst(event));
   }
 });
 
@@ -71,7 +71,7 @@ async function staleWhileRevalidate(event) {
       return response;
     })
     .catch((err) => {
-      // console.error(err);
+      console.error(err);
     });
   return cachedResponse ? Promise.resolve(cachedResponse) : fetchPromise;
 }
@@ -90,7 +90,7 @@ async function networkOnly(event) {
       return response;
     })
     .catch((err) => {
-      // console.error(err);
+      console.error(err);
     });
   return fetchPromise;
 }
@@ -107,13 +107,14 @@ async function cacheFirst(event) {
       return response;
     })
     .catch((err) => {
-      // console.error(err);
+      console.error(err);
     });
   return fetchPromise;
 }
 
 async function networkFirst(event) {
   let promise = null;
+  let error;
   let cachedResponse = await getCache(event.request.clone());
   let fetchPromise = fetch(event.request.clone())
     .then((response) => {
@@ -121,10 +122,16 @@ async function networkFirst(event) {
       return response;
     })
     .catch((err) => {
-      // console.error(err);
-      cachedResponse ? Promise.resolve(cachedResponse) : null;
+      error=err;
+      return null;
     });
-  return fetchPromise;
+  if(fetchPromise){
+    return fetchPromise;
+  }
+  if(cachedResponse){
+    return Promise.resolve(cachedResponse);
+  }
+  return error;
 }
 
 async function serializeResponse(response) {
@@ -142,34 +149,38 @@ async function serializeResponse(response) {
 }
 
 async function setCache(request, response) {
-  var key, data;
-  let body = await request.json();
-  let id = CryptoJS.MD5(body.query).toString();
+  try{
+    var key, data;
+    let body = await request.json();
+    let id = CryptoJS.MD5(body.query+""+body.variables.submit).toString();
 
-  var entry = {
-    query: body.query,
-    response: await serializeResponse(response),
-    timestamp: Date.now(),
-  };
-  idbKeyval.set(id, entry, store);
+    var entry = {
+      query: body.query,
+      response: await serializeResponse(response),
+      timestamp: Date.now(),
+    };
+    idbKeyval.set(id, entry, store);
+  }catch(err){
+    console.log("data cached");
+  }
 }
 
 async function getCache(request) {
   let data;
+  const one_day=60*60*24;
   try {
     let body = await request.json();
-    let id = CryptoJS.MD5(body.query).toString();
+    let id=CryptoJS.MD5(body.query+""+body.variables.submit).toString();
     data = await idbKeyval.get(id, store);
     if (!data) return null;
 
     // Check cache max age.
     let cacheControl = request.headers.get("Cache-Control");
-    let maxAge = cacheControl ? parseInt(cacheControl.split("=")[1]) : 3600;
+    let maxAge = cacheControl ? parseInt(cacheControl.split("=")[1]) :one_day;
     if (Date.now() - data.timestamp > maxAge * 1000) {
-      // console.log(`Cache expired. Load from API endpoint.`);
+      console.log(`Cache expired. Load from API endpoint.`);
       return null;
     }
-    // console.log(`Load response from cache.`);
     return new Response(JSON.stringify(data.response.body), data.response);
   } catch (err) {
     return null;
@@ -283,10 +294,10 @@ registerRoute(
   /\/api\/.*$/i,
   new NetworkFirst({
     cacheName: "apis",
-    networkTimeoutSeconds: 10,
+    networkTimeoutSeconds: 1000,
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 16,
+        maxEntries: 32,
         maxAgeSeconds: 86400,
         purgeOnQuotaError: !0,
       }),
@@ -318,7 +329,6 @@ setCatchHandler(({ event }) => {
     case "font":
       return matchPrecache("/fallback");
     default:
-      // If we don't have a fallback, just return an error response.
       return Response.error();
   }
 });

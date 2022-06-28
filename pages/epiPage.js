@@ -8,8 +8,8 @@ import { useQuery, gql } from "@apollo/client";
 import Episode from "../components/episode/episode";
 
 const EPISODE_LIST = gql`
-  query getEpisodes($name: String!) {
-    episodes(filter: { name: $name }) {
+  query getEpisodes($submit: String!) {
+    episodes(filter: { name: $submit }) {
       results {
         name
         id
@@ -23,13 +23,10 @@ const EPISODE_LIST = gql`
 
 const Episode_List = () => {
   const [search, setSearch] = useState("");
-  const { loading, error, data, refetch } = useQuery(EPISODE_LIST, {
-    variables: { name: search },
+  const [submit,setSubmit] =useState("");
+  const { error, data} = useQuery(EPISODE_LIST, {
+    variables: { submit },
   });
-  // console.log(data);
-  // useEffect(() => {
-  //   refetch({ name: search });
-  // });
   const optionList = [
     ["RICK AND MORTY WIKI", "/"],
     ["EXPLORE", "/#explore"],
@@ -57,7 +54,7 @@ const Episode_List = () => {
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            refetch({name:{search}});
+            setSubmit(search+" ");
           }}
         >
           <div className="search-bar">
@@ -77,10 +74,9 @@ const Episode_List = () => {
             </button>
             <button
               className="reset-btn"
-              // disabled={search === ""}
-              onClick={async () => {
+              onClick={() => {
+                setSubmit("");
                 setSearch("");
-                refetch({ name: "" });
               }}
             >
               Reset
@@ -88,7 +84,10 @@ const Episode_List = () => {
           </div>
         </form>
         <div className="items">
-          {data ? (
+          {
+          error ?
+            (<h1>Sorry, you are offline. You cannot make new searches. However, you can still make old ones.</h1>):
+          data ? (
             <Episode episodes={data.episodes.results} />
           ) : (
             <div> Loading...</div>
@@ -100,7 +99,7 @@ const Episode_List = () => {
   );
 };
 
-export default function Home4() {
+export default function Epi_List() {
   function hasNetwork(online) {
     console.log(online);
     const element = document.querySelector(".nav-container");
@@ -121,10 +120,121 @@ export default function Home4() {
       hasNetwork(false);
     });
   });
+  // const intialState = results;
+  // const [episodes,setEpisodes] = useState(intialState.episodes);
+  // const [search, setSearch] = useState("");
+  // const [submit,setSubmit] =useState("");
+  // const { loading, error, data, refetch } = useQuery(EPISODE_LIST, {
+  //   variables: { submit },
+  // });
+  // useEffect(()=>{
+  //   data?
+  //   setEpisodes(data.episodes.results):"";
+  // },[data])
+  // const optionList = [
+  //   ["RICK AND MORTY WIKI", "/"],
+  //   ["EXPLORE", "/#explore"],
+  //   ["EPISODES", "/episodePage"],
+  //   ["CHARACTERS", "/charPage"],
+  // ];
 
   return (
-    // <QueryClientProvider client={queryClient} contextSharing={true}>
     <Episode_List />
-    // </QueryClientProvider>
+    // <div className="nav">
+    //   <div className="nav-container">
+    //     {optionList.map(([item, URL], index) => (
+    //       <Link className="nav-element" key={index} href={URL}>
+    //         {item}
+    //       </Link>
+    //     ))}
+    //   </div>
+    //   <div className="page">
+    //     <Head>
+    //       <title>Episodes</title>
+    //       <link rel="icon" href="/favicon.ico" />
+    //     </Head>
+    //     <h1 className="page-heading">
+    //       <Link href="/">Rick and Morty</Link>
+    //     </h1>
+    //     <form
+    //       onSubmit={async (event) => {
+    //         event.preventDefault();
+    //         // refetch({name:{search}});
+    //         setSubmit(search+" ");
+    //       }}
+    //     >
+    //       <div className="search-bar">
+    //         <input
+    //           className="search-bar-inpt"
+    //           value={search}
+    //           onChange={(e) => {
+    //             setSearch(e.target.value);
+    //           }}
+    //         />
+    //         <button
+    //           className="search-btn"
+    //           disabled={search === ""}
+    //           type="submit"
+    //         >
+    //           Search
+    //         </button>
+    //         <button
+    //           className="reset-btn"
+    //           // disabled={search === ""}
+    //           onClick={() => {
+    //             setSubmit("");
+    //             setSearch("");
+    //             // refetch({ name: "" });
+    //           }}
+    //         >
+    //           Reset
+    //         </button>
+    //       </div>
+    //     </form>
+    //     <div className="items">
+    //       {/* {data ? ( */}
+    //         <Episode episodes={episodes} />
+    //       {/* ) : (
+    //         <div> Loading...</div>
+    //       )} */}
+    //     </div>
+    //     <footer className={styles.footer}>&copy;</footer>
+    //   </div>
+    // </div>
   );
 }
+
+// export async function getStaticProps() {
+//   const results = await fetch("https://rickandmortyapi.com/graphql/", {
+//     method: "POST",
+//     mode: "cors",
+//     headers: {
+//       "Content-Type": "application/json",
+//       // 'Cache-Control': 'max-age=60',
+//     },
+//     body: JSON.stringify({
+//       query: `
+//         query getEpisodes{
+//           episodes(filter: {}) {
+//             results {
+//               name
+//               id
+//               air_date
+//               episode
+//               created
+//             }
+//           }
+//         }
+//       `,
+//     }),
+//   });
+//   const data = await results.json();
+//   // console.log(data);
+  
+//   return {
+//     props: {
+//       episodes: data.data.episodes.results,
+//     },
+//   };
+//   }
+  
