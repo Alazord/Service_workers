@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./welcomeBox.module.css";
+import styles from "./WelcomeBox.module.css";
 
 export default function WelcomeBox() {
   return (

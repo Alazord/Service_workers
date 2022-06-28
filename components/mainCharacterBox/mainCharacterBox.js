@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./mainCharacterBox.module.css";
+import styles from "./MainCharacterBox.module.css";
 
 export default function MainCharacterBox() {
   const characterList = [

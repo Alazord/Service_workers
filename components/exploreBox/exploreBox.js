@@ -1,6 +1,6 @@
 import Image from "next/image";
-import EXPLORE from "../Constants";
-import styles from "./exploreBox.module.css";
+import EXPLORE from "../constants";
+import styles from "./ExploreBox.module.css";
 
 export default function ExploreBox() {
   const explore = EXPLORE;

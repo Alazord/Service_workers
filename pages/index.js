@@ -1,29 +1,38 @@
 import Head from "next/head";
-import Navbar from "../components/navBar/navBar";
-import MainContent from "../components/mainContent/mainContent";
+import Navbar from "../components/navBar/NavBar";
+import MainContent from "../components/mainContent/MainContent";
 import { useEffect } from "react";
 
 export default function Home() {
-  useEffect(() => {
-    const episodes = document.querySelectorAll(".nav-element");
-    episodes[0].style.backgroundColor = "lightblue";
+  /* function hasNetwork(online) {
+    const navElements = document.querySelectorAll(".nav-element");
+    navElements[0].style.backgroundColor = "lightblue";
 
     const element = document.querySelector(".nav-container");
     const bg = document.querySelector("body");
-    // console.log("Online status:", navigator.onLine);
-    if (navigator.onLine) {
+    if (online) {
       element.style.backgroundColor = "#ff01c1";
       bg.style.backgroundImage = `url("/images/Background.png")`;
+      console.log("we're online");
     } else {
       element.style.backgroundColor = "grey";
       bg.style.backgroundImage = "none";
       bg.style.backgroundColor = "#D3D3D3";
+      console.log("we're offline");
     }
-    return () => {
-      episodes[0].style.backgroundColor = "none";
-    };
+  }
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      hasNetwork(navigator.onLine);
+    });
+    window.addEventListener("online", () => {
+      hasNetwork(navigator.onLine);
+    });
+    window.addEventListener("offline", () => {
+      hasNetwork(navigator.onLine);
+    });
   });
-
+*/
   return (
     <div className="nav">
       <Head>

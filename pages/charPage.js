@@ -9,30 +9,41 @@ import Character from "../components/character/character";
 import { memo } from "react";
 
 export default function Home2(results) {
-  useEffect(() => {
-    const episodes = document.querySelectorAll(".nav-element");
-    episodes[3].style.backgroundColor = "lightblue";
+  /* function hasNetwork(online) {
+    const navElements = document.querySelectorAll(".nav-element");
+    navElements[3].style.backgroundColor = "lightblue";
 
     const element = document.querySelector(".nav-container");
     const bg = document.querySelector("body");
-    if (navigator.onLine) {
+    if (online) {
       element.style.backgroundColor = "#ff01c1";
       bg.style.backgroundImage = `url("/images/Background.png")`;
+      console.log("we're online");
     } else {
       element.style.backgroundColor = "grey";
       bg.style.backgroundImage = "none";
       bg.style.backgroundColor = "#D3D3D3";
+      console.log("we're offline");
     }
-    return () => {
-      episodes[3].style.backgroundColor = "none";
-    };
+  }
+  useEffect(() => {
+    hasNetwork(navigator.onLine);
+    window.addEventListener("load", () => {
+      hasNetwork(navigator.onLine);
+    });
+    window.addEventListener("online", () => {
+      hasNetwork(navigator.onLine);
+    });
+    window.addEventListener("offline", () => {
+      hasNetwork(navigator.onLine);
+    });
   });
+  */
   const intialState = results;
   const [search, setSearch] = useState("");
   const [characters, setCharacters] = useState(intialState.characters);
   const optionList = [
     ["RICK AND MORTY WIKI", "/"],
-    ["EXPLORE", "/#explore"],
     ["EPISODES", "/episodePage"],
     ["CHARACTERS", "/charPage"],
   ];
@@ -92,7 +103,12 @@ export default function Home2(results) {
     <div className="nav">
       <div className="nav-container">
         {optionList.map(([item, URL], index) => (
-          <Link className="nav-element" key={index} href={URL}>
+          <Link
+            className="nav-element"
+            key={index}
+            href={URL}
+            style={index === 2 ? { backgroundColor: "lightblue" } : {}}
+          >
             {item}
           </Link>
         ))}

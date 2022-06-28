@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./episode.module.css";
+import styles from "./Episode.module.css";
 
 const Episode = ({ episodes }) => {
   return (

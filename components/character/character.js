@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./character.module.css";
+import styles from "./Character.module.css";
 
 const Character = ({ characters }) => {
   return (
