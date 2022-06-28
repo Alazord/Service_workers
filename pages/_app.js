@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
     const element = document.querySelector(".nav-container");
     const bg = document.querySelector("body");
     if (online) {
-      console.log("element", element);
+      // console.log("element", element);
       if (element) {
         element.style.backgroundColor = "#ff01c1";
       }
