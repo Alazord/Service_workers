@@ -104,24 +104,5 @@ const Character_List = () => {
 };
 
 export default function Char_List() {
-  useEffect(() => {
-    const episodes = document.querySelectorAll(".nav-element");
-    episodes[3].style.backgroundColor = "lightblue";
-
-    const element = document.querySelector(".nav-container");
-    const bg = document.querySelector("body");
-    if (navigator.onLine) {
-      element.style.backgroundColor = "#ff01c1";
-      bg.style.backgroundImage = `url("/images/Background.png")`;
-    } else {
-      element.style.backgroundColor = "grey";
-      bg.style.backgroundImage = "none";
-      bg.style.backgroundColor = "#D3D3D3";
-    }
-    return () => {
-      episodes[3].style.backgroundColor = "none";
-    };
-  });
-
   return <Character_List />;
 }
