@@ -1,10 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "./epi.module.css";
 import { useEffect } from "react";
 
-export default function MyEpisode(results) {
+export default function Episode_Card(results) {
   const episode = results.episode;
   const episodeData = [
     ["Episode: ", episode.episode],
@@ -68,7 +67,7 @@ export async function getServerSideProps(context) {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      // 'Cache-Control': 'max-age=60',
+      'Cache-Control': 'max-age=3600',
     },
     body: JSON.stringify({
       query: `

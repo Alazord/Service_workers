@@ -1,7 +1,8 @@
 import "../styles/globals.css";
-import { useEffect } from "react";
-// import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import React, { useEffect, useState } from "react";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+
+import getApolloClient from "../components/getApolloClient";
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql/",
@@ -9,32 +10,16 @@ const client = new ApolloClient({
 });
 
 function MyApp({ Component, pageProps }) {
-  // if ('serviceWorker' in navigator) {
-  //   window.addEventListener('load', function() {
-  //     navigator.serviceWorker.register('/sw.js').then(function(registration) {
-  //       // Registration was successful
-  //       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-  //       // Initializing list.
-  //       updateList(null, null);
-  //     }, function(err) {
-  //       // registration failed :(
-  //       console.log('ServiceWorker registration failed: ', err);
-  //     });
-  //   });
-  // }
+  // const [client, setClient] = useState(null)
+  // const [loading, setLoading] = useState(true)
+
   // useEffect(() => {
-  //   if("serviceWorker" in navigator) {
-  //     window.addEventListener("load", function () {
-  //      navigator.serviceWorker.register("sw2.js").then(
-  //         function (registration) {
-  //           console.log("Service Worker registration successful with scope: ", registration.scope);
-  //         },
-  //         function (err) {
-  //           console.log("Service Worker registration failed: ", err);
-  //         }
-  //       );
-  //     });
-  //   }
+  //   console.log("abcd");
+  //   getApolloClient().then((client) => {
+  //     setClient(client)
+  //     setLoading(false)
+  //   })
+  //   console.log("xyz");
   // }, [])
   function hasNetwork(online) {
     const element = document.querySelector(".nav-container");

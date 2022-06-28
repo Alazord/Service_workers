@@ -13,29 +13,7 @@ export default function MyChar(results) {
     ["Name: ", character.name],
     ["Gender: ", character.gender],
   ];
-  /* function hasNetwork(online) {
-    const bg = document.querySelector("body");
-    if (online) {
-      bg.style.backgroundImage = `url("/images/Background.png")`;
-      console.log("we're online");
-    } else {
-      bg.style.backgroundImage = "none";
-      bg.style.backgroundColor = "#D3D3D3";
-      console.log("we're offline");
-    }
-  }
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      hasNetwork(navigator.onLine);
-    });
-    window.addEventListener("online", () => {
-      hasNetwork(navigator.onLine);
-    });
-    window.addEventListener("offline", () => {
-      hasNetwork(navigator.onLine);
-    });
-  });
-  */
+
   return (
     <div className={styles["character-card"]}>
       <Head>
@@ -75,25 +53,25 @@ export async function getServerSideProps(context) {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      // 'Cache-Control': 'max-age=60',
+      "Cache-Control": "max-age=3600",
     },
     body: JSON.stringify({
       query: `
-        query getCharacters{
-          character(id:${id}){
-            image
-            name
-            status
-            species
-            type
-            gender
-            created
-            episode{
-              episode
-            }
-          } 
-        }
-      `,
+      query getCharacters{
+        character(id:${id}){
+          image
+          name
+          status
+          species
+          type
+          gender
+          created
+          episode{
+            episode
+          }
+        } 
+      }
+    `,
     }),
   });
   const data = await results.json();
