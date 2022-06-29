@@ -10,22 +10,10 @@ const client = new ApolloClient({
 });
 
 function MyApp({ Component, pageProps }) {
-  // const [client, setClient] = useState(null)
-  // const [loading, setLoading] = useState(true)
-
-  // useEffect(() => {
-  //   console.log("abcd");
-  //   getApolloClient().then((client) => {
-  //     setClient(client)
-  //     setLoading(false)
-  //   })
-  //   console.log("xyz");
-  // }, [])
   function hasNetwork(online) {
     const element = document.querySelector(".nav-container");
     const bg = document.querySelector("body");
     if (online) {
-      // console.log("element", element);
       if (element) {
         element.style.backgroundColor = "#ff01c1";
       }
