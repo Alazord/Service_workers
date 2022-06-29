@@ -49,14 +49,14 @@ if (workbox) {
 workbox.routing.registerRoute(
   new RegExp("https://rickandmortyapi.com/graphql(/)?"),
   async ({ event }) => {
-    return networkFirst(event);
+    return staleWhileRevalidate(event);
   },
   "POST"
 );
 
 self.addEventListener("fetch", async (event) => {
   if (event.request.method === "POST") {
-    event.respondWith(networkFirst(event));
+    event.respondWith(staleWhileRevalidate(event));
   }
 });
 
