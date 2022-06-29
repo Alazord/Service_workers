@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/navBar/NavBar";
 import MainContent from "../components/mainContent/MainContent";
-import { useEffect } from "react";
 
 export default function Home() {
   return (

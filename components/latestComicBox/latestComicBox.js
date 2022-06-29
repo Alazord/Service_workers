@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./LatestComicBox.module.css";
 
 export default function LatestComicBox() {

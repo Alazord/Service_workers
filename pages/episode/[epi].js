@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "./epi.module.css";
-import { useEffect } from "react";
 
 export default function Episode_Card(results) {
   const episode = results.episode;
@@ -11,29 +10,6 @@ export default function Episode_Card(results) {
     ["Name: ", episode.name],
     ["Created: ", episode.created],
   ];
-  /*  function hasNetwork(online) {
-    const bg = document.querySelector("body");
-    if (online) {
-      bg.style.backgroundImage = `url("/images/Background.png")`;
-      console.log("we're online");
-    } else {
-      bg.style.backgroundImage = "none";
-      bg.style.backgroundColor = "#D3D3D3";
-      console.log("we're offline");
-    }
-  }
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      hasNetwork(navigator.onLine);
-    });
-    window.addEventListener("online", () => {
-      hasNetwork(navigator.onLine);
-    });
-    window.addEventListener("offline", () => {
-      hasNetwork(navigator.onLine);
-    });
-  });
-  */
   return (
     <div className={styles["episode-card"]}>
       <Head>
@@ -67,7 +43,7 @@ export async function getServerSideProps(context) {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      'Cache-Control': 'max-age=3600',
+      "Cache-Control": "max-age=3600",
     },
     body: JSON.stringify({
       query: `
