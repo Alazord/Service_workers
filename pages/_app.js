@@ -1,8 +1,6 @@
 import "../styles/globals.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-
-import getApolloClient from "../components/getApolloClient";
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql/",
