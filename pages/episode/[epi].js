@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "./epi.module.css";
-import { useEffect } from "react";
 
 export default function Episode_Card(results) {
   const episode = results.episode;
@@ -44,7 +43,7 @@ export async function getServerSideProps(context) {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      'Cache-Control': 'max-age=3600',
+      "Cache-Control": "max-age=3600",
     },
     body: JSON.stringify({
       query: `

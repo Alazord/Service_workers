@@ -1,9 +1,7 @@
 import Head from "next/head";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./char.module.css";
-import { useEffect } from "react";
 
 export default function MyChar(results) {
   const character = results.character;
