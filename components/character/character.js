@@ -4,6 +4,9 @@ import Link from "next/link";
 import styles from "./Character.module.css";
 
 const Character = ({ characters }) => {
+  if(characters.length===0){
+    return <h1 style={{backgroundColor:"white"}}>There are no characters for your search.</h1>
+  }
   return (
     <div className={styles["char-ind"]}>
       {characters.map((character) => {

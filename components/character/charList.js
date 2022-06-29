@@ -19,7 +19,7 @@ const CHARACTER_LIST = gql`
   }
 `;
 
-const Character_List = () => {
+const CharacterList = () => {
   const [search, setSearch] = useState("");
   const [submit, setSubmit] = useState("");
   const { error, data } = useQuery(CHARACTER_LIST, {
@@ -103,4 +103,4 @@ const Character_List = () => {
   );
 };
 
-export default Character_List;
+export default CharacterList;

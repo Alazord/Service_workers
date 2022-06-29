@@ -21,7 +21,7 @@ const EPISODE_LIST = gql`
   }
 `;
 
-const Episode_List = () => {
+const EpisodeList = () => {
   const [search, setSearch] = useState("");
   const [submit, setSubmit] = useState("");
   const { error, data } = useQuery(EPISODE_LIST, {
@@ -105,4 +105,4 @@ const Episode_List = () => {
   );
 };
 
-export default Episode_List;
+export default EpisodeList;

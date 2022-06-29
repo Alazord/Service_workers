@@ -3,7 +3,9 @@ import Link from "next/link";
 import styles from "./Episode.module.css";
 
 const Episode = ({ episodes }) => {
-  // console.log("episode",episodes);
+  if(episodes.length===0){
+    return <h1 style={{backgroundColor:"white"}}>There are no episodes for your search.</h1>
+  }
   return (
     <div className={styles["ep-ind"]}>
       {episodes.map((episode) => {
