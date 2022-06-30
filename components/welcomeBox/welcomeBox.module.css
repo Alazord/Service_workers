@@ -1,0 +1,31 @@
+.welcome-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  height: 417px;
+  width: 800px;
+  /* background-color: yellow; */
+  margin-left: auto;
+  margin-right: auto;
+}
+.welcome {
+  margin-bottom: 36px;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 42px;
+  padding: 5px;
+  /* identical to box height */
+  background-color: #000000;
+  color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carousal {
+  /* background-color: green; */
+  flex-grow: 1;
+}
+.carousal-img {
+  width: 100%;
+  min-height: 100%;
+  border-radius: 10px;
+}

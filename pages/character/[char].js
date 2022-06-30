@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./char.module.css";
 
 export default function MyChar(results) {
   const character = results.character;
@@ -11,30 +11,34 @@ export default function MyChar(results) {
     ["Name: ", character.name],
     ["Gender: ", character.gender],
   ];
+
   return (
-    <div className="character-card">
+    <div className={styles["character-card"]}>
       <Head>
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="character-card-heading">
+      <h1 className={styles["character-card-heading"]}>
         Details of the character you clicked on:
       </h1>
-      <div className="character-card-items">
-        <Image alt="" src={character.image} width={300} height={300} />
-        <ul
-          style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
-        >
-          {characterData.map((item, index) => (
-            <li key={`item${index}`}>
+      <div className={styles["character-card-items"]}>
+        <Image
+          alt="Character Image"
+          src={character.image}
+          width={300}
+          height={300}
+        />
+        <ul className={styles["character-card-list"]}>
+          {characterData.map((item, id) => (
+            <li key={`item${id}`}>
               <b>{item[0]}</b>
               {item[1]}
             </li>
           ))}
         </ul>
       </div>
-      <button className="character-card-return">
-        <Link href={"/char_page"}>Return</Link>
+      <button className={styles["character-card-return"]}>
+        <Link href={"/charPage"}>Return</Link>
       </button>
     </div>
   );
@@ -42,33 +46,33 @@ export default function MyChar(results) {
 
 export async function getServerSideProps(context) {
   const id = context.params.char;
-  const results = await fetch('https://rickandmortyapi.com/graphql/', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Cache-Control': 'max-age=60',
-      },
-      body: JSON.stringify({
-        query: `
-        query getCharacters{
-          character(id:${id}){
-            image
-            name
-            status
-            species
-            type
-            gender
-            created
-            episode{
-              episode
-            }
-          } 
-        }
-      `
-      })
-    });
-    const data = await results.json();
+  const results = await fetch("https://rickandmortyapi.com/graphql/", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "max-age=3600",
+    },
+    body: JSON.stringify({
+      query: `
+      query getCharacters{
+        character(id:${id}){
+          image
+          name
+          status
+          species
+          type
+          gender
+          created
+          episode{
+            episode
+          }
+        } 
+      }
+    `,
+    }),
+  });
+  const data = await results.json();
   return {
     props: {
       character: data.data.character,

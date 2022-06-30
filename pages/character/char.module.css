@@ -1,0 +1,37 @@
+.character-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: auto;
+}
+
+.character-card-heading {
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.character-card-list {
+  list-style: none;
+  align-items: center;
+  font-size: 21px;
+}
+
+.character-card-items {
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.character-card-return {
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  width: 150px;
+  margin-top: 10px;
+  border-color: white;
+}

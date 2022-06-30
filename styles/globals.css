@@ -5,8 +5,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Poppins";
-  background-image: url("/images/Background.png");
+  /* background-image: url("/images/Background.png"); */
   background-attachment: fixed;
+  background-size: contain;
 }
 Image {
   object-fit: cover;
@@ -25,24 +26,25 @@ a {
   position: fixed;
   display: flex;
   width: 100%;
-  height: 48px;
+  height: 60px;
   /* background-color: #ff01c1; */
   justify-content: flex-start;
   align-items: center;
-  z-index: 100;
+  z-index: 200;
 }
 .nav-element {
   display: flex;
-  height: 24px;
-  padding: 5px;
+  padding: 0 5px;
+  height: 100%;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  color: #000000;
+  color: #ffffff;
   margin-right: 28px;
   align-items: center;
 }
 .nav-container :first-child {
+  /* background-color: yellow; */
   margin-left: 206px;
 }
 .all {
@@ -51,16 +53,7 @@ a {
   margin-right: auto;
   background-color: rgba(255, 255, 255, 0.8);
 }
-.home,
-.welcome-box,
-.welcome,
-.description-box,
-.description-head,
-.description-content,
-.main-characters-box,
-.episode-box,
-.latest-comic-box,
-.explore-box {
+.home {
   margin-left: auto;
   margin-right: auto;
 }
@@ -74,243 +67,6 @@ a {
   /* identical to box height */
   color: #000000;
 }
-.welcome-box {
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  height: 417px;
-  width: 800px;
-  /* background-color: yellow; */
-}
-.welcome {
-  margin-bottom: 36px;
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 42px;
-  padding: 5px;
-  /* identical to box height */
-  background-color: #000000;
-  color: #ffffff;
-}
-.carousal {
-  /* background-color: green; */
-  flex-grow: 1;
-}
-.carousal img {
-  width: 100%;
-  min-height: 100%;
-  border-radius: 5px;
-}
-
-.description-box {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  height: 290px;
-  margin-top: 80px;
-  font-size: 28px;
-  line-height: 42px;
-  font-weight: 300;
-}
-.description-head {
-  height: 42px;
-  width: 100%;
-
-  color: #000000;
-}
-.description-box .line {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-.description-content {
-  margin-top: 28px;
-  flex-grow: 1;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: justify;
-  color: #000000;
-}
-
-.main-characters-box {
-  display: flex;
-  flex-direction: column;
-  margin-top: 80px;
-  width: 800px;
-  height: 244px;
-}
-.main-characters-head {
-  height: 42px;
-  margin-bottom: 0px;
-
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 42px;
-  /* identical to box height */
-  color: #000000;
-}
-.main-characters-box .line {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-.main-characters-images {
-  flex-grow: 1;
-}
-.main-characters-images {
-  margin-top: 28px;
-  justify-content: space-between;
-}
-.episode-box {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  height: 476px;
-  /* background-color: bisque; */
-  margin-top: 80px;
-}
-.episode-head {
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 42px;
-  /* identical to box height */
-  /* background-color: pink; */
-  color: #000000;
-}
-.episode-box .line {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-.episode-content {
-  display: flex;
-  margin-top: 28px;
-  width: 100%;
-  flex-grow: 1;
-  gap: 28px;
-}
-.episode-previous {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-.episode-previous :first-child {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
-  margin-bottom: 12px;
-  color: #000000;
-}
-.episode-name {
-  margin-top: 24px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000000;
-}
-.episode-description {
-  flex-grow: 1;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: justify;
-  color: #000000;
-}
-.episode-next {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-.episode-next :first-child {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
-  margin-bottom: 12px;
-  color: #000000;
-}
-.latest-comic-box {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  height: 314px;
-  margin-top: 80px;
-}
-.latest-comic-head {
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 42px;
-  /* identical to box height */
-
-  color: #000000;
-}
-.latest-comic-box .line {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-.latest-comic-content {
-  display: flex;
-  margin-top: 28px;
-  gap: 20px;
-}
-.latest-comic-content-img {
-  padding: 24px;
-  margin: 24px;
-}
-.latest-comic-title {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  color: #000000;
-}
-.latest-comic-description {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: justify;
-
-  color: #000000;
-}
-.latest-comic-details {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.explore-box {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  height: 596px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  font-size: 16px;
-  line-height: 24px;
-}
-.explore-head {
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 42px;
-
-  color: #000000;
-}
-.explore-box .line {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-.explore-content {
-  margin-top: 28px;
-  height: 249px;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 20px;
-}
-.explore-title {
-  text-align: center;
-  font-weight: 600;
-  text-align: center;
-  background-color: black;
-  color: #ffffff;
-}
-.explore-description {
-  font-weight: 400;
-  text-align: center;
-  background-color: black;
-  color: #ffffff;
-}
 
 /* Home Page */
 .nav {
@@ -318,36 +74,15 @@ a {
   flex-direction: column;
 }
 
-.main-character-img-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.main-character-img-list img {
-  object-fit: cover;
-}
-
-.main-character-img-tag {
-  background-color: black;
-  color: white;
-  width: 100%;
-  text-align: center;
-}
-
-.explore-content-tag {
-  display: flex;
-  flex-direction: column;
-  width: 240px;
-}
-
 /* Char + Episode list */
 .page {
-  direction: column;
+  /* direction: column; */
   align-items: center;
 }
 
 .page-heading {
-  background-color: purple;
+  /* position: fixed; */
+  background-color: #7bc8d2;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -356,6 +91,9 @@ a {
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+}
+.page-heading:hover {
+  opacity: 70%;
 }
 
 .search-bar {
@@ -370,125 +108,47 @@ a {
 .search-bar-inpt {
   width: 400px;
   border-radius: 5px;
+  font-size: 20px;
+  border-color: black;
 }
 
 .search-btn {
   border-radius: 5px;
-  background-color: #4a58ed;
-  color: white;
-  border-color: white;
+  background-color: "white";
+  color: "#498467";
+  border-color: black;
   width: 80px;
 }
 
 .reset-btn {
   width: 80px;
   border-radius: 5px;
-  background-color: red;
-  color: white;
-  border-color: white;
+  background-color: "white";
+  color: "#498467";
+  border-color: black;
 }
 
-.char-ind {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 120px;
-  row-gap: 50px;
-  margin: 50px;
-  text-align: center;
-}
-.char-item {
-  background-color: rgba(0, 255, 0, 0.6);
-  border: 2px solid black;
-  border-radius: 10px;
-  cursor: pointer;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.char-subitem {
-  padding-top: 300px;
-  /* padding-bottom: 50px; */
-  min-width: 100%;
-  min-height: 100%;
-}
-
-.char-txt {
-  color: white;
-  max-width: 100%;
-  /* max-width: 100%; */
-  font-size: larger;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background-color: rgba(0, 0, 0, 0.4);
-}
 #heading {
-  /* background-color: lightyellow; */
   border-radius: 10px;
 }
-/* Character Page */
-.character-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  width: auto;
+.status {
 }
-
-.character-card-heading {
-  background-color: purple;
+.status.offline {
+  position: fixed;
+  right: 20px;
+  top: 80px;
+  padding: 15px;
+  background-color: grey;
   color: white;
-  padding: 10px;
   border-radius: 5px;
 }
-
-.character-card-items {
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
+.status.online {
 }
 
-.character-card-return {
-  padding: 10px;
-  font-size: 18px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  width: 150px;
-  margin-top: 10px;
-  border-color: white;
-}
-
-/* Episode Page */
-.episode-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  width: auto;
-}
-
-.episode-card-heading {
-  background-color: purple;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.episode-card-items {
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
-.episode-card-return {
-  padding: 10px;
-  font-size: 18px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  width: 150px;
-  margin-top: 10px;
-  border-color: white;
+.random {
+  position: fixed;
+  width: 100%;
+  /* margin-left: 200px; */
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 100;
 }

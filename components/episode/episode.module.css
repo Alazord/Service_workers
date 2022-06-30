@@ -1,0 +1,43 @@
+.items {
+}
+.ep-ind {
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 250px auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.ep-item:hover {
+  border: 2px solid blue;
+}
+.ep-item {
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: #7bc8d2;
+  width: 250px;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 30px 40px;
+}
+
+.ep-subitem {
+  padding-top: 300px;
+  /* padding-bottom: 50px; */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.ep-txt {
+  color: #ffffff;
+  max-width: 100%;
+  /* max-width: 100%; */
+  font-size: medium;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+}

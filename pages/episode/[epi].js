@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import styles from "./epi.module.css";
 
-export default function MyEpisode(results) {
+export default function Episode_Card(results) {
   const episode = results.episode;
   const episodeData = [
     ["Episode: ", episode.episode],
@@ -11,28 +11,26 @@ export default function MyEpisode(results) {
     ["Created: ", episode.created],
   ];
   return (
-    <div className="episode-card">
+    <div className={styles["episode-card"]}>
       <Head>
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="episode-card-heading">
+      <h1 className={styles["episode-card-heading"]}>
         Details of the Episode you clicked on:
       </h1>
-      <div className="episode-card-items">
-        <ul
-          style={{ listStyle: "none", alignItems: "center", fontSize: "21px" }}
-        >
-          {episodeData.map((item, index) => (
-            <li key={`item${index}`}>
+      <div className={styles["episode-card-items"]}>
+        <ul className={styles["episode-card-list"]}>
+          {episodeData.map((item, id) => (
+            <li key={`item${id}`}>
               <b>{item[0]}</b>
               {item[1]}
             </li>
           ))}
         </ul>
       </div>
-      <button className="episode-card-return">
-        <Link href={"/episode_page"}>Return</Link>
+      <button className={styles["episode-card-return"]}>
+        <Link href={"/episodePage"}>Return</Link>
       </button>
     </div>
   );
@@ -40,15 +38,15 @@ export default function MyEpisode(results) {
 
 export async function getServerSideProps(context) {
   const id = context.params.epi;
-  const results = await fetch('https://rickandmortyapi.com/graphql/', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Cache-Control': 'max-age=60',
-      },
-      body: JSON.stringify({
-        query: `
+  const results = await fetch("https://rickandmortyapi.com/graphql/", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "max-age=3600",
+    },
+    body: JSON.stringify({
+      query: `
         query getEpisodes{
           episode(id:${id}){
             name
@@ -57,10 +55,10 @@ export async function getServerSideProps(context) {
             created
           }    
         }
-      `
-      })
-    });
-    const data = await results.json();
+      `,
+    }),
+  });
+  const data = await results.json();
   return {
     props: {
       episode: data.data.episode,
