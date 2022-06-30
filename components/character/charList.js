@@ -39,7 +39,7 @@ const CharacterList = () => {
             className="nav-element"
             key={index}
             href={URL}
-            style={index === 2 ? { backgroundColor: "lightblue" } : {}}
+            style={index === 2 ? { backgroundColor: "#DEE7E8" } : {}}
           >
             {item}
           </Link>

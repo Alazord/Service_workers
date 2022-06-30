@@ -13,16 +13,16 @@ function MyApp({ Component, pageProps }) {
     const bg = document.querySelector("body");
     if (online) {
       if (element) {
-        element.style.backgroundColor = "#ff01c1";
+        element.style.backgroundColor = "#498467";
       }
       bg.style.backgroundImage = `url("/images/Background.png")`;
       console.log("we're online");
     } else {
       if (element) {
-        element.style.backgroundColor = "grey";
+        element.style.backgroundColor = "#6D6A75";
       }
-      bg.style.backgroundImage = "none";
-      bg.style.backgroundColor = "#D3D3D3";
+      // bg.style.backgroundImage = `url("/images/offlineBackground.svg")`;
+      // bg.style.backgroundColor = "#D3D3D3";
       console.log("we're offline");
     }
   }

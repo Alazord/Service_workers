@@ -41,7 +41,7 @@ const EpisodeList = () => {
             className="nav-element"
             key={index}
             href={URL}
-            style={index === 1 ? { backgroundColor: "lightblue" } : {}}
+            style={index === 1 ? { backgroundColor: "#DEE7E8" } : {}}
           >
             {item}
           </Link>
