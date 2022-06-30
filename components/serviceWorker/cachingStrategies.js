@@ -1,3 +1,15 @@
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js"
+);
+importScripts(
+  "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"
+);
+importScripts(
+  "https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js"
+);
+
+const store = new idbKeyval.Store("GraphQL-Cache", "PostResponses");
+
 export async function serializeResponse(response) {
     let serializedHeaders = {};
     for (var entry of response.headers.entries()) {
