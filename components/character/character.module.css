@@ -6,6 +6,9 @@
   align-items: center;
   justify-content: center;
 }
+.char-item:hover{
+  border: 2px solid blue;
+}
 .char-item {
   border: 2px solid black;
   border-radius: 10px;
