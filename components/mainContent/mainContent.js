@@ -9,7 +9,7 @@ import ExploreBox from "../exploreBox/ExploreBox";
 export default function MainContent() {
   return (
     <div className="all" id="home">
-      <div className="home">HOME</div>
+      <div className="home"></div>
       <WelcomeBox />
       <DescriptionBox />
       <MainCharacterBox />

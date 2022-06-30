@@ -13,7 +13,7 @@ export default function NavBar() {
           className="nav-element"
           key={index}
           href={URL}
-          style={index === 0 ? { backgroundColor: "#DEE7E8" } : {}}
+          style={index === 0 ? { borderBottom: "4px solid #B0F10E" } : {}}
         >
           {item}
         </Link>

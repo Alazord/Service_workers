@@ -41,7 +41,7 @@ const EpisodeList = () => {
             className="nav-element"
             key={index}
             href={URL}
-            style={index === 1 ? { backgroundColor: "#DEE7E8" } : {}}
+            style={index === 1 ? { borderBottom: "4px solid #B0F10E" } : {}}
           >
             {item}
           </Link>
@@ -52,41 +52,44 @@ const EpisodeList = () => {
           <title>Episodes</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <h1 className="page-heading">
-          <Link href="/">Rick and Morty</Link>
-        </h1>
-        <form
-          onSubmit={async (event) => {
-            event.preventDefault();
-            setSubmit(search + " ");
-          }}
-        >
-          <div className="search-bar">
-            <input
-              className="search-bar-inpt"
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-            />
-            <button
-              className="search-btn"
-              disabled={search === ""}
-              type="submit"
-            >
-              Search
-            </button>
-            <button
-              className="reset-btn"
-              onClick={() => {
-                setSubmit("");
-                setSearch("");
-              }}
-            >
-              Reset
-            </button>
-          </div>
-        </form>
+        <div className="status"></div>
+        <div className="random">
+          <h1 className="page-heading">
+            <Link href="/">Rick and Morty</Link>
+          </h1>
+          <form
+            onSubmit={async (event) => {
+              event.preventDefault();
+              setSubmit(search + " ");
+            }}
+          >
+            <div className="search-bar">
+              <input
+                className="search-bar-inpt"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+              <button
+                className="search-btn"
+                // disabled={search === ""}
+                type="submit"
+              >
+                Search
+              </button>
+              <button
+                className="reset-btn"
+                onClick={() => {
+                  setSubmit("");
+                  setSearch("");
+                }}
+              >
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
         <div className="items">
           {error ? (
             <h1>

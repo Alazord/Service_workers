@@ -33,7 +33,7 @@ import {
   cleanupOutdatedCaches,
 } from "workbox-precaching";
 
-import {Registers} from "./components/serviceWorker/registers"
+import { Registers } from "./components/serviceWorker/registers";
 
 skipWaiting();
 clientsClaim();
