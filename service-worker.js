@@ -185,7 +185,7 @@ async function getPostKey(request) {
 
 registerRoute(
   "/",
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "start-url",
     plugins: [
       new ExpirationPlugin({
@@ -199,7 +199,7 @@ registerRoute(
 );
 registerRoute(
   /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "google-fonts",
     plugins: [
       new ExpirationPlugin({
@@ -213,7 +213,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "static-font-assets",
     plugins: [
       new ExpirationPlugin({
@@ -227,7 +227,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "static-image-assets",
     plugins: [
       new ExpirationPlugin({
@@ -241,7 +241,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:js)$/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "static-js-assets",
     plugins: [
       new ExpirationPlugin({
@@ -255,7 +255,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:css|less)$/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "static-style-assets",
     plugins: [
       new ExpirationPlugin({
@@ -269,7 +269,7 @@ registerRoute(
 );
 registerRoute(
   /\.(?:json|xml|csv)$/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "static-data-assets",
     plugins: [
       new ExpirationPlugin({
@@ -283,7 +283,7 @@ registerRoute(
 );
 registerRoute(
   /\/api\/.*$/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "apis",
     networkTimeoutSeconds: 86400,
     plugins: [
@@ -298,7 +298,7 @@ registerRoute(
 );
 registerRoute(
   /.*/i,
-  new NetworkFirst({
+  new StaleWhileRevalidate({
     cacheName: "others",
     networkTimeoutSeconds: 86400,
     plugins: [
@@ -312,7 +312,7 @@ registerRoute(
   "GET"
 );
 
-setDefaultHandler(new NetworkFirst());
+setDefaultHandler(new StaleWhileRevalidate());
 setCatchHandler(({ event }) => {
   switch (event.request.destination) {
     case "document":
