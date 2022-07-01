@@ -1,7 +1,7 @@
 .char-ind {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 0px auto;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -34,6 +34,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   background-color: rgba(0, 0, 0, 0.4);
-  border-left:10px solid rgba(0, 0, 0, 0.0);
-  border-right:10px solid rgba(0, 0, 0, 0.0);
+  border-left: 10px solid rgba(0, 0, 0, 0);
+  border-right: 10px solid rgba(0, 0, 0, 0);
 }
