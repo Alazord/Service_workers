@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         mode.innerText = "";
       }
       if (element) {
-        element.style.backgroundColor = "green";
+        element.style.backgroundColor = "#498467";
       }
       bg.style.backgroundImage = `url("/images/Background.png")`;
       console.log("we're online");
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
         element.style.backgroundColor = "#6D6A75";
       }
       // bg.style.backgroundImage = `url("/images/offlineBackground.svg")`;
-      // bg.style.backgroundColor = "#D3D3D3";
+      bg.style.backgroundColor = "#D3D3D3";
       console.log("we're offline");
     }
   }
