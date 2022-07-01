@@ -4,7 +4,6 @@ import styles from "./WelcomeBox.module.css";
 export default function WelcomeBox() {
   return (
     <div className={styles["welcome-box"]}>
-      <div className="status"></div>
       <div className={styles["welcome"]}>RICK AND MORTY</div>
       <div className={styles["carousal"]}>
         <Image

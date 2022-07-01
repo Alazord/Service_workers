@@ -99,7 +99,7 @@ const EpisodeList = () => {
           ) : data ? (
             <Episode episodes={data.episodes.results} />
           ) : (
-            <div> Loading...</div>
+            <div className="loading"> Loading...</div>
           )}
         </div>
         {/* <footer className={styles.footer}>&copy;</footer> */}

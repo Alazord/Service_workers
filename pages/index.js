@@ -9,6 +9,7 @@ export default function Home() {
         <title>Home</title>
         <link rel="manifest" href="/manifest.json" />
       </Head>
+      <div className="status"></div>
       <Navbar id="home-navbar" />
       <MainContent />
     </div>

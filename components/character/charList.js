@@ -98,7 +98,7 @@ const CharacterList = () => {
           ) : data ? (
             <Character characters={data.characters.results} />
           ) : (
-            <div> Loading...</div>
+            <div className="loading"> Loading...</div>
           )}
         </div>
         {/* <footer className={styles.footer}>&copy;</footer> */}

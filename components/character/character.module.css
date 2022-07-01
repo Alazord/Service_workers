@@ -8,7 +8,8 @@
   max-width: 1200px;
 }
 .char-item:hover {
-  border: 2px solid blue;
+  border: 2px solid black;
+  box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
 }
 .char-item {
   border: 2px solid white;
