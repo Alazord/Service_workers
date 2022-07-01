@@ -101,7 +101,7 @@ const CharacterList = () => {
             <div> Loading...</div>
           )}
         </div>
-        <footer className={styles.footer}>&copy;</footer>
+        {/* <footer className={styles.footer}>&copy;</footer> */}
       </div>
     </div>
   );
