@@ -111,6 +111,16 @@ a {
   font-size: 20px;
   border-color: black;
 }
+input[type="text"]::-webkit-search-cancel-button {
+  /* Remove default */
+  -webkit-appearance: none;
+
+  /* Now your own custom styles */
+  height: 10px;
+  width: 10px;
+  background: red;
+  /* Will place small red box on the right of input (positioning carries over) */
+}
 
 .search-btn {
   border-radius: 5px;
@@ -151,9 +161,9 @@ a {
   z-index: 100;
   backdrop-filter: blur(10px);
 }
-.items{
+.items {
   position: relative;
   top: 140px;
-  max-height:calc(100vh - 140px);
+  max-height: calc(100vh - 140px);
   /* overflow: hidden; */
 }
