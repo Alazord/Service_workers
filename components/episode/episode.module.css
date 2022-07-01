@@ -1,20 +1,23 @@
-.items {
-}
+/* .items {
+} */
 .ep-ind {
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  margin: 250px auto;
+  margin: 0 auto;
   text-align: center;
   align-items: center;
   justify-content: center;
+  overflow-y:scroll;
+  position: relative;
+  max-width: 1200px;
 }
 .ep-item:hover {
   border: 2px solid blue;
 }
 .ep-item {
   /* background-color: rgba(0, 0, 0, 0.8); */
-  background-color: #7bc8d2;
+  background-color: rgb(43, 210, 157);
   width: 250px;
   border: 2px solid white;
   border-radius: 10px;

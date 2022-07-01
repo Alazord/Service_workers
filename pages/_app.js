@@ -13,18 +13,22 @@ function MyApp({ Component, pageProps }) {
     const bg = document.querySelector("body");
     const mode = document.querySelector(".status");
     if (online) {
-      mode.classList.remove("offline");
-      mode.classList.add("online");
-      mode.innerText = "";
+      if(mode){
+        mode.classList.remove("offline");
+        mode.classList.add("online");
+        mode.innerText = "";
+      }
       if (element) {
-        element.style.backgroundColor = "#498467";
+        element.style.backgroundColor = "green";
       }
       bg.style.backgroundImage = `url("/images/Background.png")`;
       console.log("we're online");
     } else {
-      mode.classList.remove("online");
-      mode.classList.add("offline");
-      mode.innerText = "You are in offline mode";
+      if(mode){
+        mode.classList.remove("online");
+        mode.classList.add("offline");
+        mode.innerText = "You are in offline mode";
+      }
       if (element) {
         element.style.backgroundColor = "#6D6A75";
       }

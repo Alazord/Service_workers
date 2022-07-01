@@ -5,7 +5,7 @@ export default function WelcomeBox() {
   return (
     <div className={styles["welcome-box"]}>
       <div className="status"></div>
-      <div className={styles["welcome"]}>WELCOME TO RICK AND MORTY WIKI!</div>
+      <div className={styles["welcome"]}>RICK AND MORTY</div>
       <div className={styles["carousal"]}>
         <Image
           alt="Rick and Morty"

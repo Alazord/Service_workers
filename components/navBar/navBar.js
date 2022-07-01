@@ -2,7 +2,7 @@ import { Link } from "@chakra-ui/react";
 
 export default function NavBar() {
   const OptionList = [
-    ["RICK AND MORTY WIKI", "#home"],
+    ["HOME", "#home"],
     ["EPISODES", "/episodePage"],
     ["CHARACTERS", "/charPage"],
   ];

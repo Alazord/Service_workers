@@ -30,15 +30,20 @@
 .main-character-img-list {
   display: flex;
   flex-direction: column;
+  
 }
 
 .main-character-img-list img {
   object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .main-character-img-tag {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   width: 100%;
   text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

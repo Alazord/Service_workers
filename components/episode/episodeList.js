@@ -28,7 +28,7 @@ const EpisodeList = () => {
     variables: { submit },
   });
   const optionList = [
-    ["RICK AND MORTY WIKI", "/"],
+    ["HOME", "/"],
     ["EPISODES", "/episodePage"],
     ["CHARACTERS", "/charPage"],
   ];
@@ -54,9 +54,9 @@ const EpisodeList = () => {
         </Head>
         <div className="status"></div>
         <div className="random">
-          <h1 className="page-heading">
+          {/* <h1 className="page-heading">
             <Link href="/">Rick and Morty</Link>
-          </h1>
+          </h1> */}
           <form
             onSubmit={async (event) => {
               event.preventDefault();

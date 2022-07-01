@@ -59,6 +59,15 @@ workbox.routing.registerRoute(
   },
   "POST"
 );
+let dt;
+self.addEventListener('install', evt=> {
+  dt=Date.now();
+  console.log("service worker has been installed",Date.now());
+});
+self.addEventListener('activate', evt=> {
+
+  console.log("service worker has been activated",Date.now()-dt);
+});
 
 self.addEventListener("fetch", async (event) => {
   if (event.request.method === "POST") {

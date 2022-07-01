@@ -27,14 +27,17 @@
   flex-direction: column;
   flex-grow: 1;
 }
-.episode-previous :first-child {
+.episode-previous img{
+  border-radius: 5px;
+}
+/* .episode-previous :first-child {
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
   text-align: center;
   margin-bottom: 12px;
   color: #000000;
-}
+} */
 .episode-name {
   margin-top: 24px;
   font-weight: 500;
@@ -55,11 +58,14 @@
   flex-direction: column;
   flex-grow: 1;
 }
-.episode-next :first-child {
+.episode-next img{
+  border-radius: 5px;
+}
+/* .episode-next :first-child {
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
   text-align: center;
   margin-bottom: 12px;
   color: #000000;
-}
+} */
