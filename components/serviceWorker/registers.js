@@ -11,11 +11,6 @@ import {
   setDefaultHandler,
   setCatchHandler,
 } from "workbox-routing";
-import {
-  matchPrecache,
-  precacheAndRoute,
-  cleanupOutdatedCaches,
-} from "workbox-precaching";
 
 export function Registers(){
     registerRoute(
