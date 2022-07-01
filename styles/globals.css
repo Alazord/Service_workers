@@ -7,6 +7,7 @@ body {
   font-family: "Poppins";
   /* background-image: url("/images/Background.png"); */
   background-attachment: fixed;
+  background-size: contain;
 }
 Image {
   object-fit: cover;
@@ -25,11 +26,11 @@ a {
   position: fixed;
   display: flex;
   width: 100%;
-  height: 48px;
+  height: 60px;
   /* background-color: #ff01c1; */
   justify-content: flex-start;
   align-items: center;
-  z-index: 100;
+  z-index: 200;
 }
 .nav-element {
   display: flex;
@@ -38,7 +39,7 @@ a {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  color: #000000;
+  color: #ffffff;
   margin-right: 28px;
   align-items: center;
 }
@@ -75,12 +76,13 @@ a {
 
 /* Char + Episode list */
 .page {
-  direction: column;
+  /* direction: column; */
   align-items: center;
 }
 
 .page-heading {
-  background-color: purple;
+  /* position: fixed; */
+  background-color: #7bc8d2;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -89,6 +91,9 @@ a {
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+}
+.page-heading:hover {
+  opacity: 70%;
 }
 
 .search-bar {
@@ -103,24 +108,47 @@ a {
 .search-bar-inpt {
   width: 400px;
   border-radius: 5px;
+  font-size: 20px;
+  border-color: black;
 }
 
 .search-btn {
   border-radius: 5px;
-  background-color: #4a58ed;
-  color: white;
-  border-color: white;
+  background-color: "white";
+  color: "#498467";
+  border-color: black;
   width: 80px;
 }
 
 .reset-btn {
   width: 80px;
   border-radius: 5px;
-  background-color: red;
-  color: white;
-  border-color: white;
+  background-color: "white";
+  color: "#498467";
+  border-color: black;
 }
 
 #heading {
   border-radius: 10px;
+}
+.status {
+}
+.status.offline {
+  position: fixed;
+  right: 20px;
+  top: 80px;
+  padding: 15px;
+  background-color: grey;
+  color: white;
+  border-radius: 5px;
+}
+.status.online {
+}
+
+.random {
+  position: fixed;
+  width: 100%;
+  /* margin-left: 200px; */
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 100;
 }

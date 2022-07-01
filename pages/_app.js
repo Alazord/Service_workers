@@ -11,18 +11,25 @@ function MyApp({ Component, pageProps }) {
   function hasNetwork(online) {
     const element = document.querySelector(".nav-container");
     const bg = document.querySelector("body");
+    const mode = document.querySelector(".status");
     if (online) {
+      mode.classList.remove("offline");
+      mode.classList.add("online");
+      mode.innerText = "";
       if (element) {
-        element.style.backgroundColor = "#ff01c1";
+        element.style.backgroundColor = "#498467";
       }
       bg.style.backgroundImage = `url("/images/Background.png")`;
       console.log("we're online");
     } else {
+      mode.classList.remove("online");
+      mode.classList.add("offline");
+      mode.innerText = "You are in offline mode";
       if (element) {
-        element.style.backgroundColor = "grey";
+        element.style.backgroundColor = "#6D6A75";
       }
-      bg.style.backgroundImage = "none";
-      bg.style.backgroundColor = "#D3D3D3";
+      // bg.style.backgroundImage = `url("/images/offlineBackground.svg")`;
+      // bg.style.backgroundColor = "#D3D3D3";
       console.log("we're offline");
     }
   }
