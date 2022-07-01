@@ -1,10 +1,11 @@
 .char-ind {
   display: flex;
   flex-wrap: wrap;
-  margin: 250px auto;
+  margin: 0 auto;
   text-align: center;
   align-items: center;
   justify-content: center;
+  max-width: 1200px;
 }
 .char-item:hover {
   border: 2px solid blue;
@@ -28,12 +29,11 @@
 
 .char-txt {
   color: white;
-  /* max-width: 50%; */
-  /* max-width: 100%; */
   font-size: larger;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   background-color: rgba(0, 0, 0, 0.4);
-  /* padding: 0 5px 0 5px; */
+  border-left:10px solid rgba(0, 0, 0, 0.0);
+  border-right:10px solid rgba(0, 0, 0, 0.0);
 }

@@ -21,9 +21,7 @@ const Character = ({ characters }) => {
           >
             <Link href={`/character/${character.id}`}>
               <div className={styles["char-subitem"]}>
-                {/* <Image alt="" src={character.image} width={300} height={300} /> */}
                 <h4 className={styles["char-txt"]}>{character.name}</h4>
-                {/* <h4 className="char-txt">Origin: {character.origin.name}</h4> */}
               </div>
             </Link>
           </div>
