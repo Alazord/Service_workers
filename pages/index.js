@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navbar from "../components/navBar/NavBar";
+import NavBar from "../components/navBar/NavBar";
 import MainContent from "../components/mainContent/MainContent";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <div className="status"></div>
-      <Navbar id="home-navbar" />
+      <NavBar id="home-navbar" props="HOME" />
       <MainContent />
     </div>
   );

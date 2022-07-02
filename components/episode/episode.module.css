@@ -8,16 +8,17 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  overflow-y:scroll;
+  overflow-y: scroll;
   position: relative;
   max-width: 1200px;
 }
-.ep-item:hover {
+.ep-item-online:hover,
+.ep-item-offline:hover {
   border: 2px solid black;
-  box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
 }
-.ep-item {
-  background-color: #498467;
+.ep-item-online,
+.ep-item-offline {
   width: 250px;
   border: 2px solid white;
   border-radius: 10px;
@@ -26,7 +27,12 @@
   background-size: cover;
   margin: 30px 40px;
 }
-
+.ep-item-online {
+  background-color: #498467;
+}
+.ep-item-offline {
+  background-color: #6d6a75;
+}
 .ep-subitem {
   padding-top: 300px;
   /* padding-bottom: 50px; */

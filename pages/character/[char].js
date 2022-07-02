@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./char.module.css";
+import NavBar from "../../components/navBar/navBar";
 
 export default function MyChar(results) {
   const character = results.character;
@@ -18,6 +19,7 @@ export default function MyChar(results) {
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NavBar id="home-navbar" props="CHARACTERS" />
       <h1 className={styles["character-card-heading"]}>
         Details of the character you clicked on:
       </h1>
