@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./char.module.css";
 import NavBar from "../../components/navBar/navBar";
-import Status from "../components/status/status";
+import Status from "../../components/status/status";
 
 export default function MyChar(results) {
   const character = results.character;

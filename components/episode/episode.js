@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 
 const Episode = ({ episodes }) => {
+  const isOnline = useContext(ThemeContext);
   if (episodes.length === 0) {
     return (
       <h1 style={{ backgroundColor: "white" }}>
@@ -12,7 +13,7 @@ const Episode = ({ episodes }) => {
       </h1>
     );
   }
-  const isOnline = useContext(ThemeContext);
+
   return (
     <div className={styles["ep-ind"]}>
       {episodes.map((episode) => {
