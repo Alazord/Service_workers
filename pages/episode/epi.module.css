@@ -7,8 +7,8 @@
 }
 
 .episode-card-heading {
-  background-color: purple;
-  color: white;
+  /* background-color: #498467; */
+  color: #498467;
   padding: 10px;
   border-radius: 5px;
 }
@@ -16,6 +16,7 @@
 .episode-card-items {
   align-items: center;
   padding: 10px;
+  border:2px solid black;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
 }
@@ -23,6 +24,9 @@
   list-style: none;
   align-items: center;
   font-size: 21px;
+}
+.episode-card-items:hover {
+  background-color: aqua;
 }
 
 .episode-card-return {

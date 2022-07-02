@@ -42,6 +42,9 @@
   text-align: center;
   background-color: rgba(0,0,0,0.8);
   color: #ffffff;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .explore-description {
   font-weight: 400;
@@ -50,4 +53,7 @@
   color: #ffffff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

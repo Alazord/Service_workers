@@ -7,8 +7,8 @@
 }
 
 .character-card-heading {
-  background-color: purple;
-  color: white;
+  /* background-color: #498467; */
+  color: #498467;
   padding: 10px;
   border-radius: 5px;
 }
@@ -22,8 +22,13 @@
 .character-card-items {
   align-items: center;
   padding: 10px;
+  border: 2px solid black;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
+}
+
+.character-card-items:hover {
+  background-color: aqua;
 }
 
 .character-card-return {

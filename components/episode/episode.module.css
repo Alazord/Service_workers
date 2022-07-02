@@ -14,7 +14,7 @@
 }
 .ep-item:hover {
   border: 2px solid black;
-  box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+  box-shadow: 0 1px 4px 0 rgba(10,10,20,0.15);
 }
 .ep-item {
   background-color: #498467;

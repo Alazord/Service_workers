@@ -27,36 +27,11 @@ const EpisodeList = () => {
   const { error, data } = useQuery(EPISODE_LIST, {
     variables: { submit },
   });
-  const optionList = [
-    ["HOME", "/"],
-    ["EPISODES", "/episodePage"],
-    ["CHARACTERS", "/charPage"],
-  ];
 
   return (
     <div className="nav">
-      <div className="nav-container">
-        {optionList.map(([item, URL], index) => (
-          <Link
-            className="nav-element"
-            key={index}
-            href={URL}
-            style={index === 1 ? { borderBottom: "4px solid #B0F10E" } : {}}
-          >
-            {item}
-          </Link>
-        ))}
-      </div>
-      <div className="page">
-        <Head>
-          <title>Episodes</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <div className="status"></div>
+      <div className="page"> 
         <div className="random">
-          {/* <h1 className="page-heading">
-            <Link href="/">Rick and Morty</Link>
-          </h1> */}
           <form
             onSubmit={async (event) => {
               event.preventDefault();
@@ -73,7 +48,6 @@ const EpisodeList = () => {
               />
               <button
                 className="search-btn"
-                // disabled={search === ""}
                 type="submit"
               >
                 Search
@@ -99,10 +73,9 @@ const EpisodeList = () => {
           ) : data ? (
             <Episode episodes={data.episodes.results} />
           ) : (
-            <div className="loading"> Loading...</div>
+            <div className="loader"> Loading...</div>
           )}
         </div>
-        {/* <footer className={styles.footer}>&copy;</footer> */}
       </div>
     </div>
   );

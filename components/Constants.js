@@ -2,7 +2,7 @@ const EXPLORE = [
   {
     src: "/images/comic3.avif",
     expTitle: "COMICS",
-    expDesc: "Some weird stuff happens in the comics broh.",
+    expDesc: "Weird stuff happens in the comics broh.",
   },
   {
     src: "/images/song.jpeg",
@@ -12,7 +12,7 @@ const EXPLORE = [
   {
     src: "/images/location.jpeg",
     expTitle: "LOCATIONS",
-    expDesc: "There are some sick locals in RnM duuudes.",
+    expDesc: "There are sick locals in RnM duuudes.",
   },
   {
     src: "/images/episode.jpeg",

@@ -18,9 +18,9 @@ export default function MyChar(results) {
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className={styles["character-card-heading"]}>
+      <h2 className={styles["character-card-heading"]}>
         Details of the character you clicked on:
-      </h1>
+      </h2>
       <div className={styles["character-card-items"]}>
         <Image
           alt="Character Image"
@@ -37,9 +37,9 @@ export default function MyChar(results) {
           ))}
         </ul>
       </div>
-      <button className={styles["character-card-return"]}>
+      {/* <button className={styles["character-card-return"]}>
         <Link href={"/charPage"}>Return</Link>
-      </button>
+      </button> */}
     </div>
   );
 }

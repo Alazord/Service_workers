@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <div className="status"></div>
-      <Navbar id="home-navbar" />
+      <Navbar props={"HOME"} id="home-navbar" />
       <MainContent />
     </div>
   );
