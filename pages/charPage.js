@@ -1,8 +1,7 @@
-import Head from "next/head";
-import Navbar from "../components/navBar/navBar";
 import CharacterList from "../components/character/charList";
 import Head from "next/head";
 import NavBar from "../components/navBar/navBar";
+import Status from "../components/status/status";
 
 export default function Char_List() {
   return (
@@ -11,7 +10,7 @@ export default function Char_List() {
         <title>Characters</title>
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <div className="status"></div>
+      <Status />
       <NavBar id="home-navbar" props={"CHARACTERS"} />
       <CharacterList />
     </div>

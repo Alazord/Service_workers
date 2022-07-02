@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Link from "next/link";
 import styles from "./epi.module.css";
 import NavBar from "../../components/navBar/navBar";
+import Status from "../../components/status/status";
 
 export default function Episode_Card(results) {
   const episode = results.episode;
@@ -17,6 +17,7 @@ export default function Episode_Card(results) {
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Status />
       <NavBar id="home-navbar" props="EPISODES" />
       <h2 className={styles["episode-card-heading"]}>
         Details of the Episode you clicked on:
