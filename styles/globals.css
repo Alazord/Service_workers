@@ -39,7 +39,8 @@ a {
 .nav-container-offline {
   background-color: #6d6a75;
 }
-.nav-element {
+.nav-element-online,
+.nav-element-offline {
   display: flex;
   padding: 0 5px;
   height: 100%;
@@ -49,7 +50,12 @@ a {
   color: #ffffff;
   margin-right: 28px;
   align-items: center;
+}
+.nav-element-online {
   border-bottom: 4px solid #498467;
+}
+.nav-element-offline {
+  border-bottom: 4px solid #6d6a75;
 }
 .nav-container-online :first-child {
   /* background-color: yellow; */

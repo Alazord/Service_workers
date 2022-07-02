@@ -16,7 +16,7 @@ export default function NavBar({ props }) {
     >
       {OptionList.map(([item, URL], index) => (
         <Link
-          className="nav-element"
+          className={isOnline ? "nav-element-online" : "nav-element-offline"}
           key={index}
           href={URL}
           style={props === item ? { borderBottom: "4px solid #B0F10E" } : {}}
