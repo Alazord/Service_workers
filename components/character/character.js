@@ -25,8 +25,8 @@ const Character = ({ characters }) => {
                 <Image
                   alt="Character Image"
                   src={character.image}
-                  width={250}
-                  height={230}
+                  width={246}
+                  height={234}
                 />
                 <div className={styles["char-txt"]}>{character.name}</div>
               </div>
