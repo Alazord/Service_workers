@@ -18,15 +18,14 @@ const Character = ({ characters }) => {
           <div
             className={styles["char-item"]}
             key={character.id}
-            // style={{ backgroundImage: `url(${character.image})` }}
           >
             <Link href={`/character/${character.id}`}>
               <div className={styles["char-subitem"]}>
                 <Image
                   alt="Character Image"
                   src={character.image}
-                  width={250}
-                  height={230}
+                  width={246}
+                  height={234}
                 />
                 <div className={styles["char-txt"]}>{character.name}</div>
               </div>

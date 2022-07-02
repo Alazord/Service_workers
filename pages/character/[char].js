@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./char.module.css";
-import NavBar from "../../components/navBar/navBar";
+import NavBar from "../../components/navBar/NavBar";
 import Status from "../../components/status/status";
 
 export default function MyChar(results) {
