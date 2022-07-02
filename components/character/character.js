@@ -18,7 +18,6 @@ const Character = ({ characters }) => {
           <div
             className={styles["char-item"]}
             key={character.id}
-            // style={{ backgroundImage: `url(${character.image})` }}
           >
             <Link href={`/character/${character.id}`}>
               <div className={styles["char-subitem"]}>

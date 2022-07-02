@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "./epi.module.css";
-import NavBar from "../../components/navBar/navBar";
+import NavBar from "../../components/navBar/NavBar";
 import Status from "../../components/status/status";
 
 export default function Episode_Card(results) {
