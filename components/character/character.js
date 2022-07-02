@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Character.module.css";
 
 const Character = ({ characters }) => {
@@ -17,11 +18,17 @@ const Character = ({ characters }) => {
           <div
             className={styles["char-item"]}
             key={character.id}
-            style={{ backgroundImage: `url(${character.image})` }}
+            // style={{ backgroundImage: `url(${character.image})` }}
           >
             <Link href={`/character/${character.id}`}>
               <div className={styles["char-subitem"]}>
-                <h4 className={styles["char-txt"]}>{character.name}</h4>
+                <Image
+                  alt="Character Image"
+                  src={character.image}
+                  width={250}
+                  height={230}
+                />
+                <div className={styles["char-txt"]}>{character.name}</div>
               </div>
             </Link>
           </div>

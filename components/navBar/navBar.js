@@ -5,8 +5,8 @@ import { ThemeContext } from "../../pages/_app";
 export default function NavBar({ props }) {
   const OptionList = [
     ["HOME", "/"],
-    ["EPISODES", "/episodePage"],
     ["CHARACTERS", "/charPage"],
+    ["EPISODES", "/episodePage"],
   ];
   const isOnline = useContext(ThemeContext);
   console.log("online status:", isOnline);
