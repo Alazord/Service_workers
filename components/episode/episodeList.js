@@ -32,9 +32,6 @@ const EpisodeList = () => {
     <div className="nav">
       <div className="page">
         <div className="random">
-          {/* <h1 className="page-heading">
-            <Link href="/">Rick and Morty</Link>
-          </h1> */}
           <form
             onSubmit={async (event) => {
               event.preventDefault();
@@ -49,11 +46,7 @@ const EpisodeList = () => {
                   setSearch(e.target.value);
                 }}
               />
-              <button
-                className="search-btn"
-                // disabled={search === ""}
-                type="submit"
-              >
+              <button className="search-btn" type="submit">
                 Search
               </button>
               <button
@@ -77,10 +70,9 @@ const EpisodeList = () => {
           ) : data ? (
             <Episode episodes={data.episodes.results} />
           ) : (
-            <div className="loading"> Loading...</div>
+            <div className="loader"> Loading...</div>
           )}
         </div>
-        {/* <footer className={styles.footer}>&copy;</footer> */}
       </div>
     </div>
   );

@@ -7,6 +7,10 @@
   justify-content: center;
   max-width: 1200px;
 }
+.char-item:hover {
+  border: 2px solid black;
+  box-shadow: 0 1px 4px 0 rgba(10, 10, 20, 0.15);
+}
 .char-item {
   border: 2px solid white;
   border-radius: 10px;

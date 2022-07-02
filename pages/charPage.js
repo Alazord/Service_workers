@@ -1,3 +1,5 @@
+import Head from "next/head";
+import Navbar from "../components/navBar/navBar";
 import CharacterList from "../components/character/charList";
 import Head from "next/head";
 import NavBar from "../components/navBar/navBar";

@@ -1,8 +1,4 @@
-import Head from "next/head";
-import { useState, useEffect, useCallback } from "react";
-import styles from "../../styles/Home2.module.css";
-import { Link } from "@chakra-ui/react";
-import Router from "next/router";
+import { useState} from "react";
 import { useQuery, gql } from "@apollo/client";
 
 import Character from "./character";
@@ -46,7 +42,6 @@ const CharacterList = () => {
               />
               <button
                 className="search-btn"
-                // disabled={search === ""}
                 type="submit"
               >
                 Search
@@ -72,10 +67,9 @@ const CharacterList = () => {
           ) : data ? (
             <Character characters={data.characters.results} />
           ) : (
-            <div className="loading"> Loading...</div>
+            <div className="loader"> Loading...</div>
           )}
         </div>
-        {/* <footer className={styles.footer}>&copy;</footer> */}
       </div>
     </div>
   );

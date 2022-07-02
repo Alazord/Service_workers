@@ -18,9 +18,9 @@ export default function Episode_Card(results) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar id="home-navbar" props="EPISODES" />
-      <h1 className={styles["episode-card-heading"]}>
+      <h2 className={styles["episode-card-heading"]}>
         Details of the Episode you clicked on:
-      </h1>
+      </h2>
       <div className={styles["episode-card-items"]}>
         <ul className={styles["episode-card-list"]}>
           {episodeData.map((item, id) => (
@@ -31,9 +31,9 @@ export default function Episode_Card(results) {
           ))}
         </ul>
       </div>
-      <button className={styles["episode-card-return"]}>
+      {/* <button className={styles["episode-card-return"]}>
         <Link href={"/episodePage"}>Return</Link>
-      </button>
+      </button> */}
     </div>
   );
 }

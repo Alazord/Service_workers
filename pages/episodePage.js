@@ -1,3 +1,5 @@
+import Head from "next/head";
+import Navbar from "../components/navBar/navBar";
 import EpisodeList from "../components/episode/episodeList";
 import Head from "next/head";
 import NavBar from "../components/navBar/navBar";
