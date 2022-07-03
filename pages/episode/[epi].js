@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "./epi.module.css";
 import NavBar from "../../components/navBar/NavBar";
 import Status from "../../components/status/status";
+import { useContext } from "react";
+import { ThemeContext } from "../_app";
 
 export default function Episode_Card(results) {
   const episode = results.episode;
@@ -11,6 +13,7 @@ export default function Episode_Card(results) {
     ["Name: ", episode.name],
     ["Created: ", episode.created],
   ];
+  const isOnline = useContext(ThemeContext);
   return (
     <div className={styles["episode-card"]}>
       <Head>
@@ -19,10 +22,26 @@ export default function Episode_Card(results) {
       </Head>
       <Status />
       <NavBar id="home-navbar" props="EPISODES" />
-      <h2 className={styles["episode-card-heading"]}>
+      <h2
+        className={
+          styles[
+            isOnline
+              ? "episode-card-heading-online"
+              : "episode-card-heading-offline"
+          ]
+        }
+      >
         Details of the Episode you clicked on:
       </h2>
-      <div className={styles["episode-card-items"]}>
+      <div
+        className={
+          styles[
+            isOnline
+              ? "episode-card-items-online"
+              : "episode-card-items-offline"
+          ]
+        }
+      >
         <ul className={styles["episode-card-list"]}>
           {episodeData.map((item, id) => (
             <li key={`item${id}`}>

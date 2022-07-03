@@ -162,12 +162,14 @@ input[type="text"]::-webkit-search-cancel-button {
 }
 .search-btn:hover {
   cursor: pointer;
-  background-color: aqua;
+  /* background-color: aqua; */
+  font-weight: bold;
   /* box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8); */
 }
 .reset-btn:hover {
   cursor: pointer;
-  background-color: coral;
+  font-weight: bold;
+  /* background-color: coral; */
   /* box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8); */
 }
 

@@ -50,3 +50,11 @@
   border-left: 10px solid rgba(0, 0, 0, 0);
   border-right: 10px solid rgba(0, 0, 0, 0);
 }
+.search-loader-online {
+  color: #498467;
+  text-align: center;
+}
+.search-loader-offline {
+  color: #6d6a75;
+  text-align: center;
+}

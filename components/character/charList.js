@@ -1,7 +1,7 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
-
 import Character from "./character";
+import styles from "./character.module.css";
 
 const CHARACTER_LIST = gql`
   query getCharacters($submit: String!) {
@@ -40,10 +40,7 @@ const CharacterList = () => {
                   setSearch(e.target.value);
                 }}
               />
-              <button
-                className="search-btn"
-                type="submit"
-              >
+              <button className="search-btn" type="submit">
                 Search
               </button>
               <button
@@ -60,10 +57,10 @@ const CharacterList = () => {
         </div>
         <div className="items">
           {error ? (
-            <h1>
+            <h2 className={styles["search-loader-offline"]}>
               Sorry, you are offline. You cannot make new searches. However, you
               can still make old ones.
-            </h1>
+            </h2>
           ) : data ? (
             <Character characters={data.characters.results} />
           ) : (

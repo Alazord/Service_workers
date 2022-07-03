@@ -26,9 +26,10 @@
   width:250px;
 } */
 
-.char-subitem img{
+.char-subitem img {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  /* padding: 2px; */
 }
 
 .char-txt {
@@ -40,4 +41,12 @@
   padding: 2px 10px 6px 10px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+.search-loader-online {
+  color: #498467;
+  text-align: center;
+}
+.search-loader-offline {
+  color: #6d6a75;
+  text-align: center;
 }

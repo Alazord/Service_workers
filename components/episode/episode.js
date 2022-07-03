@@ -8,7 +8,11 @@ const Episode = ({ episodes }) => {
   const isOnline = useContext(ThemeContext);
   if (episodes.length === 0) {
     return (
-      <h1 style={{ backgroundColor: "white" }}>
+      <h1
+        className={
+          styles[isOnline ? "search-loader-online" : "search-loader-offline"]
+        }
+      >
         There are no episodes for your search.
       </h1>
     );

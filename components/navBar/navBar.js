@@ -19,7 +19,7 @@ export default function NavBar({ props }) {
           className={isOnline ? "nav-element-online" : "nav-element-offline"}
           key={index}
           href={URL}
-          style={props === item ? { borderBottom: "4px solid #B0F10E" } : {}}
+          style={props === item ? { borderBottom: "4px solid white" } : {}}
         >
           {item}
         </Link>

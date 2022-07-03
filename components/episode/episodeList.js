@@ -1,10 +1,6 @@
-import Head from "next/head";
-import { useState, useEffect, useCallback } from "react";
-import styles from "../../styles/Home2.module.css";
-import { Link } from "@chakra-ui/react";
-import Router from "next/router";
+import { useState } from "react";
+import styles from "./episode.module.css";
 import { useQuery, gql } from "@apollo/client";
-
 import Episode from "./episode";
 
 const EPISODE_LIST = gql`
@@ -63,10 +59,10 @@ const EpisodeList = () => {
         </div>
         <div className="items">
           {error ? (
-            <h1>
+            <h2 className={styles["search-loader-offline"]}>
               Sorry, you are offline. You cannot make new searches. However, you
               can still make old ones.
-            </h1>
+            </h2>
           ) : data ? (
             <Episode episodes={data.episodes.results} />
           ) : (
