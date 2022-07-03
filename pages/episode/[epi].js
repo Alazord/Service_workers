@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "./epi.module.css";
-import NavBar from "../../components/navBar/NavBar";
+import NavBar from "../../components/navBar/navBar";
 import Status from "../../components/status/status";
 import { useContext } from "react";
 import { ThemeContext } from "../_app";

@@ -1,9 +1,9 @@
-import WelcomeBox from "../welcomeBox/WelcomeBox";
-import DescriptionBox from "../descriptionBox/DescriptionBox";
-import MainCharacterBox from "../mainCharacterBox/MainCharacterBox";
-import EpisodeBox from "../episodeBox/EpisodeBox";
-import LatestComicBox from "../latestComicBox/LatestComicBox";
-import ExploreBox from "../exploreBox/ExploreBox";
+import WelcomeBox from "../welcomeBox/welcomeBox";
+import DescriptionBox from "../descriptionBox/descriptionBox";
+import MainCharacterBox from "../mainCharacterBox/mainCharacterBox";
+import EpisodeBox from "../episodeBox/episodeBox";
+import LatestComicBox from "../latestComicBox/latestComicBox";
+import ExploreBox from "../exploreBox/exploreBox";
 
 export default function MainContent() {
   return (
