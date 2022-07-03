@@ -60,9 +60,6 @@ export default function MyChar(results) {
           ))}
         </ul>
       </div>
-      {/* <button className={styles["character-card-return"]}>
-        <Link href={"/charPage"}>Return</Link>
-      </button> */}
     </div>
   );
 }

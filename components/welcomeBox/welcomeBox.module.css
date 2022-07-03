@@ -1,10 +1,8 @@
 .welcome-box {
   display: flex;
   flex-direction: column;
-  /* margin-top: 30px; */
   height: 417px;
   width: 800px;
-  /* background-color: yellow; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -14,10 +12,8 @@
   font-family: "Rouge Script", cursive;
   font-size: 50px;
   font-weight: normal;
-  /* line-height: 48px;  */
   margin: 0 0 50px;
   text-align: center;
-  /* text-shadow: 1px 1px 2px #082b34; */
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
@@ -29,7 +25,6 @@
   color: #6d6a75;
 }
 .carousal {
-  /* background-color: green; */
   flex-grow: 1;
 }
 .carousal-img {
