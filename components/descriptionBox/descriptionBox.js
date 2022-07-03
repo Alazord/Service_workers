@@ -1,4 +1,4 @@
-import styles from "./DescriptionBox.module.css";
+import styles from "./descriptionBox.module.css";
 
 export default function DescriptionBox() {
   return (
