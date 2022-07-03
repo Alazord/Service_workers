@@ -1,6 +1,6 @@
 import CharacterList from "../components/character/charList";
 import Head from "next/head";
-import NavBar from "../components/navBar/NavBar";
+import NavBar from "../components/navBar/navBar";
 import Status from "../components/status/status";
 
 export default function Char_List() {

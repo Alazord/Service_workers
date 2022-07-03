@@ -1,9 +1,6 @@
 import "../styles/globals.css";
 import React, { useEffect, useState } from "react";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import Head from "next/head";
-import NavBar from "../components/navBar/NavBar";
-import Status from "../components/status/status";
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql/",
