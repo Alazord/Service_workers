@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./Episode.module.css";
+import styles from "./episode.module.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 

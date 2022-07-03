@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./Character.module.css";
+import styles from "./character.module.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 

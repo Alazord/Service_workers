@@ -1,4 +1,4 @@
-import styles from "./LatestComicBox.module.css";
+import styles from "./lsatestComicBox.module.css";
 
 export default function LatestComicBox() {
   return (

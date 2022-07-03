@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./WelcomeBox.module.css";
+import styles from "./welcomeBox.module.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 

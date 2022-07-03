@@ -1,4 +1,3 @@
-import Image from "next/image";
 import WelcomeBox from "../welcomeBox/WelcomeBox";
 import DescriptionBox from "../descriptionBox/DescriptionBox";
 import MainCharacterBox from "../mainCharacterBox/MainCharacterBox";

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./EpisodeBox.module.css";
+import styles from "./episodeBox.module.css";
 
 export default function EpisodeBox() {
   return (
