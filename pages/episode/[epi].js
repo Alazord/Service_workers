@@ -51,9 +51,6 @@ export default function Episode_Card(results) {
           ))}
         </ul>
       </div>
-      {/* <button className={styles["episode-card-return"]}>
-        <Link href={"/episodePage"}>Return</Link>
-      </button> */}
     </div>
   );
 }

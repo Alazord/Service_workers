@@ -9,11 +9,9 @@
 .main-characters-head {
   height: 42px;
   margin-bottom: 0px;
-
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
-  /* identical to box height */
   color: #000000;
 }
 .main-characters-box .line {
@@ -30,7 +28,6 @@
 .main-character-img-list {
   display: flex;
   flex-direction: column;
-  
 }
 
 .main-character-img-list img {
