@@ -1,19 +1,25 @@
 import { Link } from "@chakra-ui/react";
+import { useContext } from "react";
+import { ThemeContext } from "../../pages/_app";
 
-export default function NavBar() {
+export default function NavBar({ props }) {
   const OptionList = [
-    ["RICK AND MORTY WIKI", "#home"],
-    ["EPISODES", "/episodePage"],
+    ["HOME", "/"],
     ["CHARACTERS", "/charPage"],
+    ["EPISODES", "/episodePage"],
   ];
+  const isOnline = useContext(ThemeContext);
+  console.log("online status:", isOnline);
   return (
-    <div className="nav-container">
+    <div
+      className={isOnline ? "nav-container-online" : "nav-container-offline"}
+    >
       {OptionList.map(([item, URL], index) => (
         <Link
-          className="nav-element"
+          className={isOnline ? "nav-element-online" : "nav-element-offline"}
           key={index}
           href={URL}
-          style={index === 0 ? { borderBottom: "4px solid #B0F10E" } : {}}
+          style={props === item ? { borderBottom: "4px solid white" } : {}}
         >
           {item}
         </Link>

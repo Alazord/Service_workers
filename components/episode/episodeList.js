@@ -1,10 +1,6 @@
-import Head from "next/head";
-import { useState, useEffect, useCallback } from "react";
-import styles from "../../styles/Home2.module.css";
-import { Link } from "@chakra-ui/react";
-import Router from "next/router";
+import { useState } from "react";
+import styles from "./episode.module.css";
 import { useQuery, gql } from "@apollo/client";
-
 import Episode from "./episode";
 
 const EPISODE_LIST = gql`
@@ -27,36 +23,11 @@ const EpisodeList = () => {
   const { error, data } = useQuery(EPISODE_LIST, {
     variables: { submit },
   });
-  const optionList = [
-    ["RICK AND MORTY WIKI", "/"],
-    ["EPISODES", "/episodePage"],
-    ["CHARACTERS", "/charPage"],
-  ];
 
   return (
     <div className="nav">
-      <div className="nav-container">
-        {optionList.map(([item, URL], index) => (
-          <Link
-            className="nav-element"
-            key={index}
-            href={URL}
-            style={index === 1 ? { borderBottom: "4px solid #B0F10E" } : {}}
-          >
-            {item}
-          </Link>
-        ))}
-      </div>
       <div className="page">
-        <Head>
-          <title>Episodes</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <div className="status"></div>
         <div className="random">
-          <h1 className="page-heading">
-            <Link href="/">Rick and Morty</Link>
-          </h1>
           <form
             onSubmit={async (event) => {
               event.preventDefault();
@@ -71,11 +42,7 @@ const EpisodeList = () => {
                   setSearch(e.target.value);
                 }}
               />
-              <button
-                className="search-btn"
-                // disabled={search === ""}
-                type="submit"
-              >
+              <button className="search-btn" type="submit">
                 Search
               </button>
               <button
@@ -92,17 +59,16 @@ const EpisodeList = () => {
         </div>
         <div className="items">
           {error ? (
-            <h1>
+            <h2 className={styles["search-loader-offline"]}>
               Sorry, you are offline. You cannot make new searches. However, you
               can still make old ones.
-            </h1>
+            </h2>
           ) : data ? (
             <Episode episodes={data.episodes.results} />
           ) : (
-            <div> Loading...</div>
+            <div className="loader"> Loading...</div>
           )}
         </div>
-        <footer className={styles.footer}>&copy;</footer>
       </div>
     </div>
   );

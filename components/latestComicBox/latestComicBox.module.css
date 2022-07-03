@@ -4,7 +4,7 @@
   width: 800px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 .latest-comic-head {
   font-weight: 300;
@@ -18,9 +18,11 @@
 .latest-comic-content {
   display: flex;
   margin-top: 28px;
+  
 }
 .latest-comic-content-img {
   background-image: url("/images/comic2.jpeg");
+  border-radius: 5px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   flex-grow: 1;

@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Navbar from "../components/navBar/NavBar";
+import NavBar from "../components/navBar/NavBar";
 import MainContent from "../components/mainContent/MainContent";
+import Status from "../components/status/status";
 
 export default function Home() {
   return (
@@ -9,7 +10,8 @@ export default function Home() {
         <title>Home</title>
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <Navbar id="home-navbar" />
+      <Status />
+      <NavBar id="home-navbar" props="HOME" />
       <MainContent />
     </div>
   );

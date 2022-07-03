@@ -6,23 +6,43 @@
   width: auto;
 }
 
-.episode-card-heading {
-  background-color: purple;
-  color: white;
+.episode-card-heading-online,
+.episode-card-heading-offline {
+  margin-top: 100px;
+  font-family: "Rouge Script", cursive;
+  /* background-color: #498467; */
+  color: #498467;
   padding: 10px;
   border-radius: 5px;
 }
+.episode-card-heading-online {
+  color: #498467;
+}
+.episode-card-heading-offline {
+  color: #6d6a75;
+}
 
-.episode-card-items {
+.episode-card-items-online,
+.episode-card-items-offline {
   align-items: center;
   padding: 10px;
+  border: 2px solid black;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
+  border-color: grey;
 }
 .episode-card-list {
   list-style: none;
   align-items: center;
   font-size: 21px;
+}
+.episode-card-items-online:hover {
+  background-color: #498467;
+  color: white;
+}
+.episode-card-items-offline:hover {
+  background-color: #6d6a75;
+  color: white;
 }
 
 .episode-card-return {

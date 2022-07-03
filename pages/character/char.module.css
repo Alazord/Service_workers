@@ -6,11 +6,19 @@
   width: auto;
 }
 
-.character-card-heading {
-  background-color: purple;
-  color: white;
+.character-card-heading-online,
+.character-card-heading-offline {
+  margin-top: 100px;
+  /* background-color: #498467; */
+  font-family: "Rouge Script", cursive;
   padding: 10px;
   border-radius: 5px;
+}
+.character-card-heading-online {
+  color: #498467;
+}
+.character-card-heading-offline {
+  color: #6d6a75;
 }
 
 .character-card-list {
@@ -19,19 +27,20 @@
   font-size: 21px;
 }
 
-.character-card-items {
+.character-card-items-online,
+.character-card-items-offline {
   align-items: center;
   padding: 10px;
+  border: 2px solid black;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.character-card-return {
-  padding: 10px;
-  font-size: 18px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  width: 150px;
-  margin-top: 10px;
-  border-color: white;
+.character-card-items-online:hover {
+  background-color: #498467;
+  color: white;
+}
+.character-card-items-offline:hover {
+  background-color: #6d6a75;
+  color: white;
 }

@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 800px;
   height: 596px;
-  margin-top: 20px;
+  margin-top: 100px;
   margin-bottom: 40px;
   font-size: 16px;
   line-height: 24px;
@@ -32,16 +32,28 @@
   flex-direction: column;
   width: 240px;
 }
+.explore-content-tag img{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
 .explore-title {
   text-align: center;
   font-weight: 600;
   text-align: center;
-  background-color: black;
+  background-color: rgba(0,0,0,0.8);
   color: #ffffff;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .explore-description {
   font-weight: 400;
   text-align: center;
-  background-color: black;
+  background-color: rgba(0,0,0,0.8);
   color: #ffffff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

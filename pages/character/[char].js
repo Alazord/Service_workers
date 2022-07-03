@@ -2,6 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./char.module.css";
+import NavBar from "../../components/navBar/NavBar";
+import Status from "../../components/status/status";
+import { useContext } from "react";
+import { ThemeContext } from "../_app";
 
 export default function MyChar(results) {
   const character = results.character;
@@ -11,6 +15,7 @@ export default function MyChar(results) {
     ["Name: ", character.name],
     ["Gender: ", character.gender],
   ];
+  const isOnline = useContext(ThemeContext);
 
   return (
     <div className={styles["character-card"]}>
@@ -18,10 +23,28 @@ export default function MyChar(results) {
         <title>Character Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className={styles["character-card-heading"]}>
+      <Status />
+      <NavBar id="home-navbar" props="CHARACTERS" />
+      <h2
+        className={
+          styles[
+            isOnline
+              ? "character-card-heading-online"
+              : "character-card-heading-offline"
+          ]
+        }
+      >
         Details of the character you clicked on:
-      </h1>
-      <div className={styles["character-card-items"]}>
+      </h2>
+      <div
+        className={
+          styles[
+            isOnline
+              ? "character-card-items-online"
+              : "character-card-items-offline"
+          ]
+        }
+      >
         <Image
           alt="Character Image"
           src={character.image}
@@ -37,9 +60,9 @@ export default function MyChar(results) {
           ))}
         </ul>
       </div>
-      <button className={styles["character-card-return"]}>
+      {/* <button className={styles["character-card-return"]}>
         <Link href={"/charPage"}>Return</Link>
-      </button>
+      </button> */}
     </div>
   );
 }

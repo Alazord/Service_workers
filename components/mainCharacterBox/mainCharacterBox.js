@@ -1,13 +1,13 @@
 import Image from "next/image";
-import styles from "./MainCharacterBox.module.css";
+import styles from "./mainCharacterBox.module.css";
 
 export default function MainCharacterBox() {
   const characterList = [
-    ["Beth Smith", "/images/bethSmith.jpeg"],
-    ["Summer Smith", "/images/summerSmith.jpeg"],
-    ["Rick Sanchez", "/images/rickSanchez.jpg"],
-    ["Morty Smith", "/images/mortySmith.jpg"],
-    ["Jerry Smith", "/images/jerrySmith.jpg"],
+    ["Beth Smith", "https://rickandmortyapi.com/api/character/avatar/4.jpeg"],
+    ["Summer Smith", "https://rickandmortyapi.com/api/character/avatar/3.jpeg"],
+    ["Rick Sanchez", "https://rickandmortyapi.com/api/character/avatar/1.jpeg"],
+    ["Morty Smith", "https://rickandmortyapi.com/api/character/avatar/2.jpeg"],
+    ["Jerry Smith", "https://rickandmortyapi.com/api/character/avatar/5.jpeg"],
   ];
   return (
     <div className={styles["main-characters-box"]}>

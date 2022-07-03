@@ -1,6 +1,9 @@
 import Head from "next/head";
-import Link from "next/link";
 import styles from "./epi.module.css";
+import NavBar from "../../components/navBar/NavBar";
+import Status from "../../components/status/status";
+import { useContext } from "react";
+import { ThemeContext } from "../_app";
 
 export default function Episode_Card(results) {
   const episode = results.episode;
@@ -10,16 +13,35 @@ export default function Episode_Card(results) {
     ["Name: ", episode.name],
     ["Created: ", episode.created],
   ];
+  const isOnline = useContext(ThemeContext);
   return (
     <div className={styles["episode-card"]}>
       <Head>
         <title>Episode Details</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className={styles["episode-card-heading"]}>
+      <Status />
+      <NavBar id="home-navbar" props="EPISODES" />
+      <h2
+        className={
+          styles[
+            isOnline
+              ? "episode-card-heading-online"
+              : "episode-card-heading-offline"
+          ]
+        }
+      >
         Details of the Episode you clicked on:
-      </h1>
-      <div className={styles["episode-card-items"]}>
+      </h2>
+      <div
+        className={
+          styles[
+            isOnline
+              ? "episode-card-items-online"
+              : "episode-card-items-offline"
+          ]
+        }
+      >
         <ul className={styles["episode-card-list"]}>
           {episodeData.map((item, id) => (
             <li key={`item${id}`}>
@@ -29,9 +51,9 @@ export default function Episode_Card(results) {
           ))}
         </ul>
       </div>
-      <button className={styles["episode-card-return"]}>
+      {/* <button className={styles["episode-card-return"]}>
         <Link href={"/episodePage"}>Return</Link>
-      </button>
+      </button> */}
     </div>
   );
 }
