@@ -1,6 +1,6 @@
 import Head from "next/head";
-import NavBar from "../components/navBar/NavBar";
-import MainContent from "../components/mainContent/MainContent";
+import NavBar from "../components/navBar/navBar";
+import MainContent from "../components/mainContent/mainContent";
 import Status from "../components/status/status";
 
 export default function Home() {

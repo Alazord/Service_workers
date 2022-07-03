@@ -1,6 +1,6 @@
 import EpisodeList from "../components/episode/episodeList";
 import Head from "next/head";
-import NavBar from "../components/navBar/NavBar";
+import NavBar from "../components/navBar/navBar";
 import Status from "../components/status/status";
 
 export default function Epi_List() {
