@@ -9,7 +9,7 @@
 .welcome-online,
 .welcome-offline {
   margin-bottom: 36px;
-  font-family: "Rouge Script", cursive;
+  /* font-family: "Rouge Script", cursive; */
   font-size: 50px;
   font-weight: normal;
   margin: 0 0 50px;
