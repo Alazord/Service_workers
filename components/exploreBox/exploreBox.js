@@ -1,5 +1,5 @@
 import Image from "next/image";
-import EXPLORE from "../constants";
+import EXPLORE from "../Constants";
 import styles from "./exploreBox.module.css";
 
 export default function ExploreBox() {
