@@ -9,7 +9,7 @@
 .character-card-heading-online,
 .character-card-heading-offline {
   margin-top: 100px;
-  font-family: "Rouge Script", cursive;
+  /* font-family: "Rouge Script", cursive; */
   padding: 10px;
   border-radius: 5px;
 }
