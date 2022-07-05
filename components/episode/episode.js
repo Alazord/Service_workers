@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 
 const Episode = ({ episodes }) => {
-  const isOnline = useContext(ThemeContext);
+  let isOnline = useContext(ThemeContext);
   if (episodes.length === 0) {
     return (
       <h1

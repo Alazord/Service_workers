@@ -9,7 +9,6 @@
 .character-card-heading-online,
 .character-card-heading-offline {
   margin-top: 100px;
-  /* font-family: "Rouge Script", cursive; */
   padding: 10px;
   border-radius: 5px;
 }
@@ -26,8 +25,14 @@
   font-size: 21px;
 }
 
+.sub-head {
+  font-weight: 900;
+}
+
 .character-card-items-online,
 .character-card-items-offline {
+  width: 320px;
+  align-self: center;
   align-items: center;
   padding: 10px;
   border: 2px solid black;
@@ -42,4 +47,8 @@
 .character-card-items-offline:hover {
   background-color: #6d6a75;
   color: white;
+}
+.character-card-items-online img,
+.character-card-items-offline img {
+  border-radius: 10px;
 }

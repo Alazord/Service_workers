@@ -30,4 +30,16 @@ const EXPLORE = [
     expDesc: "These are the hot faces behind the scenes broh.",
   },
 ];
-export default EXPLORE;
+const CHARACTER_LIST = [
+  ["Beth Smith", "https://rickandmortyapi.com/api/character/avatar/4.jpeg"],
+  ["Summer Smith", "https://rickandmortyapi.com/api/character/avatar/3.jpeg"],
+  ["Rick Sanchez", "https://rickandmortyapi.com/api/character/avatar/1.jpeg"],
+  ["Morty Smith", "https://rickandmortyapi.com/api/character/avatar/2.jpeg"],
+  ["Jerry Smith", "https://rickandmortyapi.com/api/character/avatar/5.jpeg"],
+];
+const OPTION_LIST = [
+  ["HOME", "/"],
+  ["CHARACTERS", "/charPage"],
+  ["EPISODES", "/episodePage"],
+];
+export { EXPLORE, CHARACTER_LIST, OPTION_LIST };
