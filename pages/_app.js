@@ -13,13 +13,9 @@ function MyApp({ Component, pageProps }) {
   const [isOnline, setOnline] = useState(true);
   function hasNetwork(online) {
     if (online) {
-      console.log("we're online");
       setOnline(true);
-      console.log("Setonline", isOnline);
     } else {
-      console.log("we're offline");
       setOnline(false);
-      console.log("Setonline", isOnline);
     }
   }
   useEffect(() => {

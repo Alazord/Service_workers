@@ -5,7 +5,6 @@ import { OPTION_LIST } from "../Constants";
 
 export default function NavBar({ props }) {
   let isOnline = useContext(ThemeContext);
-  console.log("online status:", isOnline);
   return (
     <div
       className={isOnline ? "nav-container-online" : "nav-container-offline"}

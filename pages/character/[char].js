@@ -21,7 +21,7 @@ export default function MyChar(results) {
     <div className={styles["character-card"]}>
       <Head>
         <title>Character Details</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <Status />
       <NavBar id="home-navbar" props="CHARACTERS" />
