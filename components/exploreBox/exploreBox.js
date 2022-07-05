@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { EXPLORE } from "../Constants";
+import { EXPLORE as explore } from "../Constants";
 import styles from "./exploreBox.module.css";
 
 export default function ExploreBox() {
-  const explore = EXPLORE;
   return (
     <div className={styles["explore-box"]}>
       <div className={styles["explore-head"]} id="explore">

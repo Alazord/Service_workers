@@ -42,4 +42,6 @@ const OPTION_LIST = [
   ["CHARACTERS", "/charPage"],
   ["EPISODES", "/episodePage"],
 ];
-export { EXPLORE, CHARACTER_LIST, OPTION_LIST };
+const ONE_DAY = 24 * 60 * 60;
+const ENTRIES = 100;
+export { EXPLORE, CHARACTER_LIST, OPTION_LIST, ONE_DAY, ENTRIES };
