@@ -15,6 +15,8 @@ const CHARACTER_LIST = gql`
   }
 `;
 
+//useCallback 
+
 const CharacterList = () => {
   const [search, setSearch] = useState("");
   const [submit, setSubmit] = useState("");

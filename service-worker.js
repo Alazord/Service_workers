@@ -1,56 +1,30 @@
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js"
 );
-importScripts(
-  "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"
-);
-importScripts(
-  "https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js"
-);
 
 import { skipWaiting, clientsClaim } from "workbox-core";
-import { ExpirationPlugin } from "workbox-expiration";
-import {
-  NetworkOnly,
-  NetworkFirst,
-  CacheFirst,
-  StaleWhileRevalidate,
-} from "workbox-strategies";
-import {
-  networkOnly,
-  networkFirst,
-  cacheFirst,
-  staleWhileRevalidate,
-} from "./components/serviceWorker/cachingStrategies";
-import {
-  registerRoute,
-  setDefaultHandler,
-  setCatchHandler,
-} from "workbox-routing";
+import { StaleWhileRevalidate } from "workbox-strategies";
+import { staleWhileRevalidate} from "./serviceWorker/cachingStrategies";
+import { setDefaultHandler,setCatchHandler} from "workbox-routing";
 import {
   matchPrecache,
   precacheAndRoute,
   cleanupOutdatedCaches,
 } from "workbox-precaching";
 
-import { Registers } from "./components/serviceWorker/registers";
+import { registers } from "./serviceWorker/registers";
 
-skipWaiting();
-clientsClaim();
+skipWaiting(); //forces the waiting service worker to become the active.
+clientsClaim(); //ensures that updates to the service worker take effect immediately for client.
 
-const WB_MANIFEST = self.__WB_MANIFEST;
-WB_MANIFEST.push({
+const manifest = self.__WB_MANIFEST;
+manifest.push({
   url: "/fallback",
-  revision: "1234567890",
+  revision: "1234567890", 
 });
-precacheAndRoute(WB_MANIFEST);
-cleanupOutdatedCaches();
 
-if (workbox) {
-  console.log(`Workbox is loaded`);
-} else {
-  console.log(`Workbox didn't load`);
-}
+precacheAndRoute(manifest); //add entries to the precache list and add a route to respond to fetch events.
+cleanupOutdatedCaches(); //event listener which will clean up incompatible precaches.
 
 workbox.routing.registerRoute(
   new RegExp("https://rickandmortyapi.com/graphql(/)?"),
@@ -59,15 +33,6 @@ workbox.routing.registerRoute(
   },
   "POST"
 );
-let dt;
-self.addEventListener('install', evt=> {
-  dt=Date.now();
-  console.log("service worker has been installed",Date.now());
-});
-self.addEventListener('activate', evt=> {
-
-  console.log("service worker has been activated",Date.now()-dt);
-});
 
 self.addEventListener("fetch", async (event) => {
   if (event.request.method === "POST") {
@@ -75,9 +40,10 @@ self.addEventListener("fetch", async (event) => {
   }
 });
 
-Registers();
+registers();
 
 setDefaultHandler(new StaleWhileRevalidate());
+
 setCatchHandler(({ event }) => {
   switch (event.request.destination) {
     case "document":

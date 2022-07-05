@@ -31,8 +31,7 @@ export default function MyChar(results) {
             isOnline
               ? "character-card-heading-online"
               : "character-card-heading-offline"
-          ]
-        }
+          ]}
       >
         Details of the character you clicked on:
       </h2>
@@ -54,7 +53,7 @@ export default function MyChar(results) {
         <ul className={styles["character-card-list"]}>
           {characterData.map((item, id) => (
             <li key={`item${id}`}>
-              <b>{item[0]}</b>
+              <b className="sub-head">{item[0]}</b>
               {item[1]}
             </li>
           ))}
