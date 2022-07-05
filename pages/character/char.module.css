@@ -43,3 +43,7 @@
   background-color: #6d6a75;
   color: white;
 }
+.character-card-items-online img,
+.character-card-items-offline img {
+  border-radius: 10px;
+}

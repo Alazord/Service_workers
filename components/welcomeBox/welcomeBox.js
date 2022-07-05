@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 
 export default function WelcomeBox() {
-  const isOnline = useContext(ThemeContext);
+  let isOnline = useContext(ThemeContext);
   return (
     <div className={styles["welcome-box"]}>
       <div className={styles[isOnline ? "welcome-online" : "welcome-offline"]}>

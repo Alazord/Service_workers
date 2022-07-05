@@ -3,7 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import Character from "./character";
 import styles from "./character.module.css";
 
-const CHARACTER_LIST = gql`
+let CHARACTER_LIST = gql`
   query getCharacters($submit: String!) {
     characters(filter: { name: $submit }) {
       results {
@@ -15,7 +15,7 @@ const CHARACTER_LIST = gql`
   }
 `;
 
-const CharacterList = () => {
+let CharacterList = () => {
   const [search, setSearch] = useState("");
   const [submit, setSubmit] = useState("");
   const { error, data } = useQuery(CHARACTER_LIST, {

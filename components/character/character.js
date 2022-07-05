@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 
 const Character = ({ characters }) => {
-  const isOnline = useContext(ThemeContext);
+  let isOnline = useContext(ThemeContext);
   if (characters.length === 0) {
     return (
       <h1
