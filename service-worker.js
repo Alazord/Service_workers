@@ -14,17 +14,21 @@ import {
 
 import { registers } from "./serviceWorker/registers";
 
-skipWaiting(); //forces the waiting service worker to become the active.
-clientsClaim(); //ensures that updates to the service worker take effect immediately for client.
+// don't wait and install immediately
+skipWaiting();
+
+// take the control of the application in the current tab immediately
+clientsClaim(); 
 
 const manifest = self.__WB_MANIFEST;
 manifest.push({
   url: "/fallback",
-  revision: "1234567890", 
 });
+// precache the fallback page
+precacheAndRoute(manifest);
 
-precacheAndRoute(manifest); //add entries to the precache list and add a route to respond to fetch events.
-cleanupOutdatedCaches(); //event listener which will clean up incompatible precaches.
+ //event listener which will clean up incompatible precaches.
+cleanupOutdatedCaches(); 
 
 workbox.routing.registerRoute(
   new RegExp("https://rickandmortyapi.com/graphql(/)?"),

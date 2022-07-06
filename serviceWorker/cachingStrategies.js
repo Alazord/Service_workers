@@ -44,7 +44,7 @@ export async function getCache(request) {
 
 export async function setCache(request, response) {
   let body = await request.json();
-  let id = CryptoJS.MD5(body.query+""+body.variables.submit).toString();//interpolation
+  let id = CryptoJS.MD5(body.query+""+body.variables.submit).toString();
 
   const entry = {
     query: body.query,

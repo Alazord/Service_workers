@@ -128,16 +128,13 @@ a {
   font-size: 20px;
   border-color: #498467;
 }
-input[type="text"]::-webkit-search-cancel-button {
-  /* Remove default */
+/* input[type="text"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 
-  /* Now your own custom styles */
   height: 10px;
   width: 10px;
   background: red;
-  /* Will place small red box on the right of input (positioning carries over) */
-}
+} */
 
 .search-btn {
   border-radius: 5px;
