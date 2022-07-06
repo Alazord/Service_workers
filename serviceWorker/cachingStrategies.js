@@ -46,12 +46,15 @@ export async function setCache(request, response) {
 
 export async function staleWhileRevalidate(event) {
   let cachedResponse = await getCache(event.request.clone());
+  if (cachedResponse) {
+    return Promise.resolve(cachedResponse);
+  }
   let fetchPromise = fetch(event.request.clone())
     .then((response) => {
       setCache(event.request.clone(), response.clone());
       return response;
     })
-  return cachedResponse ? Promise.resolve(cachedResponse) : fetchPromise;
+  return fetchPromise;
 }
 
 export async function serializeResponse(response) {
