@@ -8,22 +8,34 @@ importScripts(
   "https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js"
 );
 
+import {ONE_DAY as oneDay} from "./../components/Constants"
+
 const store = new idbKeyval.Store("GraphQL-Cache", "PostResponses");
+
+export async function staleWhileRevalidate(event) {
+  let cachedResponse = await getCache(event.request.clone());
+  if (cachedResponse) {
+    return Promise.resolve(cachedResponse);
+  }
+  let fetchPromise = fetch(event.request.clone())
+    .then((response) => {
+      setCache(event.request.clone(), response.clone());
+      return response;
+    })
+  return fetchPromise;
+}
 
 export async function getCache(request) {
   let data;
-  const one_day=60*60*24;
   try {
     let body = await request.json();
     let id=CryptoJS.MD5(body.query+""+body.variables.submit).toString();
     data = await idbKeyval.get(id, store);
-    if (!data) return null;
+    if (!data) {
+      return null;
+    }
 
-    // Check cache max age.
-    let cacheControl = request.headers.get("Cache-Control");
-    let maxAge = cacheControl ? parseInt(cacheControl.split("=")[1]) :one_day;
-    if (Date.now() - data.timestamp > maxAge * 1000) {
-      console.log(`Cache expired. Load from API endpoint.`);
+    if (Date.now() - data.timestamp > oneDay * 1000) {
       return null;
     }
     return new Response(JSON.stringify(data.response.body), data.response);
@@ -44,16 +56,6 @@ export async function setCache(request, response) {
   idbKeyval.set(id, entry, store);
 }
 
-export async function staleWhileRevalidate(event) {
-  let cachedResponse = await getCache(event.request.clone());
-  let fetchPromise = fetch(event.request.clone())
-    .then((response) => {
-      setCache(event.request.clone(), response.clone());
-      return response;
-    })
-  return cachedResponse ? Promise.resolve(cachedResponse) : fetchPromise;
-}
-
 export async function serializeResponse(response) {
   let serializedHeaders = {};
   for (const entry of response.headers.entries()) { 
@@ -66,18 +68,5 @@ export async function serializeResponse(response) {
     };
     serialized.body = await response.json();
     return serialized;
-  }
-
-  export async function cacheFirst(event) {
-    let cachedResponse = await getCache(event.request.clone());
-    if (cachedResponse) {
-      return Promise.resolve(cachedResponse);
-    }
-    let fetchPromise = fetch(event.request.clone())
-      .then((response) => {
-        setCache(event.request.clone(), response.clone());
-        return response;
-      })
-    return fetchPromise;
   }
 
