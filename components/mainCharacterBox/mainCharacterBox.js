@@ -4,19 +4,19 @@ import { CHARACTER_LIST as characterList } from "../Constants";
 
 export default function MainCharacterBox() {
   return (
-    <div className={styles["main-characters-box"]}>
-      <div className={styles["main-characters-head"]}>MAIN CHARACTERS</div>
-      <div className={styles["line"]}></div>
-      <div className={styles["main-characters-images"]}>
+    <div className={styles.mainCharactersBox}>
+      <div className={styles.mainCharactersHead}>MAIN CHARACTERS</div>
+      <div className={styles.line}></div>
+      <div className={styles.mainCharactersImages}>
         {characterList.map((item) => (
-          <div className={styles["main-character-img-list"]} key={1}>
+          <div className={styles.mainCharacterImgList} key={1}>
             <Image
               alt="Main Character"
               src={item[1]}
               height={140}
               width={140}
             />
-            <div className={styles["main-character-img-tag"]}>{item[0]}</div>
+            <div className={styles.mainCharacterImgTag}>{item[0]}</div>
           </div>
         ))}
       </div>

@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./char.module.css";
 import NavBar from "../../components/navBar/navBar";
 import Status from "../../components/status/status";
@@ -18,7 +17,7 @@ export default function MyChar(results) {
   const isOnline = useContext(ThemeContext);
 
   return (
-    <div className={styles["character-card"]}>
+    <div className={styles.characterCard}>
       <Head>
         <title>Character Details</title>
         <link rel="manifest" href="/manifest.json" />
@@ -27,22 +26,18 @@ export default function MyChar(results) {
       <NavBar id="home-navbar" props="CHARACTERS" />
       <h2
         className={
-          styles[
-            isOnline
-              ? "character-card-heading-online"
-              : "character-card-heading-offline"
-          ]
+          isOnline
+            ? styles.characterCardHeadingOnline
+            : styles.characterCardHeadingOffline
         }
       >
         Details of the character you clicked on:
       </h2>
       <div
         className={
-          styles[
-            isOnline
-              ? "character-card-items-online"
-              : "character-card-items-offline"
-          ]
+          isOnline
+            ? styles.characterCardItemsOnline
+            : styles.characterCardItemsOffline
         }
       >
         <Image
@@ -51,10 +46,10 @@ export default function MyChar(results) {
           width={300}
           height={300}
         />
-        <ul className={styles["character-card-list"]}>
+        <ul className={styles.characterCardList}>
           {characterData.map((item, id) => (
             <li key={`item${id}`}>
-              <b className="sub-head">{item[0]}</b>
+              <b className={styles.subHead}>{item[0]}</b>
               {item[1]}
             </li>
           ))}

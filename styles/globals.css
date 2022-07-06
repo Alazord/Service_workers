@@ -28,10 +28,10 @@ a {
   position: fixed;
   display: flex;
   width: 100%;
-  height: 70px;
+  height: 72px;
   justify-content: flex-start;
   align-items: center;
-  z-index: 200;
+  z-index: 100;
 }
 .nav-container-online {
   background-color: #498467;
@@ -42,7 +42,7 @@ a {
 .nav-element-online,
 .nav-element-offline {
   display: flex;
-  padding: 0 5px;
+  padding: 0 4px;
   height: 100%;
   font-weight: 700;
   font-size: 16px;
@@ -59,11 +59,11 @@ a {
 }
 .nav-container-online :first-child {
   /* background-color: yellow; */
-  margin-left: 206px;
+  margin-left: 204px;
 }
 .nav-container-offline :first-child {
   /* background-color: yellow; */
-  margin-left: 206px;
+  margin-left: 204px;
 }
 .all {
   width: 1040px;
@@ -101,9 +101,9 @@ a {
   /* position: fixed; */
   background-color: #7bc8d2;
   color: white;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 90px;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 92px;
   text-align: center;
   width: 300px;
   margin-left: auto;
@@ -117,14 +117,14 @@ a {
   margin: 0 auto;
   justify-content: center;
   height: 40px;
-  margin-top: 25px;
+  margin-top: 24px;
   display: flex;
-  gap: 5px;
+  gap: 4px;
 }
 
 .search-bar-inpt {
   width: 600px;
-  border-radius: 5px;
+  border-radius: 4px;
   font-size: 20px;
   border-color: #498467;
 }
@@ -137,7 +137,7 @@ a {
 } */
 
 .search-btn {
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: "white";
   color: "#498467";
   border-color: #498467;
@@ -149,7 +149,7 @@ a {
 
 .reset-btn {
   width: 80px;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: "white";
   color: "#498467";
   border-color: #498467;
@@ -171,7 +171,7 @@ a {
 }
 
 #heading {
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .random {
@@ -184,7 +184,7 @@ a {
   height: 80px;
   /* margin-left: 200px; */
   background-color: rgba(255, 255, 255, 1);
-  z-index: 100;
+  z-index: 10;
   /* backdrop-filter: blur(10px); */
 }
 .items {
@@ -206,7 +206,7 @@ a {
 }
 .loader {
   color: black;
-  font-size: 10px;
+  font-size: 12px;
   margin: 80px auto;
   position: relative;
   text-indent: -9999em;

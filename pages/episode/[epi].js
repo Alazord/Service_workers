@@ -15,7 +15,7 @@ export default function Episode_Card(results) {
   ];
   const isOnline = useContext(ThemeContext);
   return (
-    <div className={styles["episode-card"]}>
+    <div className={styles.episodeCard}>
       <Head>
         <title>Episode Details</title>
         <link rel="manifest" href="/manifest.json" />
@@ -24,25 +24,21 @@ export default function Episode_Card(results) {
       <NavBar id="home-navbar" props="EPISODES" />
       <h2
         className={
-          styles[
-            isOnline
-              ? "episode-card-heading-online"
-              : "episode-card-heading-offline"
-          ]
+          isOnline
+            ? styles.episodeCardHeadingOnline
+            : styles.episodeCardHeadingOffline
         }
       >
         Details of the Episode you clicked on:
       </h2>
       <div
         className={
-          styles[
-            isOnline
-              ? "episode-card-items-online"
-              : "episode-card-items-offline"
-          ]
+          isOnline
+            ? styles.episodeCardItemsOnline
+            : styles.episodeCardItemsOffline
         }
       >
-        <ul className={styles["episode-card-list"]}>
+        <ul className={styles.episodeCardList}>
           {episodeData.map((item, id) => (
             <li key={`item${id}`}>
               <b>{item[0]}</b>

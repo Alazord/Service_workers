@@ -5,37 +5,32 @@ import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 
 const Episode = ({ episodes }) => {
-  let isOnline = useContext(ThemeContext);
-  if (episodes.length === 0) {
-    return (
-      <h1
-        className={
-          styles[isOnline ? "search-loader-online" : "search-loader-offline"]
-        }
-      >
-        There are no episodes for your search.
-      </h1>
-    );
-  }
+  const isOnline = useContext(ThemeContext);
 
-  return (
-    <div className={styles["ep-ind"]}>
+  return episodes.length === 0 ? (
+    <h1
+      className={
+        isOnline ? styles.searchLoaderOnline : styles.searchLoaderOffline
+      }
+    >
+      There are no episodes for your search.
+    </h1>
+  ) : (
+    <div className={styles.epInd}>
       {episodes.map((episode) => {
         return (
           <div key={episode.id}>
             <Link href={`/episode/${episode.id}`}>
               <div
                 className={
-                  styles[isOnline ? "ep-item-online" : "ep-item-offline"]
+                  isOnline ? styles.epItemOnline : styles.epItemOffline
                 }
               >
-                <h2 className={styles["ep-txt"]} id="heading">
+                <h2 className={styles.epTxt} id="heading">
                   {episode.name}
                 </h2>
-                <h4 className={styles["ep-txt"]}>Episode: {episode.episode}</h4>
-                <h4 className={styles["ep-txt"]}>
-                  Air-Date: {episode.air_date}
-                </h4>
+                <h4 className={styles.epTxt}>Episode: {episode.episode}</h4>
+                <h4 className={styles.epTxt}>Air-Date: {episode.air_date}</h4>
               </div>
             </Link>
           </div>
