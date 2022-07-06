@@ -18,7 +18,7 @@ export default function Episode_Card(results) {
     <div className={styles["episode-card"]}>
       <Head>
         <title>Episode Details</title>
-        <link rel="manifest" href="/manifest.json"/>
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <Status />
       <NavBar id="home-navbar" props="EPISODES" />
