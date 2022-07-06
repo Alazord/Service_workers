@@ -31,7 +31,8 @@ export default function MyChar(results) {
             isOnline
               ? "character-card-heading-online"
               : "character-card-heading-offline"
-          ]}
+          ]
+        }
       >
         Details of the character you clicked on:
       </h2>

@@ -27,7 +27,7 @@
   flex-direction: column;
   flex-grow: 1;
 }
-.episode-previous img{
+.episode-previous img {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -38,7 +38,7 @@
   line-height: 24px;
   text-align: center;
   color: #ffffff;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .episode-description {
   flex-grow: 1;
@@ -47,7 +47,7 @@
   line-height: 24px;
   text-align: center;
   color: #ffffff;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding-bottom: 5px;
@@ -57,7 +57,7 @@
   flex-direction: column;
   flex-grow: 1;
 }
-.episode-next img{
+.episode-next img {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
