@@ -23,6 +23,7 @@ clientsClaim();
 const manifest = self.__WB_MANIFEST;
 manifest.push({
   url: "/fallback",
+  revision: "100000000",
 });
 // precache the fallback page
 precacheAndRoute(manifest);
