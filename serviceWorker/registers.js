@@ -3,9 +3,6 @@ import { StaleWhileRevalidate } from "workbox-strategies";
 import { registerRoute } from "workbox-routing";
 import {ONE_DAY as oneDay,ENTRIES as entries} from "./../components/Constants"
 
-// const oneDay = 24 * 60 * 60;
-// const entries = 100;
-
 export function registers(){ //register start url
     registerRoute(
         "/",

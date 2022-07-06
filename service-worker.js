@@ -20,7 +20,6 @@ clientsClaim(); //ensures that updates to the service worker take effect immedia
 const manifest = self.__WB_MANIFEST;
 manifest.push({
   url: "/fallback",
-  revision: "1234567890", 
 });
 
 precacheAndRoute(manifest); //add entries to the precache list and add a route to respond to fetch events.
