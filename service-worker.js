@@ -4,15 +4,14 @@ importScripts(
 
 import { skipWaiting, clientsClaim } from "workbox-core";
 import { StaleWhileRevalidate } from "workbox-strategies";
-import { staleWhileRevalidate} from "./serviceWorker/cachingStrategies";
-import { setDefaultHandler,setCatchHandler} from "workbox-routing";
+import { setDefaultHandler, setCatchHandler } from "workbox-routing";
+import { staleWhileRevalidate } from "./serviceWorker/cachingStrategies";
+import { registers } from "./serviceWorker/registers";
 import {
   matchPrecache,
   precacheAndRoute,
   cleanupOutdatedCaches,
 } from "workbox-precaching";
-
-import { registers } from "./serviceWorker/registers";
 
 // don't wait and install immediately
 skipWaiting();
@@ -24,6 +23,7 @@ const manifest = self.__WB_MANIFEST;
 manifest.push({
   url: "/fallback",
 });
+
 // precache the fallback page
 precacheAndRoute(manifest);
 
