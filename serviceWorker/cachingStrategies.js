@@ -10,16 +10,6 @@ importScripts(
 
 const store = new idbKeyval.Store("GraphQL-Cache", "PostResponses");
 
-export async function staleWhileRevalidate(event) {
-  let cachedResponse = await getCache(event.request.clone());
-  let fetchPromise = fetch(event.request.clone())
-    .then((response) => {
-      setCache(event.request.clone(), response.clone());
-      return response;
-    })
-  return cachedResponse ? Promise.resolve(cachedResponse) : fetchPromise;
-}
-
 export async function getCache(request) {
   let data;
   const one_day=60*60*24;
@@ -52,6 +42,16 @@ export async function setCache(request, response) {
     timestamp: Date.now(),
   };
   idbKeyval.set(id, entry, store);
+}
+
+export async function staleWhileRevalidate(event) {
+  let cachedResponse = await getCache(event.request.clone());
+  let fetchPromise = fetch(event.request.clone())
+    .then((response) => {
+      setCache(event.request.clone(), response.clone());
+      return response;
+    })
+  return cachedResponse ? Promise.resolve(cachedResponse) : fetchPromise;
 }
 
 export async function serializeResponse(response) {
