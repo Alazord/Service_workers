@@ -4,8 +4,8 @@ importScripts(
 
 import { skipWaiting, clientsClaim } from "workbox-core";
 import { StaleWhileRevalidate } from "workbox-strategies";
-import { staleWhileRevalidate} from "./serviceWorker/cachingStrategies";
-import { setDefaultHandler,setCatchHandler} from "workbox-routing";
+import { staleWhileRevalidate } from "./serviceWorker/cachingStrategies";
+import { setDefaultHandler, setCatchHandler } from "workbox-routing";
 import {
   matchPrecache,
   precacheAndRoute,
@@ -18,7 +18,7 @@ import { registers } from "./serviceWorker/registers";
 skipWaiting();
 
 // take the control of the application in the current tab immediately
-clientsClaim(); 
+clientsClaim();
 
 const manifest = self.__WB_MANIFEST;
 manifest.push({
@@ -27,8 +27,8 @@ manifest.push({
 // precache the fallback page
 precacheAndRoute(manifest);
 
- //event listener which will clean up incompatible precaches.
-cleanupOutdatedCaches(); 
+//event listener which will clean up incompatible precaches.
+cleanupOutdatedCaches();
 
 workbox.routing.registerRoute(
   new RegExp("https://rickandmortyapi.com/graphql(/)?"),

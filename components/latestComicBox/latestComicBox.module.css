@@ -18,7 +18,6 @@
 .latest-comic-content {
   display: flex;
   margin-top: 28px;
-  
 }
 .latest-comic-content-img {
   background-image: url("/images/comic2.jpeg");

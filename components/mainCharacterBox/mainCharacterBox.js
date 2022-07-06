@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./mainCharacterBox.module.css";
-import { CHARACTER_LIST as characterList} from "../Constants";
+import { CHARACTER_LIST as characterList } from "../Constants";
 
 export default function MainCharacterBox() {
   return (
