@@ -1,4 +1,4 @@
-.character-card {
+.characterCard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,49 +6,49 @@
   width: auto;
 }
 
-.character-card-heading-online,
-.character-card-heading-offline {
+.characterCardHeadingOnline,
+.characterCardHeadingOffline {
   margin-top: 100px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 4px;
 }
-.character-card-heading-online {
+.characterCardHeadingOnline {
   color: #498467;
 }
-.character-card-heading-offline {
+.characterCardHeadingOffline {
   color: #6d6a75;
 }
 
-.character-card-list {
+.characterCardList {
   list-style: none;
   align-items: center;
-  font-size: 21px;
+  font-size: 20px;
 }
 
-.sub-head {
+.subHead {
   font-weight: 900;
 }
 
-.character-card-items-online,
-.character-card-items-offline {
+.characterCardItemsOnline,
+.characterCardItemsOffline {
   width: 320px;
   align-self: center;
   align-items: center;
-  padding: 10px;
+  padding: 12px;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.character-card-items-online:hover {
+.characterCardItemsOnline:hover {
   background-color: #498467;
   color: white;
 }
-.character-card-items-offline:hover {
+.characterCardItemsOffline:hover {
   background-color: #6d6a75;
   color: white;
 }
-.character-card-items-online img,
-.character-card-items-offline img {
-  border-radius: 10px;
+.characterCardItemsOnline img,
+.characterCardItemsOffline img {
+  border-radius: 12px;
 }

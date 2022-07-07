@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useQuery, gql } from "@apollo/client";
 import Character from "./character";
 import styles from "./character.module.css";
 
-let CHARACTER_LIST = gql`
+const CHARACTER_LIST = gql`
   query getCharacters($submit: String!) {
     characters(filter: { name: $submit }) {
       results {
@@ -15,23 +15,30 @@ let CHARACTER_LIST = gql`
   }
 `;
 
-let CharacterList = () => {
+const CharacterList = () => {
   const [search, setSearch] = useState("");
   const [submit, setSubmit] = useState("");
   const { error, data } = useQuery(CHARACTER_LIST, {
     variables: { submit },
   });
 
+  const onSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      setSubmit(search + " ");
+    },
+    [search]
+  );
+  const onClick = useCallback(() => {
+    setSubmit("");
+    setSearch("");
+  });
+
   return (
     <div className="nav">
       <div className="page">
         <div className="random">
-          <form
-            onSubmit={async (event) => {
-              event.preventDefault();
-              setSubmit(search + " ");
-            }}
-          >
+          <form onSubmit={onSubmit}>
             <div className="search-bar">
               <input
                 className="search-bar-inpt"
@@ -43,13 +50,7 @@ let CharacterList = () => {
               <button className="search-btn" type="submit">
                 Search
               </button>
-              <button
-                className="reset-btn"
-                onClick={() => {
-                  setSubmit("");
-                  setSearch("");
-                }}
-              >
+              <button className="reset-btn" onClick={onClick}>
                 Reset
               </button>
             </div>
@@ -57,7 +58,7 @@ let CharacterList = () => {
         </div>
         <div className="items">
           {error ? (
-            <h2 className={styles["search-loader-offline"]}>
+            <h2 className={styles.searchLoaderOffline}>
               Sorry, you are offline. You cannot make new searches. However, you
               can still make old ones.
             </h2>

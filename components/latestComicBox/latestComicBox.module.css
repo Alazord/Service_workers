@@ -1,4 +1,4 @@
-.latest-comic-box {
+.latestComicBox {
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -6,41 +6,41 @@
   margin-right: auto;
   margin-top: 80px;
 }
-.latest-comic-head {
+.latestComicHead {
   font-weight: 300;
   font-size: 28px;
   line-height: 42px;
   color: #000000;
 }
-.latest-comic-box .line {
+.latestComicBox .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.latest-comic-content {
+.latestComicContent {
   display: flex;
   margin-top: 28px;
 }
-.latest-comic-content-img {
+.latestComicContentImg {
   background-image: url("/images/comic2.jpeg");
-  border-radius: 5px;
+  border-radius: 4px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   flex-grow: 1;
 }
-.latest-comic-details {
+.latestComicDetails {
   width: 600px;
   display: flex;
   padding-left: 20px;
   flex-direction: column;
 }
-.latest-comic-title {
+.latestComicTitle {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: #000000;
 }
-.latest-comic-description {
+.latestComicDescription {
   margin-top: 20px;
-  min-height: 150px;
+  min-height: 152px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;

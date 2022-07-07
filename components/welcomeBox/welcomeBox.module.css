@@ -1,33 +1,33 @@
-.welcome-box {
+.welcomeBox {
   display: flex;
   flex-direction: column;
-  height: 417px;
+  height: 416px;
   width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
-.welcome-online,
-.welcome-offline {
+.welcomeOnline,
+.welcomeOffline {
   margin-bottom: 36px;
-  font-size: 50px;
+  font-size: 48px;
   font-weight: normal;
-  margin: 0 0 50px;
+  margin: 0 0 48px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
+  border-radius: 4px;
 }
-.welcome-online {
+.welcomeOnline {
   color: #498467;
 }
-.welcome-offline {
+.welcomeOffline {
   color: #6d6a75;
 }
 .carousal {
   flex-grow: 1;
 }
-.carousal-img {
+.carousalImg {
   width: 100%;
   min-height: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
 }

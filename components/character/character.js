@@ -6,32 +6,29 @@ import { useContext } from "react";
 import { ThemeContext } from "../../pages/_app";
 
 const Character = ({ characters }) => {
-  let isOnline = useContext(ThemeContext);
-  if (characters.length === 0) {
-    return (
-      <h1
-        className={
-          styles[isOnline ? "search-loader-online" : "search-loader-offline"]
-        }
-      >
-        There are no characters for your search.
-      </h1>
-    );
-  }
-  return (
-    <div className={styles["char-ind"]}>
+  const isOnline = useContext(ThemeContext);
+  return characters.length == 0 ? (
+    <h1
+      className={
+        isOnline ? styles.searchLoaderOnline : styles.searchLoaderOffline
+      }
+    >
+      There are no characters for your search.
+    </h1>
+  ) : (
+    <div className={styles.charInd}>
       {characters.map((character) => {
         return (
-          <div className={styles["char-item"]} key={character.id}>
+          <div className={styles.charItem} key={character.id}>
             <Link href={`/character/${character.id}`}>
-              <div className={styles["char-subitem"]}>
+              <div className={styles.charSubitem}>
                 <Image
                   alt="Character Image"
                   src={character.image}
-                  width={246}
-                  height={234}
+                  width={244}
+                  height={232}
                 />
-                <div className={styles["char-txt"]}>{character.name}</div>
+                <div className={styles.charTxt}>{character.name}</div>
               </div>
             </Link>
           </div>

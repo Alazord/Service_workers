@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import styles from "./episode.module.css";
 import { useQuery, gql } from "@apollo/client";
 import Episode from "./episode";
@@ -23,17 +23,23 @@ const EpisodeList = () => {
   const { error, data } = useQuery(EPISODE_LIST, {
     variables: { submit },
   });
+  const onSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      setSubmit(search + " ");
+    },
+    [search]
+  );
+  const onClick = useCallback(() => {
+    setSubmit("");
+    setSearch("");
+  });
 
   return (
     <div className="nav">
       <div className="page">
         <div className="random">
-          <form
-            onSubmit={async (event) => {
-              event.preventDefault();
-              setSubmit(search + " ");
-            }}
-          >
+          <form onSubmit={onSubmit}>
             <div className="search-bar">
               <input
                 className="search-bar-inpt"
@@ -45,13 +51,7 @@ const EpisodeList = () => {
               <button className="search-btn" type="submit">
                 Search
               </button>
-              <button
-                className="reset-btn"
-                onClick={() => {
-                  setSubmit("");
-                  setSearch("");
-                }}
-              >
+              <button className="reset-btn" onClick={onClick}>
                 Reset
               </button>
             </div>
@@ -59,7 +59,7 @@ const EpisodeList = () => {
         </div>
         <div className="items">
           {error ? (
-            <h2 className={styles["search-loader-offline"]}>
+            <h2 className={styles.searchLoaderOffline}>
               Sorry, you are offline. You cannot make new searches. However, you
               can still make old ones.
             </h2>

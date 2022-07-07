@@ -1,29 +1,29 @@
-.description-box,
-.description-head,
-.description-content {
+.descriptionBox,
+.descriptionHead,
+.descriptionContent {
   margin-left: auto;
   margin-right: auto;
 }
-.description-box {
+.descriptionBox {
   display: flex;
   flex-direction: column;
   width: 800px;
-  margin-top: 150px;
+  margin-top: 152px;
   font-size: 28px;
   line-height: 42px;
   font-weight: 300;
-  padding: 0 5px;
+  padding: 0 4px;
 }
-.description-head {
+.descriptionHead {
   height: 42px;
   width: 100%;
 
   color: #000000;
 }
-.description-box .line {
+.descriptionBox .line {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.description-content {
+.descriptionContent {
   margin-top: 28px;
   flex-grow: 1;
   font-weight: 400;

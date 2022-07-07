@@ -1,11 +1,11 @@
-.status-offline {
+.statusOffline {
   position: fixed;
   right: 20px;
-  top: 6px;
+  top: 4px;
   align-items: center;
-  padding: 15px;
+  padding: 16px;
   border: 2px solid white;
   color: white;
-  border-radius: 5px;
-  z-index: 300;
+  border-radius: 4px;
+  z-index: 1000;
 }
